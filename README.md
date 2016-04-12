@@ -34,6 +34,7 @@
 
 ## 参考资料
 
++ [git-简明指南](http://www.bootcss.com/p/git-guide/) 
 + [React 资料](https://github.com/dingyiming/learn-Js-react)
 + [富文本编辑器 simditor](http://simditor.tower.im)
 + [BootStrap](http://www.bootcss.com)
