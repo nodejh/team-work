@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to Nucleus</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+    <link href="/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/dist/css/flat-ui.css" rel="stylesheet">
+    <link href="/docs/assets/css/demo.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <style>
+      .link-signin:hover{
+        opacity: 0.8;
+      }
+      .link-signin{
+        color: #699489;
+      }
+      .masthead{
+        padding: 15% 0 12%;
+        background-image: url(/dist/img/bg-index.jpg);
+        background-repeat: no-repeat;
+        background-size: auto 600px;
+        background-repeat: repeat-x;
+        background-position: 0 0;
+        text-align: center;
+      }
+      .btnsign{
+        width: 25%;
+        position: relative;
+        left: 37%;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="masthead">
+    <div class="container">
+      <h1 class="logo">Nucleus</h1>
+
+      <p><span class="demo-heading-note">你的网上办公室</span>
+        </p>
+      <p class="status">由SCUIOT->jmw设计</p>
+     <p> <div class="btnsign">
+        <a href="Register" class="btn btn-block btn-lg btn-primary">免费注册</a></div></p>
+      <p>或 <a href="Login" class="link-signin">登录</a></p>
+    </div>
+  </div>
+  </body>
+  <script src="dist/js/vendor/jquery.min.js"></script>
+  <script src="dist/js/vendor/video.js"></script>
+  <script src="dist/js/flat-ui.min.js"></script>
+  <script src="docs/assets/js/application.js"></script>
+
+  <script>
+    videojs.options.flash.swf = "dist/js/vendors/video-js.swf"
+  </script>
+</html>

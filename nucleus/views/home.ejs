@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Nucleus</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+    <link href="/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/dist/css/flat-ui.css" rel="stylesheet">
+    <link href="/docs/assets/css/demo.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/dist/css/responsive-slider.css" rel="stylesheet">
+    <link href="/dist/css/font-awesome.css" rel="stylesheet">
+    <link href="/dist/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        .link-signin:hover{
+            opacity: 0.8;
+        }
+        .link-signin{
+            color: #699489;
+        }
+        .masthead{
+            padding: 15% 0 12%;
+            background-image: url(/dist/img/bg-index.jpg);
+            background-repeat: no-repeat;
+            background-size: auto 600px;
+            background-repeat: repeat-x;
+            background-position: 0 0;
+            text-align: center;
+        }
+        .btnsign{
+            width: 25%;
+            position: relative;
+            left: 37%;
+        }
+        body{
+            background-color: #f2f5e9;
+        }
+     .command-bar{
+         float: right;
+         padding-top: 15px;
+         position: relative;
+         margin-right: 20px;
+     }
+        .search-wrap {
+            float: left;
+
+        }
+        .notification-info{
+            margin-left: 20px;
+            float: left;
+        }
+        .account-info{
+            float: left;
+            margin-left: 20px;
+        }
+        .project-type-section input[type=radio] {
+            display: none;
+            font-size: 16px;
+        }
+        .project-type-section input[type=radio]:checked+.project-type {
+            background-color: #F2F5EA;
+            border-color: #8BAF46;
+        }
+        .project-type {
+            display: inline-block;
+            width: 316px;
+            margin-right: 20px;
+            padding: 15px 10px;
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+            -webkit-transition: all 100ms ease-in-out;
+            -moz-transition: all 100ms ease-in-out;
+            transition: all 100ms ease-in-out;
+        }
+        .project-type .twr {
+            float: left;
+            width: 60px;
+            font-size: 40px;
+            color: #ccc;
+            line-height: 60px;
+            text-align: center;
+        }
+        .info {
+            padding-left: 34px;
+        }
+        .invite-item {
+            position: relative;
+            margin: 15px 0;
+        }
+        input.invite-email {
+            width: 300px;
+            font-size: 15px;
+        }
+        .no-border{
+            border: none;
+            border-bottom: 1px dashed #cccccc;
+            box-shadow: black;
+        }
+        select {
+            border-radius: 3px;
+            border-color: rgb(169, 169, 169);
+        }
+        .invite-role-field {
+            display: inline-block;
+            vertical-align: bottom;
+            font-size: 16px;
+        }
+        .btn:hover, .btn:focus {
+            outline: none;
+            color: #25ecdd;
+        }
+        .footer {
+            width: 960px;
+            margin: 0 auto;
+            padding: 20px 0;
+            font-size: 12px;
+            color: #aaaaaa;
+            text-align: center;
+        }
+        .link-page-behind {
+            display: block;
+            line-height: 46px;
+            height: 46px;
+            font-size: 18px;
+            color: #888888;
+            background: #f9f9f9;
+        }
+        .page-inner {
+            padding: 0 40px 40px;
+            min-height: 600px;
+            box-sizing: border-box;
+            width: 960px;
+            border: 1px solid #dbdfd6;
+            box-shadow: 0 0 5px rgba(0,0,0,0.15);
+            background: #ffffff;
+            opacity: 1;
+            margin-left: 195px;
+        }
+        .link-view{
+            margin-right: 12px;
+        }
+        .projects-footer {
+            margin: 0 auto 20px;
+            padding: 10px 10px 0;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 900px;
+            font-size: 14px;
+            box-sizing: border-box;
+            border-top: solid 1px #eee;
+        }
+        .project-links {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            height: 58px;
+            overflow: hidden;
+        }
+        .project-header {
+            position: relative;
+            padding: 30px 0 4px;
+            border-bottom: 1px solid #B8C8CB;
+        }
+        .project-links a {
+            display: block;
+            float: left;
+            position: relative;
+            margin: 0 8px 0 7px;
+            padding: 8px 0px;
+            width: 70px;
+            color: #84a099;
+            font-size: 12px;
+            text-align: center;
+            border-right: 1px solid #ddd;
+            height: 34px;
+        }
+        .project-links a .main {
+            font-size: 18px;
+            line-height: 24px;
+        }
+        .project-links a span {
+            display: block;
+        }
+        .project-sections a{
+            color: #84a099;
+        }
+        .section{
+            margin-bottom: 50px;
+            position: relative;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header style="width: 960px; margin: 20px auto;height: 30px">
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#">Nucleus
+        <span class="fui-triangle-down-small"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">jmeter</a></li>
+            <li><a href="#">EJB</a></li>
+            <li><a href="#">Jasper Report</a></li>
+            <li class="divider"></li>
+            <li><a href="#">分离的链接</a></li>
+            <li class="divider"></li>
+            <li><a href="#">另一个分离的链接</a></li>
+        </ul>
+    </div>
+    <ul class="nav navbar-nav">
+            <li class="active"><a href="#">项目</a></li>
+            <li><a href="#">动态</a></li>
+            <li><a href="#">周报</a></li>
+            <li><a href="#">日历</a></li>
+            <li><a href="#">我自己</a></li>
+        </ul>
+    <div class="command-bar">
+        <div class="search-wrap">
+            <a href="javascript:;" class="link-search" title="搜索"><span class="fui-search"></span></a>
+        </div>
+
+        <div class="notification-info">
+            <a href="javascript:;" id="notification-count" class="label " title="新的通知" data-unread-count="0" data-url="/teams/33e50bf86957490a9e6f0581cb1d7f74/notifications/unread_counts">
+                <span class="fui-mail"></span>
+                <span class="num">1</span>
+            </a>
+        </div>
+        <div class="account-info">
+            <div class="member-settings">
+                <a class="link-member-menu" href="javascript:;" title="王婷">
+                    <img class="avatar" src="/assets/default_avatars/noon.jpg" alt="王婷">
+                    <span class="fui-triangle-down-small"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+</header>
+<div id="index">
+   <div class="page-inner" id="page-projects" data-page-name="Nucleus的所有项目">
+            <div style=" padding: 10px 30px 0; height: 35px">
+                <div style="float: right">
+                    <a href="javascript:;" class="link-view link-grid-view active" title="网格视图">
+                        <span class="fui-list-thumbnailed"></span>
+                    </a>
+                    <a href="javascript:;" class="link-view link-list-view" title="列表视图">
+                        <span class="fui-list-numbered"></span>
+                    </a>
+                </div>
+
+                <a style="float: right; line-height: 16px;margin: 7px 10px;font-size: 18px; padding-right: 8px;">
+                    新建项目
+                </a>
+            </div>
+            <div style="margin: 0 30px 80px;">
+                项目目录
+            </div>
+            <div class="projects-footer">
+                <a href="/teams/33e50bf86957490a9e6f0581cb1d7f74/project_templates" data-stack="" data-visible-to="member">管理项目模板</a>
+
+            </div>
+            <input type="hidden" id="select-plan-path" value="/teams/33e50bf86957490a9e6f0581cb1d7f74/plans">
+      </div>
+</div>
+<div id="project" class="page-inner">
+<div style="padding: 0px 40px 500px 40px">
+    <div class="project-header">
+        <div class="project-hd-info"style="padding-bottom: 16px;border-bottom: 4px solid #B8C8CB;">
+            <p>项目名称</p>
+        </div>
+
+        <div class="project-links">
+
+            <a href="/projects/a422d56cdb3548bea24e3edb01a8c594/stats" class="link-stats" title="待处理任务" data-stack="" data-nocache="">
+                <span class="main">0</span>
+                <span>待处理任务</span>
+            </a>
+
+            <a href="/projects/a422d56cdb3548bea24e3edb01a8c594/members" class="link-admin-members" title="邀请新成员加入项目" data-stack="" data-nocache="">
+                <span class="main">1</span>
+                <span>成员</span>
+            </a>
+
+            <a href="/projects/a422d56cdb3548bea24e3edb01a8c594/settings" class="link-admin-settings" title="项目设置" data-visible-to="admin" data-stack="" data-nocache="">
+                <span class="fui-gear"></span>
+                <span style="display: block">设置</span>
+            </a>
+        </div>
+    </div>
+    <div class="project-sections ">
+        <div class="section section-todos" id="todolists">
+             <h5><a class=demo-heading-note" href="#" style="float: left">任务</a>
+            <div  style=" margin-left: 100px" class="dropdown">
+                     <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+                             data-toggle="dropdown">
+                         添加任务
+                         <span class="caret"></span>
+                     </button>
+                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                         <li role="presentation">
+                             <a role="menuitem" tabindex="-1" href="#">添加任务</a>
+                         </li>
+                         <li role="presentation">
+                             <a role="menuitem" tabindex="-1" href="#">添加清单</a>
+                         </li>
+                     </ul>
+                 </div>
+            </h5>
+        </div>
+        <div class="section section-messages" id="topics" data-droppable="">
+            <h5><a class=demo-heading-note" href="#">讨论</a>
+             <button class="btn"style=" margin-left: 43px">发起讨论</button>
+            </h5>
+        </div>
+        <div class="section section-file" id="todolists">
+            <h5><a class=demo-heading-note" href="#" style="float: left">文件</a>
+                <div  style=" margin-left: 100px" class="dropdown">
+                    <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+                            data-toggle="dropdown">
+                        上传文件
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="#">上传文件</a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="#">创建文件夹</a>
+                        </li>
+                    </ul>
+                </div>
+            </h5>
+        </div>
+        <div class="section section-word" id="todolists">
+            <h5><a class=demo-heading-note" href="#" style="float: left">文档</a>
+                <button class="btn"style=" margin-left: 43px">创建文档</button>
+            </h5>
+        </div>
+        <div class="section section-data" id="todolists">
+            <h5><a class=demo-heading-note" href="#" style="float: left">日程</a>
+                <button class="btn"style=" margin-left: 43px">创建日程</button>
+            </h5>
+        </div>
+
+    </div>
+</div>
+</div>
+<div id="new" style="display: block">
+<div class="link-page-behind" id="behind" style="width:940px;position: relative;left: 204px;">
+<p id="before"style="position: relative;left:-709px">Nucleus的所有项目</p></div>
+<div class="panel panel-default"style="width: 960px;margin-left: 195px">
+    <div class="panel-body">
+        <div style="margin: 0px 40px 40px 40px">
+        <p style="color: #84a099; margin:30px 0px ">创建项目</p>
+            <div class="col-lg-10">
+                <div class="form-group">
+                    <input class="form-control" value="" placeholder="项目名称" id="login-name" type="text">
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control" id="discrible" placeholder="简单描述项目，便于其他人理解（选填）"></textarea>
+                </div>
+                <label class="checkbox" for="checkbox2">
+                    <input class="custom-checkbox" checked="checked" value="" id="checkbox2" data-toggle="checkbox" type="checkbox">
+                    对访客隐藏敏感内容
+                </label>
+                <div class="setting-section project-type-section">
+                    <p>选择项目类型</p>
+                    <input type="radio" id="project-type-standard" name="project_type" value="0" checked="">
+                    <label class="project-type " for="project-type-standard">
+
+                        <p align="center">标准项目</p>
+                        <span class="fui-calendar-solid twr"></span>
+                        <div class="info">
+                            <p>更好地组织、细分和管理任务，适用于一般项目管理</p>
+                        </div>
+                    </label>
+
+                    <input type="radio" id="project-type-agile" name="project_type" value="1">
+                    <label class="project-type" for="project-type-agile">
+                        <p align="center">敏捷项目（看板）</p>
+                        <span class="fui-calendar twr"></span>
+                        <div class="info">
+                            <p>擅长处理流程化任务，适用于产品研发、用户支持等场景</p>
+                        </div>
+                    </label>
+                </div>
+                <div class="setting-section">
+                    <p>
+                        邀请项目成员
+                    </p>
+
+                    <p style="font-size: 16px">
+                        管理员可以邀请和移除项目成员，只有被邀请的团队成员才能访问该项目的信息。点击这里查看<a href="https://tower.im/help/faq/8/65/" target="_blank" rel="nofollow">如何设置成员权限</a>。
+                    </p>
+                    <div class="tab active" data-tab="email">
+                            <div class="form-group">
+                                <div style="margin-top: 10px">
+                                    <div class="invite-item">
+                                        <div class="invite-field">
+                                            <input type="email" class="invite-email no-border" placeholder="请输入新成员的邮箱">
+
+                                            <div class="invite-role-field">
+                                                <select class="invite-role" id="choose-role" tabindex="-1">
+                                                    <option value="0" selected="">成员</option>
+                                                    <option value="1">管理员</option>
+                                                    <option value="3">访客</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="invite-item">
+                                        <div class="invite-field">
+                                            <input type="email" class="invite-email no-border" placeholder="请输入新成员的邮箱">
+
+                                            <div class="invite-role-field">
+                                                <select class="invite-role" id="choose-role" tabindex="-1">
+                                                    <option value="0" selected="">成员</option>
+                                                    <option value="1">管理员</option>
+                                                    <option value="3">访客</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="invite-item">
+                                        <div class="invite-field">
+                                            <input type="email" class="invite-email no-border" placeholder="请输入新成员的邮箱">
+
+                                            <div class="invite-role-field">
+                                                <select class="invite-role" id="choose-role" tabindex="-1">
+                                                    <option value="0" selected="">成员</option>
+                                                    <option value="1">管理员</option>
+                                                    <option value="3">访客</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="font-size: 14px"><a href="javascript:;" id="add-invite-item">再加一个</a></p>
+                            </div>
+                        </div>
+
+                        <!-- <div class="tab" data-tab="wechat">
+                            <div class="form-item form-wechat-item">
+                                <div class="form-field">
+                                    <div class="wechat-invite">
+                                        <div class="qrcode-wrap loading" data-url="/wechat/qrcode?type=8">
+                                            <p class="indicator">正在加载二维码</p>
+                                            <img class="qrcode" alt="微信双保险二维码" title="扫描这个二维码获取微信邀请函" />
+                                        </div>
+                                        <div class="wechat-desc">
+                                            <h5>扫码邀请</h5>
+                                            <p>用微信扫描二维码获取邀请函，<br>
+                                                转发给微信好友，即可邀请他们加入你的项目。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                <div style="margin: 30px 0 20px 0;">
+                    <button type="submit" class="btn btn-primary" id="btn-create-project" data-disable-with="正在创建..." data-success-text="创建成功">创建项目</button>
+                    <a href="/teams/33e50bf86957490a9e6f0581cb1d7f74/projects" class="btn" >取消</a>
+                </div>
+        </div>
+     </div>
+
+</div>
+</div>
+    </div>
+<div class="footer">
+    @<a href="http://mycolorway.com" target="_blank">WMJ设计</a>
+</div>
+</body>
+<script src="dist/js/vendor/jquery.min.js"></script>
+<script src="dist/js/vendor/video.js"></script>
+<script src="dist/js/flat-ui.min.js"></script>
+<script src="docs/assets/js/application.js"></script>
+<script src="responsive-slider.js"></script>
+<script src="responsive-slider.min.js"></script>
+<script src="dist/js/jquery-1.8.3.min.js"></script>
+<script>
+    videojs.options.flash.swf = "dist/js/vendors/video-js.swf"
+    $("#before").click(function () {
+        $("#new").css("display", "none");
+        $("#index").css("display","block");
+
+    });
+</script>
+</html>
