@@ -1,20 +1,21 @@
 var crypto = require('crypto');
+var myfun = require('../passport/myfun');
 var multer = require('multer');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, __dirname + '/../public/uploads');
   },
   filename: function (req, file, cb) {
-    console.log(file);
-    cb(null, file.fieldname + '-' + Date.now());
+    var extension = file.originalname.slice((file.originalname.lastIndexOf(".") - 1 >>> 0) + 2);
+    cb(null, file.fieldname + '-' + Date.now() + myfun.randomString(5) + '.' + extension);
   }
 });
 var upload = multer({storage: storage});
-
-// var multer  = require('multer');
-// var upload = multer({ dest: __dirname + '/../public/uploads/' });
-
 var checkLogin = require('../passport/checkLogin');
+var Weekly = require('../models/Weekly');
+
+
+
 
 var routes = function (app) {
 
@@ -67,12 +68,34 @@ var routes = function (app) {
 
   // 上传周报操作
   //app.post('/upload', checkLogin.checkLoginUserForm);
-  app.post('/upload', upload.single('weekly'), function (req, res) {
-    var file = req.file;
-    console.log(req.file);
-    console.log(req.body);
-    req.flash('success', '上传成功!');
-    res.redirect('/upload');
+  var uploadWeekly = upload.single('weekly');
+  app.post('/upload', function (req, res) {
+    uploadWeekly(req, res, function (err) {
+      if (err) {
+        console.log('上传周报失败：', err);
+        req.flash('error', '上传成功!');
+        res.redirect('/upload');
+      }
+
+      var title = req.body.title;
+      var filename = req.file.filename;
+
+      var weekly = new Weekly(title, filename);
+      weekly.upload(function (err) {
+        if (err) {
+          req.flash('error', '上传失败，请重试!');
+          return res.redirect('/upload');
+        }
+        // upload success
+        req.flash('success', '上传成功!');
+        res.redirect('/upload');
+      });
+
+
+
+    });
+
+
   });
 
 
