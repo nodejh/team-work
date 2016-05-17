@@ -1,82 +1,56 @@
-var express = require('express');
 var path = require('path');
+var express = require('express');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mysql = require('mysql'), // node-mysql module
-    myConnection = require('express-myconnection'), // express-myconnection module
-    dbOptions = {
-      host: 'localhost',
-      user: 'root',
-      password: 'root',
-      port: 3306,
-      database: 'team'
-    };
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var flash = require('connect-flash');
 
+var index = require('./routes/index');
+var admin = require('./routes/admin');
+var config = require('./config/config');
 
-
-// use api
-var register = require('./api/register');
-
-
-// use router
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var fs = require('fs');
+var accessLog = fs.createWriteStream('access.log', {flags: 'a'});
+var errorLog = fs.createWriteStream('error.log', {flags: 'a'});
 
 var app = express();
 
-// view engine setup
+
+app.set('port', process.env.PORT || config.port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(morgan('combined', {stream: accessLog}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: config.cookie.cookieSecret,
+  key: config.mongodb.db,
+  cookie: {maxAge: config.cookie.maxAge},
+  store: new MongoStore({
+    url: config.mongodb.url
+  }),
+  proxy: true,
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(myConnection(mysql, dbOptions, 'single'));
+// 用户相关
+index(app);
+// 管理员相关
+admin(app);
 
-// use
-app.use('/api', register);
-
-
-app.use('/', routes);
-app.use('/users', users);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (err, req, res, next) {
+  var meta = '[' + new Date() + ']' + req.url + '\n';
+  errorLog.write(meta + err.stack + '\n');
+  next();
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+app.listen(app.get('port'), function () {
+  console.log('Server is listening on port ' + app.get('port'));
 });
-
-
-module.exports = app;
