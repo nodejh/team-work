@@ -1,0 +1,28 @@
+     .link-signin:hover{
+            opacity: 0.8;
+        }
+        .form-group{
+            padding: 20px;
+        }
+        .link-signin{
+            color: #699489;
+        }
+        .masthead{
+            padding: 5%;
+            background-image: url(/dist/img/bg-index.jpg);
+            background-repeat: no-repeat;
+            background-size: auto ;
+            background-repeat: repeat-x;
+            background-position: 0 0;
+            text-align: center;
+        }
+        .btnsign{
+            width: 25%;
+            position: relative;
+            left: 37%;
+        }
+        .sign-page{
+            width: 960px;
+            margin: 20px auto 0;
+            height:500px;
+        }

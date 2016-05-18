@@ -13,6 +13,11 @@ var myfun = {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
+  },
+
+  checkEmail: function (string) {
+    var reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return reg.test(string);
   }
 
 };

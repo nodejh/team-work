@@ -12,8 +12,8 @@ var storage = multer.diskStorage({
 });
 var upload = multer({storage: storage});
 var checkLogin = require('../passport/checkLogin');
-var Weekly = require('../models/Weekly');
-
+var Weekly = require('../models/weekly.model');
+var User = require('../models/user.model');
 
 
 
@@ -43,6 +43,48 @@ var routes = function (app) {
   });
 
 
+  // 登陆操作
+  app.post('/login', checkLogin.checkNotLoginUserForm);
+  app.post('/login', checkLogin.checkNotLoginAdminForm);
+  app.post('/login', function (req, res) {
+    var email = req.body.email;
+    var password = req.body.password;
+    if (!myfun.checkEmail(email)) {
+      req.flash('error', '邮箱格式错误!');
+      return res.redirect('/login');
+    }
+    if (password.length < 6) {
+      req.flash('error', '密码错误!');
+      return res.redirect('/login');
+    }
+
+    User.findUserByEmail(email, function (err, rows) {
+      if (err) {
+        req.flash('error', '登陆失败, 请重试!');
+        return res.redirect('/login');
+      }
+
+      if (rows.length === 0) {
+        req.flash('error', '用户不存在!');
+        return res.redirect('/login');
+      }
+
+      if (rows.length != 1) {
+        req.flash('error', '账号异常!');
+        return res.redirect('/login');
+      }
+
+      // 将密码加密
+      var md5 = crypto.createHash('md5');
+      password = md5.update(req.body.password).digest('hex');
+      if (password == rows[0].password) {
+        // 登陆成功,将用户信息存入 session
+        req.session.user = rows[0];
+        res.redirect('/');
+      }
+    });
+  });
+
   // 注册页面
   app.get('/register', checkLogin.checkNotLoginUserForm);
   app.get('/register', checkLogin.checkNotLoginAdminForm);
@@ -55,8 +97,78 @@ var routes = function (app) {
   });
 
 
+
+  // 注册操作
+  app.post('/register', checkLogin.checkNotLoginUserForm);
+  app.post('/register', checkLogin.checkNotLoginAdminForm);
+  app.post('/register', function (req, res) {
+    var name = req.body.name;
+    var email = req.body.email;
+    var password = req.body.password;
+    var re_password = req.body.re_password;
+    if (!name) {
+      req.flash('error', '昵称不能为空!');
+      return res.redirect('/register');
+    }
+    if (!myfun.checkEmail(email)) {
+      req.flash('error', '邮箱格式错误!');
+      return res.redirect('/register');
+    }
+    if (password.length < 6) {
+      req.flash('error', '密码长度不能小于6位');
+      return res.redirect('/register');
+    }
+    if (password != re_password) {
+      req.flash('error', '两次密码不一致');
+      return res.redirect('/register');
+    }
+
+    // 将密码加密
+    var md5 = crypto.createHash('md5');
+    password = md5.update(req.body.password).digest('hex');
+
+    var newUser = new User(name, emial, password);
+    // 检查是否已经注册过
+    User.findUserByEmail(User.email, function (err, rows) {
+      if (err) {
+        req.flash('error', '注册失败, 请重试!');
+        return res.redirect('/register');
+      }
+
+      if (rows.length > 0) {
+        req.flash('error', '该邮箱已注册, 您可以直接登陆!');
+        return res.redirect('/register');
+      }
+
+      newUser.insert(function (err, inserted) {
+        if (err) {
+          req.flash('error', '注册失败, 请重试!');
+          return res.redirect('/register');
+        }
+
+        // 注册成功，将用户信息写入session
+        req.session.user = {
+          id: inserted.insertId,
+          name: name,
+          email: email,
+          password: password,
+          type: 1
+        };
+
+        res.redirect('/');
+        // TODO 跳转到个人中心
+        //res.redirect('/user/index');
+
+      });
+
+    });
+
+
+
+  });
+
   // 上传周报页面
-  // app.get('/upload', checkLogin.checkLoginUserForm);
+  app.get('/upload', checkLogin.checkLoginUserForm);
   app.get('/upload', function (req, res) {
     res.render('upload', {
       title: '上传周报',
@@ -67,7 +179,7 @@ var routes = function (app) {
 
 
   // 上传周报操作
-  //app.post('/upload', checkLogin.checkLoginUserForm);
+  app.post('/upload', checkLogin.checkLoginUserForm);
   var uploadWeekly = upload.single('weekly');
   app.post('/upload', function (req, res) {
     uploadWeekly(req, res, function (err) {
@@ -81,7 +193,7 @@ var routes = function (app) {
       var filename = req.file.filename;
 
       var weekly = new Weekly(title, filename);
-      weekly.upload(function (err) {
+      weekly.upload(function (err, rows) {
         if (err) {
           req.flash('error', '上传失败，请重试!');
           return res.redirect('/upload');
@@ -90,16 +202,8 @@ var routes = function (app) {
         req.flash('success', '上传成功!');
         res.redirect('/upload');
       });
-
-
-
     });
-
-
   });
-
-
-
 };
 
 

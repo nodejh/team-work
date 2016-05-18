@@ -1,26 +1,89 @@
+<!DOCTYPE html>
 <html>
-
-
 <head>
-  <title>Register</title>
+    <title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+    <link href="/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/dist/css/flat-ui.css" rel="stylesheet">
+    <link href="/docs/assets/css/demo.css" rel="stylesheet">
+    <link href="/stylesheets/register.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+
 </head>
-
-
 <body>
+<div class="masthead">
+    <div class="container">
+        <div class="sign-page">
+            <div class="hd">
+                <h1 class="logo">
+                    <a href="/">Nucleus</a>
+                </h1>
+            </div>
 
-<form>
-  <input type="text" id="name" placeholder="请输入姓名">
-  <br/>
-  <input type="text" id="passwd" value="" placeholder="please password">
-  <br/>
-  <button type="button" id="button">Register</button>
+            <div class="bd">
 
+                <form role="form">
+                    <div class="panel panel-success" style="position: relative; left: 130px ;width: 700px">
+                        <div class="panel-heading">
+                            <h1 class="panel-title">注册信息</h1>
+                        </div>
+                        <div class="panel-body m15" >
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <input id="team" name="team" type="text" class="form-control login-field" placeholder="团队名称" />
+                        </div>
+                        </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <input id="name" name="name" type="text" class="form-control login-field" placeholder="你的名字" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <input id="mail" name="mail" type="text" class="form-control login-field" placeholder="邮箱，例如: 10001@qq.com" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <input id="psw1" name="psw1" type="password" class="form-control login-field" placeholder="密码，至少包含 6 位字符" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <input id="psw2" name="psw2" type="password" class="form-control login-field" placeholder="密码" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                        <p>点击注册表示你已阅读并同意<a href="/agreement" target="_blank">《Nucleus 服务条款》</a></p>
+                        <a  id="submit" class="btn btn-primary btn-lg btn-submit col-sm-12"
+                                data-disable-with="正在注册..."
+                                data-success-text="注册成功">
+                            注册
+                        </a>
 
-</form>
-
-
+                        <div class="desc">
+                            <p class="left">
+                                已有 nucleus 账户？<span><a href="Login">直接登录 →</a></span>
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+    </div>
+</div>
+</div>
 </body>
-
-<script type="text/javascript" src="/javascripts/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="/javascripts/register.js"></script>
+<script src="dist/js/vendor/jquery.min.js"></script>
+<script src="dist/js/vendor/video.js"></script>
+<script src="dist/js/flat-ui.min.js"></script>
+<script src="docs/assets/js/application.js"></script>
+<script>
+    videojs.options.flash.swf = "dist/js/vendors/video-js.swf"
+</script>
+<script src="/dist/js/register.js"></script>
 </html>
