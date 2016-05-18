@@ -23,6 +23,7 @@ app.set('port', process.env.PORT || config.port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(morgan('dev'));
 app.use(morgan('combined', {stream: accessLog}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

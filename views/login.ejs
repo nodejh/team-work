@@ -1,47 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title><%= title %>Login</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
-    <link href="/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/dist/css/flat-ui.css" rel="stylesheet">
-    <link href="/docs/assets/css/demo.css" rel="stylesheet">
-    <link href="/stylesheets/login.css">
-    <link rel="shortcut icon" href="../public/favicon.ico">
-</head>
-<body>
-<div class="masthead">
-<div class="container">
-<div class="login">
-    <div class="login-screen">
-        <div class="login-icon">
-            <img src="/dist/img/icons/svg/clipboard.svg" alt="Nucleus">
-            <h4>Welcome to <small>Nucleus App</small></h4>
-        </div>
+<% include _head.ejs %>
+<link rel="stylesheet" href="/css/register.css">
+<% include _header.ejs %>
 
-        <div class="login-form">
-            <div class="form-group">
-                <input class="form-control login-field" value="" placeholder="Enter your mail" id="login-name" type="text">
-                <label class="login-field-icon fui-user" for="login-name"></label>
-            </div>
-
-            <div class="form-group">
-                <input class="form-control login-field" value="" placeholder="Password" id="login-pass" type="password">
-                <label class="login-field-icon fui-lock" for="login-pass"></label>
-            </div>
-
-            <a class="btn btn-primary btn-lg btn-block" href="#" id="login">Log in</a>
-            <a class="login-link" href="#">Lost your password?</a>
-        </div>
+<div class="c-info">
+  <% if (error) { %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= error %>
     </div>
+  <% } %>
 </div>
-    </div>
-    </div>
-</body>
-<script src="dist/js/vendor/jquery.min.js"></script>
-<script src="dist/js/vendor/video.js"></script>
-<script src="dist/js/flat-ui.min.js"></script>
-<script src="docs/assets/js/application.js"></script>
-<script src="dist/js/login.js"></script>
-</html>
+
+<div class="row">
+  <div class="col-xs-10 col-md-4 col-xs-offset-1 col-md-offset-4">
+    <h1 class="text-primary c-title">nucleus</h1>
+
+    <form role="form" action="/login" method="post">
+      <div class="form-group form-group-padding">
+        <input type="email" class="form-control" id="email" name="email" placeholder="邮箱">
+      </div>
+      <div class="form-group form-group-padding">
+        <input type="password" class="form-control" id="password" name="password" placeholder="密码">
+      </div>
+      <button type="submit" class="btn btn-success btn-lg btn-block">登陆</button>
+      <div class="c-desc">
+        <p class="c-left">
+          <p class="c-left">
+            <span>
+              <a href="/login">忘记密码? </a>
+            </span>
+            &nbsp;
+            <span>
+              没有账号?
+              <a href="/register">立即注册 →</a>
+            </span>
+          </p>
+
+        </p>
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
+<% include _footer.ejs %>
+<% include _foot.ejs %>

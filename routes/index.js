@@ -35,7 +35,7 @@ var routes = function (app) {
   app.get('/login', checkLogin.checkNotLoginUserForm);
   app.get('/login', checkLogin.checkNotLoginAdminForm);
   app.get('/login', function (req, res) {
-    res.render({
+    res.render('login', {
       title: '登录',
       success: req.flash('success').toString(),
       error: req.flash('error').toString()
@@ -89,7 +89,7 @@ var routes = function (app) {
   app.get('/register', checkLogin.checkNotLoginUserForm);
   app.get('/register', checkLogin.checkNotLoginAdminForm);
   app.get('/register', function (req, res) {
-    res.render({
+    res.render('register', {
       title: '注册',
       success: req.flash('success').toString(),
       error: req.flash('error').toString()
