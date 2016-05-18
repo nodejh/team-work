@@ -5,7 +5,7 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
+// var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 
 var index = require('./routes/index');
@@ -30,9 +30,9 @@ app.use(session({
   secret: config.cookie.cookieSecret,
   key: config.mongodb.db,
   cookie: {maxAge: config.cookie.maxAge},
-  store: new MongoStore({
-    url: config.mongodb.url
-  }),
+  // store: new MongoStore({
+  //   url: config.mongodb.url
+  // }),
   proxy: true,
   resave: true,
   saveUninitialized: true
