@@ -1,0 +1,16 @@
+body.background {
+    background: #1abc9c;
+}
+/*.register{*/
+    /*background-size: 940px 778px;*/
+    /*color: #ffffff;*/
+    /*margin-bottom: 77px;*/
+    /*padding: 38px 38px 267px;*/
+    /*position: relative;*/
+/*}*/
+/*.register>.login-screen {*/
+    /*min-height:0;*/
+/*}*/
+.login-screen h4 {
+    color: #fff;
+}

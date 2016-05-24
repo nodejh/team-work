@@ -1,459 +1,293 @@
-[Tue May 17 2016 15:10:57 GMT+0800 (CST)]/admin/
-Error: Failed to lookup view "admin/index" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
+[Sun May 22 2016 22:48:49 GMT+0800 (CST)]/home
+ReferenceError: /Users/jh/inbox/node/team-work/views/home.ejs:6
+    4| 
+    5| <div class="c-info">
+ >> 6|   <% if (error) { %>
+    7|     <div class="alert alert-danger alert-dismissible" role="alert">
+    8|       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    9|         <span aria-hidden="true">&times;</span>
+
+error is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:24:12)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
     at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/admin.js:4:16
+    at /Users/jh/inbox/node/team-work/routes/index.js:40:9
     at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
     at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-    at SendStream.error (/Users/jh/inbox/node/team-work/node_modules/serve-static/index.js:120:7)
-    at emitOne (events.js:90:13)
-    at SendStream.emit (events.js:182:7)
-    at SendStream.error (/Users/jh/inbox/node/team-work/node_modules/send/index.js:245:17)
-    at SendStream.onStatError (/Users/jh/inbox/node/team-work/node_modules/send/index.js:356:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/send/index.js:658:28)
-[Tue May 17 2016 15:11:22 GMT+0800 (CST)]/admin/
-Error: Failed to lookup view "admin/index" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
+[Sun May 22 2016 22:49:18 GMT+0800 (CST)]/home
+ReferenceError: /Users/jh/inbox/node/team-work/views/home.ejs:6
+    4| 
+    5| <div class="c-info">
+ >> 6|   <% if (error) { %>
+    7|     <div class="alert alert-danger alert-dismissible" role="alert">
+    8|       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    9|         <span aria-hidden="true">&times;</span>
+
+error is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:24:12)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
     at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/admin.js:4:16
+    at /Users/jh/inbox/node/team-work/routes/index.js:40:9
     at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
     at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-    at SendStream.error (/Users/jh/inbox/node/team-work/node_modules/serve-static/index.js:120:7)
-    at emitOne (events.js:90:13)
-    at SendStream.emit (events.js:182:7)
-    at SendStream.error (/Users/jh/inbox/node/team-work/node_modules/send/index.js:245:17)
-    at SendStream.onStatError (/Users/jh/inbox/node/team-work/node_modules/send/index.js:356:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/send/index.js:658:28)
-[Tue May 17 2016 15:11:31 GMT+0800 (CST)]/admin
-Error: Failed to lookup view "admin/index" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
+[Sun May 22 2016 22:49:19 GMT+0800 (CST)]/home
+ReferenceError: /Users/jh/inbox/node/team-work/views/home.ejs:6
+    4| 
+    5| <div class="c-info">
+ >> 6|   <% if (error) { %>
+    7|     <div class="alert alert-danger alert-dismissible" role="alert">
+    8|       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    9|         <span aria-hidden="true">&times;</span>
+
+error is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:24:12)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
     at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/admin.js:4:16
+    at /Users/jh/inbox/node/team-work/routes/index.js:40:9
     at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
     at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-    at SendStream.error (/Users/jh/inbox/node/team-work/node_modules/serve-static/index.js:120:7)
-    at emitOne (events.js:90:13)
-    at SendStream.emit (events.js:182:7)
-    at SendStream.error (/Users/jh/inbox/node/team-work/node_modules/send/index.js:245:17)
-    at SendStream.onStatError (/Users/jh/inbox/node/team-work/node_modules/send/index.js:356:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/send/index.js:630:16)
-[Tue May 17 2016 15:11:38 GMT+0800 (CST)]/admin
-Error: Failed to lookup view "admin/index" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
-    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/admin.js:4:16
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-    at SendStream.error (/Users/jh/inbox/node/team-work/node_modules/serve-static/index.js:120:7)
-    at emitOne (events.js:90:13)
-    at SendStream.emit (events.js:182:7)
-    at SendStream.error (/Users/jh/inbox/node/team-work/node_modules/send/index.js:245:17)
-    at SendStream.onStatError (/Users/jh/inbox/node/team-work/node_modules/send/index.js:356:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/send/index.js:630:16)
-[Tue May 17 2016 15:42:32 GMT+0800 (CST)]/login
-Error: Failed to lookup view "[object Object]" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
-    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/index.js:32:9
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:121:14)
-    at checkLogin.checkNotLoginAdminForm (/Users/jh/inbox/node/team-work/passport/checkLogin.js:68:5)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-[Tue May 17 2016 15:42:42 GMT+0800 (CST)]/login
-Error: Failed to lookup view "[object Object]" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
-    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/index.js:32:9
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:121:14)
-    at checkLogin.checkNotLoginAdminForm (/Users/jh/inbox/node/team-work/passport/checkLogin.js:68:5)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-[Tue May 17 2016 15:42:43 GMT+0800 (CST)]/login
-Error: Failed to lookup view "[object Object]" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
-    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/index.js:32:9
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:121:14)
-    at checkLogin.checkNotLoginAdminForm (/Users/jh/inbox/node/team-work/passport/checkLogin.js:68:5)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-[Tue May 17 2016 15:42:44 GMT+0800 (CST)]/login
-Error: Failed to lookup view "[object Object]" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
-    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/index.js:32:9
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:121:14)
-    at checkLogin.checkNotLoginAdminForm (/Users/jh/inbox/node/team-work/passport/checkLogin.js:68:5)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-[Tue May 17 2016 16:39:36 GMT+0800 (CST)]/login
-Error: Failed to lookup view "[object Object]" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
-    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/index.js:32:9
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:121:14)
-    at checkLogin.checkNotLoginAdminForm (/Users/jh/inbox/node/team-work/passport/checkLogin.js:68:5)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-[Tue May 17 2016 17:01:36 GMT+0800 (CST)]/upload
-Error: ENOENT: no such file or directory, open '/Users/jh/inbox/node/team-work/routes../public/uploads/file-1463475696558'
+[Tue May 24 2016 15:09:51 GMT+0800 (CST)]/favicon.ico
+Error: ENOENT: no such file or directory, open '/Users/jh/inbox/node/team-work/public/images/favicon.ico'
     at Error (native)
-[Tue May 17 2016 17:02:04 GMT+0800 (CST)]/upload
-Error: ENOENT: no such file or directory, open '/Users/jh/inbox/node/team-work/routes../public/uploads/file-1463475724547'
-    at Error (native)
-[Tue May 17 2016 17:02:12 GMT+0800 (CST)]/upload
-Error: ENOENT: no such file or directory, open '/Users/jh/inbox/node/team-work/routes../public/uploads/file-1463475732478'
-    at Error (native)
-[Tue May 17 2016 17:02:43 GMT+0800 (CST)]/upload
-Error: ENOENT: no such file or directory, open '/Users/jh/inbox/node/team-work/routes../public/uploads/file-1463475763726'
-    at Error (native)
-[Tue May 17 2016 17:03:47 GMT+0800 (CST)]/upload
-Error: ENOENT: no such file or directory, open '/Users/jh/inbox/node/team-work/routes../public/uploads/file-1463475827767'
-    at Error (native)
-[Tue May 17 2016 17:05:00 GMT+0800 (CST)]/upload
-Error: ENOENT: no such file or directory, open '/Users/jh/inbox/node/team-work/routes../public/uploads/file-1463475900356'
-    at Error (native)
-[Tue May 17 2016 17:05:06 GMT+0800 (CST)]/upload
-Error: ENOENT: no such file or directory, open '/Users/jh/inbox/node/team-work/routes../public/uploads/file-1463475906566'
-    at Error (native)
-[Tue May 17 2016 17:15:10 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:15:12 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:15:14 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:15:31 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:15:49 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:16:03 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:16:04 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:16:13 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:16:47 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:17:05 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:17:12 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Tue May 17 2016 17:17:13 GMT+0800 (CST)]/upload
-Error: Unexpected field
-    at makeError (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-error.js:12:13)
-    at wrappedFileFilter (/Users/jh/inbox/node/team-work/node_modules/multer/index.js:39:19)
-    at Busboy.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/multer/lib/make-middleware.js:112:7)
-    at emitMany (events.js:121:13)
-    at Busboy.emit (events.js:195:7)
-    at Busboy.emit (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/main.js:31:35)
-    at PartStream.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/busboy/lib/types/multipart.js:213:13)
-    at emitOne (events.js:90:13)
-    at PartStream.emit (events.js:182:7)
-    at HeaderParser.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/Dicer.js:51:16)
-    at emitOne (events.js:90:13)
-    at HeaderParser.emit (events.js:182:7)
-    at HeaderParser._finish (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:68:8)
-    at SBMH.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/dicer/lib/HeaderParser.js:40:12)
-    at emitMany (events.js:121:13)
-    at SBMH.emit (events.js:195:7)
-[Wed May 18 2016 22:41:11 GMT+0800 (CST)]/register
-Error: Failed to lookup view "[object Object]" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
+[Tue May 24 2016 16:57:11 GMT+0800 (CST)]/home
+ReferenceError: /Users/jh/inbox/node/team-work/views/home.ejs:30
+
+
+name is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
     at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/index.js:92:9
+    at /Users/jh/inbox/node/team-work/routes/index.js:41:9
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+[Tue May 24 2016 16:59:04 GMT+0800 (CST)]/home
+ReferenceError: /Users/jh/inbox/node/team-work/views/home.ejs:30
+
+
+user is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:41:9
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+[Tue May 24 2016 17:29:00 GMT+0800 (CST)]/home
+ReferenceError: /Users/jh/inbox/node/team-work/views/home.ejs:34
+    32|         <!--</div>-->
+    33|       </div>
+ >> 34|       <% if (weekly.length > 0) { %>
+    35| 
+    36|       <% } else { %>
+    37|       <div class="empty">
+
+weekly is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:42:12)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:41:9
     at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
     at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-[Wed May 18 2016 22:41:54 GMT+0800 (CST)]/register
-Error: Failed to lookup view "[object Object]" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
+[Tue May 24 2016 17:45:55 GMT+0800 (CST)]/home
+ReferenceError: /Users/jh/inbox/node/team-work/views/home.ejs:30
+    28|         </a>
+    29|       </div>
+ >> 30|       <% if (weeklys.length > 0) { %>
+    31|         <% weeklys.forEach(function (item) { %>
+    32|         <div class="member-week self">
+    33|           <div class="member-week-content">
+
+weeklys is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:42:12)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
     at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/index.js:92:9
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-[Wed May 18 2016 22:41:57 GMT+0800 (CST)]/login
-Error: Failed to lookup view "[object Object]" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
+    at /Users/jh/inbox/node/team-work/routes/index.js:55:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/weekly.model.js:43:5)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+[Tue May 24 2016 17:48:06 GMT+0800 (CST)]/home
+ReferenceError: /Users/jh/inbox/node/team-work/views/home.ejs:33
+    31|         </a>
+    32|       </div>
+ >> 33|       <% if (weeklys.length > 0) { %>
+    34|         <% weeklys.forEach(function (item) { %>
+    35|         <div class="member-week self">
+    36|           <div class="member-week-content">
+
+weeklys is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:42:12)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
     at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/index.js:38:9
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-[Wed May 18 2016 22:42:39 GMT+0800 (CST)]/register
-Error: Failed to lookup view "[object Object]" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
+    at /Users/jh/inbox/node/team-work/routes/index.js:55:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/weekly.model.js:43:5)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+[Tue May 24 2016 17:54:25 GMT+0800 (CST)]/upload
+ReferenceError: /Users/jh/inbox/node/team-work/views/upload.ejs:18
+    16| </div>
+    17| 
+ >> 18| <div class="c-info">
+    19|     <% if (success) { %>
+    20|     <div class="alert alert-success alert-dismissible" role="alert">
+    21|         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+user is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
     at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/index.js:92:9
+    at /Users/jh/inbox/node/team-work/routes/index.js:205:9
     at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
-    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
-[Wed May 18 2016 22:42:42 GMT+0800 (CST)]/login
-Error: Failed to lookup view "[object Object]" in views directory "/Users/jh/inbox/node/team-work/views"
-    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:579:17)
+[Tue May 24 2016 17:54:34 GMT+0800 (CST)]/upload
+ReferenceError: /Users/jh/inbox/node/team-work/views/upload.ejs:18
+    16| </div>
+    17| 
+ >> 18| <div class="c-info">
+    19|     <% if (success) { %>
+    20|     <div class="alert alert-success alert-dismissible" role="alert">
+    21|         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+user is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
     at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
-    at /Users/jh/inbox/node/team-work/routes/index.js:38:9
+    at /Users/jh/inbox/node/team-work/routes/index.js:205:9
     at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
-    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
+[Tue May 24 2016 17:55:11 GMT+0800 (CST)]/upload
+ReferenceError: /Users/jh/inbox/node/team-work/views/upload.ejs:18
+    16| </div>
+    17| 
+ >> 18| <div class="c-info">
+    19|     <% if (success) { %>
+    20|     <div class="alert alert-success alert-dismissible" role="alert">
+    21|         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+user is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:205:9
     at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
-    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
-    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
-    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
+[Tue May 24 2016 17:55:13 GMT+0800 (CST)]/upload
+ReferenceError: /Users/jh/inbox/node/team-work/views/upload.ejs:18
+    16| </div>
+    17| 
+ >> 18| <div class="c-info">
+    19|     <% if (success) { %>
+    20|     <div class="alert alert-success alert-dismissible" role="alert">
+    21|         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+user is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:205:9
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+[Tue May 24 2016 18:26:01 GMT+0800 (CST)]/admin/weekly
+ReferenceError: /Users/jh/inbox/node/team-work/views/admin_weekly.ejs:18
+    16| </div>
+    17| 
+ >> 18| 
+    19| <div class="container">
+    20|   <div class="row">
+    21|     <div class="col-xs-10 col-xs-offset-1 page">
+
+user is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/admin.js:21:11
+    at Query._callback (/Users/jh/inbox/node/team-work/models/weekly.model.js:61:5)
+[Tue May 24 2016 18:27:57 GMT+0800 (CST)]/admin/weekly
+ReferenceError: /Users/jh/inbox/node/team-work/views/admin_weekly.ejs:31
+    29|           <div class="member-week-content">
+    30|             <div class="section section-report">
+ >> 31|               <h4 class="title"><%= name %>, 第 <strong><%= item.week %></strong> 周</h4>
+    32|               <p><a href="#"><%= item.title %></a>
+    33|               </p>
+    34|               <div class="reports">
+
+name is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:48:23)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:45:16)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/admin.js:21:11
+[Tue May 24 2016 18:27:58 GMT+0800 (CST)]/admin/weekly
+ReferenceError: /Users/jh/inbox/node/team-work/views/admin_weekly.ejs:31
+    29|           <div class="member-week-content">
+    30|             <div class="section section-report">
+ >> 31|               <h4 class="title"><%= name %>, 第 <strong><%= item.week %></strong> 周</h4>
+    32|               <p><a href="#"><%= item.title %></a>
+    33|               </p>
+    34|               <div class="reports">
+
+name is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:48:23)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:45:16)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/admin.js:21:11

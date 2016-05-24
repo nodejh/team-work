@@ -22,7 +22,7 @@ var app = express();
 app.set('port', process.env.PORT || config.port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(morgan('dev'));
 app.use(morgan('combined', {stream: accessLog}));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -48,6 +48,7 @@ admin(app);
 
 app.use(function (err, req, res, next) {
   var meta = '[' + new Date() + ']' + req.url + '\n';
+  console.log(meta + err.stack + '\n');
   errorLog.write(meta + err.stack + '\n');
   next();
 });

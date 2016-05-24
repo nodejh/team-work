@@ -1,0 +1,71 @@
+<% include _head.ejs %>
+<link href="/css/home.css" rel="stylesheet">
+<% include _header.ejs %>
+<% include _nav.ejs %>
+
+
+<div class="c-info">
+  <% if (error) { %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= error %>
+    </div>
+  <% } %>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 page">
+      <h3 class="page-title">
+        周报总览
+      </h3>
+
+      <% if (weeklys.length > 0) { %>
+        <% weeklys.forEach(function (item) { %>
+        <div class="member-week self">
+          <div class="member-week-content">
+            <div class="section section-report">
+              <h4 class="title">第 <strong><%= item.week %></strong> 周</h4>
+              <p><a href="#"><%= item.title %></a>
+              </p>
+              <div class="reports">
+                <p class="report-update-info">
+                  <%
+                    var date = new Date(item.time * 1000);
+                    var year = date.getFullYear();
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var hours = date.getHours();
+                    var minutes = '0' + date.getMinutes();
+                    minutes = minutes.substr(-2);
+                  %>
+                  <%= hours %>:<%= minutes %>, <%= year %>年<%= month %>月<%= day %>
+                  &nbsp;&nbsp;
+                  <%= item.name %>
+                  &nbsp;&nbsp;
+                  <a href="/uploads/<%= item.file %>" class="download-text">
+                    <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>下载
+                  </a>
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      <% } else { %>
+      <div class="empty">
+        还没有人上传过周报
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+
+
+<% include _footer.ejs %>
+<% include _foot.ejs %>

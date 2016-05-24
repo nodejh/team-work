@@ -1,5 +1,5 @@
 var config = {
-  port: 4000,
+  port: 4001,
   cookie: {
     cookieSecret: 'team-work',
     maxAge: 1000 * 60 * 60 * 24 * 30
@@ -18,7 +18,7 @@ var config = {
     host: 'localhost',
     port: 27017,
     url: 'mongodb://localhost/team'
-  },
+  }
 
 };
 

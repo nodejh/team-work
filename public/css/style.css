@@ -1,6 +1,124 @@
+.c-info {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 9999;
+  top: 0;
+}
+.c-title {
+  text-align: center;
+  margin: 100px 0 30px 0;
+}
+.c-form-group {
+  padding: 0;
+}
+.c-desc {
+  margin: 20px 0;
+}
+.c-left {
+  font-size: .8em;
+}
+
 .background {
   background-color: #f2f5e9;
 }
 .hide {
   display: none;
+}
+.logo {
+  font-size: 4em;
+}
+.margin-top-sm {
+  margin-top: 70px;
+}
+.login-link a {
+  display: inline-block;
+  color: #bfc9ca;;
+}
+.font-white {
+  color: white;
+}
+.font-white:hover {
+  color: white;
+}
+.navber-transparent {
+  background-color: rgba(0, 0, 0, 0);
+}
+.page {
+  min-height: 600px;
+  border: 1px solid #dbdfd6;
+  box-shadow: 0 0 5px rgba(0,0,0,0.15);
+  background: #ffffff;
+  opacity: 1;
+  position: relative;
+  transform: none;
+  -webkit-transform: none;
+  transform-origin: 50% 0 0;
+  -webkit-transform-origin: 50% 0 0;
+}
+.page-inner {
+  padding: 0 40px 40px;
+  min-height: 600px;
+  box-sizing: border-box;
+}
+.page-title {
+  text-align: center;
+  color: #000;
+  font-size: 26px;
+  font-weight: normal;
+  margin: 30px 0 10px 0;
+}
+.week-selector {
+  width: 280px;
+  margin: 0 auto;
+  text-align: center;
+}
+.empty {
+  font-size: 40px;
+  color: #ccc;
+  text-align: center;
+  margin-top: 100px;
+}
+.week .date {
+  font-size: 22px;
+}
+.week .range {
+  color: #999;
+  font-size: 14px;
+}
+.page h4 {
+  font-size: 16px;
+  color: #000000;
+  margin: 30px 0 10px;
+}
+.member-week {
+  border-top: 1px solid #ddd;
+  padding: 30px 0 0 0;
+  margin-top: 40px;
+}
+.member-week .section .title {
+  margin: 0 0 10px 0;
+  color: #84a099;
+}
+.member-week .reports .report-update-info {
+  color: #999;
+  font-size: 14px;
+  margin-top: 20px;
+}
+.upload-weekly {
+  font-size: 14px;
+  position: absolute;
+  top: 27px;
+  right: 40px;
+  color: #fff;
+}
+.btn.upload-weekly:hover {
+  color: #fff;
+}
+.upload-weekly-tips {
+  font-size: 14px;
+  position: absolute;
+  top: 27px;
+  right: 40px;
 }
