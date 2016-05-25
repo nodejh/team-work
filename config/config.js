@@ -8,9 +8,9 @@ var config = {
   mysql: {
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: '123456',
     port: 3306,
-    database: 'team'
+    database: 'nucleus'
   },
 
   mongodb: {
@@ -18,8 +18,17 @@ var config = {
     host: 'localhost',
     port: 27017,
     url: 'mongodb://localhost/team'
-  }
+  },
 
+  nodemailer: {
+    host: "smtp.qq.com", // 主机
+    secureConnection: true, // 使用 SSL
+    port: 465, // SMTP 端口
+    auth: {
+      user: "1002901669@qq.com", // 账号
+      pass: "yhjqfymtbhudbfcb." // 密码
+    }
+  }
 };
 
 

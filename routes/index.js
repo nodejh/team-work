@@ -16,7 +16,7 @@ var upload = multer({
 var checkLogin = require('../passport/checkLogin');
 var Weekly = require('../models/weekly.model');
 var User = require('../models/user.model');
-
+var Project =require('../models/project.model');
 var routes = function (app) {
 
   // 首页
@@ -246,6 +246,39 @@ var routes = function (app) {
         req.flash('success', '上传成功!');
         res.redirect('/upload');
       });
+    });
+  });
+  // 新建项目页面
+  //app.get('/newproject', checkLogin.checkLoginUserForm);
+  app.get('/newproject', function (req, res) {
+    res.render('new-project', {
+      title: '新建项目',
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });
+
+
+// 新建项目操作
+  //app.post('/newproject', checkLogin.checkLoginUserForm);
+  app.post('/newproject', function (req, res) {
+
+    var projectname =req.body.projectname;
+    var description =req.body.description;
+    var checkbox =req.body.checkbox;
+    //console.log(checkbox);
+    var project =new Project(projectname,description,checkbox);
+
+    project.insert(function (err,rows) {
+
+      if (err) {
+        console.log('新建项目失败：', err);
+        req.flash('error', '新建项目失败!');
+        res.redirect('/newproject');
+      }
+      //upload success
+      req.flash('success', '新建项目成功!');
+      res.redirect('/project-index');
     });
   });
 };
