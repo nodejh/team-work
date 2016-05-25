@@ -53,6 +53,19 @@ Project.prototype.findUserByName = function (name, callback) {
   });
 };
 
+// 根据 user_id 查找周报
+Project.findByUserId = function (user_id, callback) {
+  var sql = 'SELECT * FROM project_member WHERE user_id=?';
+  connection.query(sql, [user_id], function (err, rows) {
+    if (err) {
+      console.error('error SELECT: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+}
+
+
 // 根据邮箱邀请成员
 Project.prototype.inviteMember = function (member, callback) {
 

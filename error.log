@@ -315,3 +315,195 @@ ReferenceError: Project is not defined
     at next (G:\github\team-work\node_modules\express\lib\router\index.js:271:10)
     at serveStatic (G:\github\team-work\node_modules\express\node_modules\serve-static\index.js:74:16)
     at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+[Wed May 25 2016 20:11:25 GMT+0900 (韩国标准时间)]/upload
+TypeError: Cannot read property 'email' of undefined
+    at G:\github\team-work\routes\index.js:206:33
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\github\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (G:\github\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at G:\github\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (G:\github\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (G:\github\team-work\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (G:\github\team-work\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+[Wed May 25 2016 20:11:40 GMT+0900 (韩国标准时间)]/upload
+TypeError: Cannot read property 'email' of undefined
+    at G:\github\team-work\routes\index.js:206:33
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\github\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (G:\github\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at G:\github\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (G:\github\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (G:\github\team-work\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (G:\github\team-work\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+[Wed May 25 2016 20:19:56 GMT+0900 (韩国标准时间)]/upload
+TypeError: Cannot read property 'email' of undefined
+    at G:\github\team-work\routes\index.js:206:33
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\github\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (G:\github\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at G:\github\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (G:\github\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (G:\github\team-work\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (G:\github\team-work\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+[Wed May 25 2016 20:33:34 GMT+0900 (韩国标准时间)]/upload
+TypeError: Cannot read property 'email' of undefined
+    at G:\github\team-work\routes\index.js:206:32
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\github\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (G:\github\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at G:\github\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (G:\github\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (G:\github\team-work\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (G:\github\team-work\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+[Wed May 25 2016 20:51:13 GMT+0900 (韩国标准时间)]/newproject
+Error: Failed to lookup view "newproject" in views directory "G:\github\team-work\views"
+    at EventEmitter.render (G:\github\team-work\node_modules\express\lib\application.js:579:17)
+    at ServerResponse.render (G:\github\team-work\node_modules\express\lib\response.js:961:7)
+    at G:\github\team-work\routes\index.js:256:9
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\github\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (G:\github\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at G:\github\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (G:\github\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (G:\github\team-work\node_modules\express\lib\router\index.js:271:10)
+[Wed May 25 2016 20:54:07 GMT+0900 (韩国标准时间)]/newproject
+ReferenceError: G:\github\team-work\views\new-project.ejs:18
+    16|     <div class="link-page-behind" id="behind">
+    17|         <p class="before">Nucleus的所有项目</p></div>
+ >> 18|     <div class="panel panel-default panel-content">
+    19|         <div class="panel-body">
+    20|             <form action="/newproject" method="post">
+    21|             <div class="creat-project">
+
+user is not defined
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (G:\github\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (G:\github\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (G:\github\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (G:\github\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (G:\github\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (G:\github\team-work\node_modules\express\lib\response.js:961:7)
+    at G:\github\team-work\routes\index.js:256:9
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+[Wed May 25 2016 20:54:11 GMT+0900 (韩国标准时间)]/newproject
+ReferenceError: G:\github\team-work\views\new-project.ejs:18
+    16|     <div class="link-page-behind" id="behind">
+    17|         <p class="before">Nucleus的所有项目</p></div>
+ >> 18|     <div class="panel panel-default panel-content">
+    19|         <div class="panel-body">
+    20|             <form action="/newproject" method="post">
+    21|             <div class="creat-project">
+
+user is not defined
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (G:\github\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (G:\github\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (G:\github\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (G:\github\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (G:\github\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (G:\github\team-work\node_modules\express\lib\response.js:961:7)
+    at G:\github\team-work\routes\index.js:256:9
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+[Wed May 25 2016 21:51:03 GMT+0900 (韩国标准时间)]/projectindex
+TypeError: Cannot read property 'email' of undefined
+    at G:\github\team-work\routes\index.js:291:33
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (G:\github\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (G:\github\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at G:\github\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (G:\github\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (G:\github\team-work\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (G:\github\team-work\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+[Wed May 25 2016 22:56:23 GMT+0900 (韩国标准时间)]/newproject
+ReferenceError: G:\github\team-work\views\new-project.ejs:18
+    16|     <% } %>
+    17| </div>
+ >> 18| 
+    19| <div class="c-info">
+    20|     <% if (success) { %>
+    21|     <div class="alert alert-success alert-dismissible" role="alert">
+
+user is not defined
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (G:\github\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (G:\github\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (G:\github\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (G:\github\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (G:\github\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (G:\github\team-work\node_modules\express\lib\response.js:961:7)
+    at G:\github\team-work\routes\index.js:256:9
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+[Wed May 25 2016 22:59:15 GMT+0900 (韩国标准时间)]/newproject
+TypeError: G:\github\team-work\views\new-project.ejs:18
+    16|     <% } %>
+    17| </div>
+ >> 18| 
+    19| <div class="c-info">
+    20|     <% if (success) { %>
+    21|     <div class="alert alert-success alert-dismissible" role="alert">
+
+Cannot read property 'name' of undefined
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:27:27)
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (G:\github\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (G:\github\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (G:\github\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (G:\github\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (G:\github\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (G:\github\team-work\node_modules\express\lib\response.js:961:7)
+    at G:\github\team-work\routes\index.js:256:9
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+[Wed May 25 2016 23:00:06 GMT+0900 (韩国标准时间)]/newproject
+ReferenceError: G:\github\team-work\views\new-project.ejs:18
+    16|     <% } %>
+    17| </div>
+ >> 18| 
+    19| <div class="c-info">
+    20|     <% if (success) { %>
+    21|     <div class="alert alert-success alert-dismissible" role="alert">
+
+user is not defined
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:27:23)
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (G:\github\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (G:\github\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (G:\github\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (G:\github\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (G:\github\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (G:\github\team-work\node_modules\express\lib\response.js:961:7)
+    at G:\github\team-work\routes\index.js:256:9
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)
+[Wed May 25 2016 23:03:42 GMT+0900 (韩国标准时间)]/newproject
+TypeError: G:\github\team-work\views\new-project.ejs:18
+    16|     <% } %>
+    17| </div>
+ >> 18| 
+    19| <div class="c-info">
+    20|     <% if (success) { %>
+    21|     <div class="alert alert-success alert-dismissible" role="alert">
+
+Cannot read property 'name' of undefined
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:27:27)
+    at eval (eval at <anonymous> (G:\github\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:30:9)
+    at returnedFn (G:\github\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (G:\github\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (G:\github\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (G:\github\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (G:\github\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (G:\github\team-work\node_modules\express\lib\response.js:961:7)
+    at G:\github\team-work\routes\index.js:256:9
+    at Layer.handle [as handle_request] (G:\github\team-work\node_modules\express\lib\router\layer.js:95:5)

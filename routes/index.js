@@ -35,7 +35,7 @@ var routes = function (app) {
 
   // 用户主页
   app.get('/home', checkLogin.checkLoginUserForm);
-  app.get('/home', function (req, res) {
+  app.get('/home', function (req, res,next) {
 
     // 查找用户信息
     var email = req.session.user.email;
@@ -85,10 +85,10 @@ var routes = function (app) {
       return res.redirect('/login');
     }
     if (password.length < 6) {
-      req.flash('error', '密码错误!');
+      req.flash('error', '密码格式错误!');
       return res.redirect('/login');
     }
-    
+
     User.findUserByEmail(email, function (err, rows) {
       if (err) {
         req.flash('error', '登陆失败, 请重试!');
@@ -107,12 +107,14 @@ var routes = function (app) {
 
       // 将密码加密
       var md5 = crypto.createHash('md5');
-      password = md5.update(req.body.password).digest('hex');
-      if (password == rows[0].password) {
+      password = md5.update(req.body.password).digest('hex');  console.log(password);
+      if (password != rows[0].password) {
         // 登陆成功,将用户信息存入 session
+        req.flash('error', '密码错误!');
+        return res.redirect('/login');
+      }
         req.session.user = rows[0];
         res.redirect('/home');
-      }
     });
   });
 
@@ -200,11 +202,11 @@ var routes = function (app) {
 
 
   // 上传周报页面
-  app.get('/upload', checkLogin.checkLoginUserForm);
+ // app.get('/upload', checkLogin.checkLoginUserForm);
   app.get('/upload', function (req, res) {
     // 查找用户信息
-    var email = req.session.user.email;
-    User.findUserByEmail(email, function(err, rows) {
+   var email = req.session.user.email;
+   /* User.findUserByEmail(email, function(err, rows) {
       if (err) {
         console.log('查找用户信息失败');
         return next(err);
@@ -217,7 +219,7 @@ var routes = function (app) {
         error: req.flash('error').toString()
       });
 
-    });
+    });*/
 
   });
 
@@ -249,10 +251,11 @@ var routes = function (app) {
     });
   });
   // 新建项目页面
-  //app.get('/newproject', checkLogin.checkLoginUserForm);
+  app.get('/newproject', checkLogin.checkLoginUserForm);
   app.get('/newproject', function (req, res) {
     res.render('new-project', {
       title: '新建项目',
+      user:req.session.user,
       success: req.flash('success').toString(),
       error: req.flash('error').toString()
     });
@@ -260,7 +263,7 @@ var routes = function (app) {
 
 
 // 新建项目操作
-  //app.post('/newproject', checkLogin.checkLoginUserForm);
+  app.post('/newproject', checkLogin.checkLoginUserForm);
   app.post('/newproject', function (req, res) {
 
     var projectname =req.body.projectname;
@@ -281,6 +284,39 @@ var routes = function (app) {
       res.redirect('/project-index');
     });
   });
+
+
+  //项目主页面
+  app.get('/projectindex', checkLogin.checkLoginUserForm);
+  app.get('/projectindex', function (req, res,next) {
+    console.log(req.session.user);
+    var email = req.session.user.email;
+    User.findUserByEmail(email, function (err, rows) {
+      if (err) {
+        console.log('查找用户信息失败');
+        return next(err);
+      }
+      var user = rows[0];
+      // 查找改用户的周报
+      var user_id = user.id;
+     
+     Project.findByUserId(user_id, function (err, project) {
+        if (err) {
+          console.log('查找用户项目信息失败');
+          return next(err);
+        }
+       console.log(project);
+        res.render('project-index', {
+          title: '项目主页面',
+          user: user,
+          project: project,
+          success: req.flash('success').toString(),
+          error: req.flash('error').toString()
+        });
+      });
+    });
+  });
+
 };
 
 module.exports = routes;

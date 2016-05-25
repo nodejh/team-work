@@ -1,6 +1,37 @@
-<link href="/stylesheets/project-index.css" rel="stylesheet">
+<% include _head.ejs %>
+<link href="/css/home.css" rel="stylesheet">
+<link href="/css/project-index.css" rel="stylesheet">
+<% include _header.ejs %>
+<div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">菜单</span>
+            </button>
+            <a class="navbar-brand" href="/">nucleus</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="projectindex">项目</a></li>
+                <li><a href="/home">周报</a></li>
+                <li><a href="#contact">动态</a></li>
+                <li><a href="#contact">个人中心</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人资料</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
 <div id="project-index">
-    <div class="page-inner" id="page-projects" data-page-name="Nucleus的所有项目">
+    <div class="page-inner" id="page-projects">
         <div class="project-head">
             <div class="view">
                 <a href="javascript:;" class="link-view link-grid-view active" title="网格视图">
@@ -11,12 +42,28 @@
                 </a>
             </div>
 
-            <a>
+            <a class="newproject" href="newproject">
                 新建项目
+
             </a>
         </div>
         <div class="project-body" >
-            项目目录
+
+            <% if (project.length > 0) { %>
+            <% project.forEach(function (item) { %>
+            <a class="project">
+                <span>
+                   <span class="badge"><img src='img/tasks.png'/></span> <p class="name"><%=item.project_name %></p>
+                </span>
+            </a>
+
+
+            <% }); %>
+            <% } else { %>
+            <div class="empty">
+                还没有创建过哦~
+            </div>
+            <% } %>
         </div>
         <div class="projects-footer">
             <a href="/teams/33e50bf86957490a9e6f0581cb1d7f74/project_templates" data-stack="" data-visible-to="member">管理项目模板</a>
@@ -25,3 +72,4 @@
         <input type="hidden" id="select-plan-path" value="/teams/33e50bf86957490a9e6f0581cb1d7f74/plans">
     </div>
 </div>
+<% include footer.ejs %>
