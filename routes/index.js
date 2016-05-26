@@ -202,11 +202,11 @@ var routes = function (app) {
 
 
   // 上传周报页面
- // app.get('/upload', checkLogin.checkLoginUserForm);
+  app.get('/upload', checkLogin.checkLoginUserForm);
   app.get('/upload', function (req, res) {
     // 查找用户信息
    var email = req.session.user.email;
-   /* User.findUserByEmail(email, function(err, rows) {
+    User.findUserByEmail(email, function(err, rows) {
       if (err) {
         console.log('查找用户信息失败');
         return next(err);
@@ -219,7 +219,7 @@ var routes = function (app) {
         error: req.flash('error').toString()
       });
 
-    });*/
+    });
 
   });
 
@@ -255,7 +255,7 @@ var routes = function (app) {
   app.get('/newproject', function (req, res) {
     res.render('new-project', {
       title: '新建项目',
-      user:req.session.user,
+     user:req.session.user,
       success: req.flash('success').toString(),
       error: req.flash('error').toString()
     });
@@ -269,21 +269,48 @@ var routes = function (app) {
     var projectname =req.body.projectname;
     var description =req.body.description;
     var checkbox =req.body.checkbox;
+    var manager =req.session.user;
     //console.log(checkbox);
-    var project =new Project(projectname,description,checkbox);
+    Project.findByUserIdandname(manager.id,projectname,function (err,result) {
+      if(result.length>0)
+      {
+          console.log('新建项目失败：', err);
+          req.flash('error', '已存在该项目!');
+          res.redirect('/newproject');
+        }
+      console.log(result);
+    });
+    var project =new Project(projectname,description,checkbox,manager.id);
 
-    project.insert(function (err,rows) {
+    project.insert(function (err1,rows) {
 
-      if (err) {
-        console.log('新建项目失败：', err);
+      if (err1) {
+        console.log('新建项目失败：', err1);
         req.flash('error', '新建项目失败!');
         res.redirect('/newproject');
       }
-      //upload success
+     // console.log(123);
+      Project.findByUserIdandname(manager.id,projectname,function (err,result) {
+      var data ={
+        project_id:result[0].project_id,
+        project_name:result[0].name,
+        member_type:'1',
+        user_id:manager.id
+      };
+      project.insertmap(data,function (err2,rows) {
+        if (err2) {
+          console.log('新建项目失败：', err2);
+          req.flash('error', '新建项目失败!');
+          res.redirect('/newproject');
+        }
+
+        //upload success
       req.flash('success', '新建项目成功!');
-      res.redirect('/project-index');
+      res.redirect('/projectindex');
+      });
     });
   });
+});
 
 
   //项目主页面
@@ -297,15 +324,15 @@ var routes = function (app) {
         return next(err);
       }
       var user = rows[0];
-      // 查找改用户的周报
       var user_id = user.id;
      
-     Project.findByUserId(user_id, function (err, project) {
+    Project.findByUserId(user_id, function (err, project) {
         if (err) {
-          console.log('查找用户项目信息失败');
+          console.log('查找用户项目信息失败123');
           return next(err);
         }
        console.log(project);
+      console.log(user);
         res.render('project-index', {
           title: '项目主页面',
           user: user,

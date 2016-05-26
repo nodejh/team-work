@@ -1,13 +1,14 @@
 var connection = require('./db.model');
 var smtpTransport =require('./nodemailer.model');
-function Project(name,description,checkbox) {
+function Project(name,description,checkbox,manager_id) {
   this.name = name;
   this.description = description;
   this.checkbox = checkbox;
+  this.manager_id =manager_id
 }
 
 
-// 向数据库插入新用户
+// 向项目数据库插入新用户
 Project.prototype.insert = function (callback) {
   var time = parseInt(new Date().getTime() / 1000);
   console.log(this.checkbox);
@@ -15,7 +16,7 @@ Project.prototype.insert = function (callback) {
       name: this.name,
       description: this.description,
       checkbox:this.checkbox,
-     // manager_id: req.session.user.id,
+      manager_id: this.manager_id,
       time: time
   };
 
@@ -31,7 +32,20 @@ Project.prototype.insert = function (callback) {
 
 };
 
+// 向数据库插入新用户
+Project.prototype.insertmap = function (data,callback) {
 
+   var insert2 = 'INSERT project_member SET ?';
+  connection.query(insert2, data, function (err, rows) {
+    if (err) {
+      console.error('error insert: ' + err.stack);
+      return callback(error);
+    }
+
+    callback(null, rows);
+  });
+
+};
 // 根据名字查找项目
 Project.prototype.findUserByName = function (name, callback) {
   connection.connect(function (err) {
@@ -53,7 +67,19 @@ Project.prototype.findUserByName = function (name, callback) {
   });
 };
 
-// 根据 user_id 查找周报
+// 根据 user_id 查找项目
+Project.findByUserIdandname = function (user_id,name, callback) {
+  var sql = 'SELECT * FROM project WHERE manager_id=? AND name=?';
+  connection.query(sql, [user_id,name], function (err, rows) {
+    if (err) {
+      console.error('error SELECT: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+}
+
+// 根据 user_id 查找项目
 Project.findByUserId = function (user_id, callback) {
   var sql = 'SELECT * FROM project_member WHERE user_id=?';
   connection.query(sql, [user_id], function (err, rows) {
@@ -64,8 +90,6 @@ Project.findByUserId = function (user_id, callback) {
     callback(null, rows);
   });
 }
-
-
 // 根据邮箱邀请成员
 Project.prototype.inviteMember = function (member, callback) {
 
