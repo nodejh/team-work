@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
   secret: config.cookie.cookieSecret,
-  key: config.mongodb.db,
+  //key: config.mongodb.db,
   cookie: {maxAge: config.cookie.maxAge},
   // store: new MongoStore({
   //   url: config.mongodb.url

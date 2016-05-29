@@ -1,5 +1,5 @@
 .project-head{
-    padding: 10px 30px 0; height: 35px;
+    padding: 10px 30px 50px; height: 35px;
 }
 .project-body{
     margin: 0 30px 80px;
@@ -10,6 +10,7 @@
 }
 .view{
     float: right;
+
 }
 .projects-footer {
     margin: 0 auto 20px;
@@ -22,4 +23,38 @@
     font-size: 14px;
     box-sizing: border-box;
     border-top: solid 1px #eee;
+}
+.newproject{
+    float: right;
+    margin: 0px 14px;
+}
+.project:hover {
+    background: #f9f9f9;
+    border: 1px solid #eaeaea;
+}
+.project {
+    display: block;
+    width: 222px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    float: left;
+    position: relative;
+}
+.name {
+    display: block;
+    font-size: 17px;
+    color: #333333;
+    line-height: 20px;
+    text-align: center;
+    margin: 0 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.badge {
+    display: block;
+    margin:15px auto 8px;
+    text-align: center;
+    background-color: transparent;
+    border-color: transparent;
 }
