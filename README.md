@@ -52,7 +52,6 @@ node app.js
 
 如果没有报错,则在浏览器输入 `localhsot:port`，其中 `port` 为 `config/config.js` 里面 `port` 的值，即可访问。
 
-
 ## 三. 目录结构
 
 ### 1. `routes/index.js`
@@ -64,6 +63,8 @@ node app.js
 管理员相关，主要是针对系统管理员。如修改用户权限，修改用户资料，管理所有用户。
 
 ## 四. API Code
+
+===
 
 + 1001 普通用户未登录
 + 1002 普通用户已登陆
