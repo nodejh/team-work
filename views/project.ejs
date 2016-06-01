@@ -1,10 +1,41 @@
-<% include head.ejs%>
-<link href="stylesheets/project.css" rel="stylesheet">
+<% include _head.ejs %>
+<link href="css/project.css" rel="stylesheet">
+<link href="/css/home.css" rel="stylesheet">
+<script src="/utils/flat-ui/js/vendor/jquery.min.js"></script>
+<% include _header.ejs %>
+<div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">菜单</span>
+            </button>
+            <a class="navbar-brand" href="/">nucleus</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="projectindex">项目</a></li>
+                <li><a href="/home">周报</a></li>
+                <li><a href="#contact">动态</a></li>
+                <li><a href="#contact">个人中心</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人资料</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
 <div id="project" class="page-inner">
     <div class="project-content">
         <div class="project-header">
             <div class="project-hd-info">
-                <p>项目名称</p>
+                <p><%= project.project_name%></p>
             </div>
 
             <div class="project-links">
@@ -27,60 +58,41 @@
         </div>
         <div class="project-sections ">
             <div class="section section-todos" id="todolists">
-                <h5><a class="demo-heading-note" href="#" >任务</a>
-                    <div class="dropdown">
-                        <button type="button" class="btn" id="dropdownMenu1"
+                <h5><a  href="#" >任务</a>
+                        <button type="button" id="mission" class="btn demo-heading-note" id="dropdownMenu1"
                                 data-toggle="dropdown">
                             添加任务
-                            <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">添加任务</a>
-                            </li>
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">添加清单</a>
-                            </li>
-                        </ul>
-                    </div>
                 </h5>
             </div>
             <div class="section section-messages" id="topics" data-droppable="">
-                <h5><a class="demo-heading-note" href="#">讨论</a>
-                    <button class="btn">发起讨论</button>
+                <h5><a  href="#">讨论</a>
+                    <a id="topic" href="/topics?ssl=<%= project.ss%>" class="btn demo-heading-note">发起讨论</a>
                 </h5>
             </div>
             <div class="section section-file" id="todolists">
-                <h5><a class="demo-heading-note" href="#">文件</a>
-                    <div  style=" margin-left: 100px" class="dropdown">
-                        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
-                                data-toggle="dropdown">
+                <h5><a href="#">文件</a>
+
+                        <button type="button" class="btn demo-heading-note" id="dropdownMenu1">
                             上传文件
-                            <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">上传文件</a>
-                            </li>
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">创建文件夹</a>
-                            </li>
-                        </ul>
-                    </div>
+
+
                 </h5>
             </div>
             <div class="section section-word" id="todolists">
-                <h5><a class="demo-heading-note" href="#">文档</a>
-                    <button class="btn"style=" margin-left: 43px">创建文档</button>
+                <h5><a class= href="#">文档</a>
+                    <button class="btn demo-heading-note"style=" margin-left: 43px">创建文档</button>
                 </h5>
             </div>
             <div class="section section-data" id="todolists">
-                <h5><a class="demo-heading-note" href="#">日程</a>
-                    <button class="btn demo-heading-note">创建日程</button>
+                <h5><a href="#">周报</a>
+                    <button id="weekly" class="btn demo-heading-note">创建周报</button>
                 </h5>
             </div>
 
         </div>
     </div>
 </div>
+<script src="js/project.js"></script>
 <% include footer.ejs %>

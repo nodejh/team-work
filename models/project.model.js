@@ -1,10 +1,11 @@
 var connection = require('./db.model');
 var smtpTransport =require('./nodemailer.model');
-function Project(name,description,checkbox,manager_id) {
+function Project(name,description,checkbox,ssl,manager_id) {
   this.name = name;
   this.description = description;
   this.checkbox = checkbox;
-  this.manager_id =manager_id
+  this.manager_id =manager_id;
+  this.ssl =ssl;
 }
 
 
@@ -12,12 +13,14 @@ function Project(name,description,checkbox,manager_id) {
 Project.prototype.insert = function (callback) {
   var time = parseInt(new Date().getTime() / 1000);
   console.log(this.checkbox);
+  console.log(this.manager_id);
   var data = {
       name: this.name,
       description: this.description,
       checkbox:this.checkbox,
       manager_id: this.manager_id,
-      time: time
+      time: time,
+       ss:this.ssl
   };
 
   var insert = 'INSERT project SET ?';
@@ -33,7 +36,7 @@ Project.prototype.insert = function (callback) {
 };
 
 // 向数据库插入新用户
-Project.prototype.insertmap = function (data,callback) {
+Project.insertmap = function (data,callback) {
 
    var insert2 = 'INSERT project_member SET ?';
   connection.query(insert2, data, function (err, rows) {
@@ -79,6 +82,43 @@ Project.findByUserIdandname = function (user_id,name, callback) {
   });
 }
 
+
+// 根据 user_id 查找项目
+Project.findByUserIdandssl = function (user_id,ssl, callback) {
+  var sql = 'SELECT * FROM project_member WHERE user_id=? AND ss=?';
+  connection.query(sql, [user_id,ssl], function (err, rows) {
+    if (err) {
+      console.error('error SELECT: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+}
+// 根据 user_id 查找项目
+Project.findByEmail = function (member, callback) {
+  var sql = 'SELECT * FROM user WHERE email=?';
+  connection.query(sql, [member.email], function (err, rows) {
+    if (err) {
+      console.error('error SELECT: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+}
+
+
+// 根据 user_id 查找项目
+Project.updateAccept = function (project, callback) {
+  var sql = 'UPDATE project_member SET  accept=? WHERE user_id=? AND ss=? ';
+  connection.query(sql, [1,project.user_id,project.ss], function (err, rows) {
+    if (err) {
+      console.error('error SELECT: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+}
+
 // 根据 user_id 查找项目
 Project.findByUserId = function (user_id, callback) {
   var sql = 'SELECT * FROM project_member WHERE user_id=?';
@@ -91,18 +131,18 @@ Project.findByUserId = function (user_id, callback) {
   });
 }
 // 根据邮箱邀请成员
-Project.prototype.inviteMember = function (member, callback) {
-
+Project.prototype.inviteMember = function (email, ssl,callback) {
+console.log(email);
 // 设置邮件内容
   var mailOptions = {
     from: "Fred Foo <1002901669@qq.com>", // 发件地址
-    to:member.email, // 收件列表
+    to:email, // 收件列表
     subject: "成员邀请", // 标题
-    html: "<p>请点击<a href='localhost:4000/project'>同意</a>加入团队"+this.name+",此链接24小时后失效</p>" // html 内容
-  };
+    html: "<p>请点击<a href='localhost:4000/check?ssl="+ssl+"'>同意</a>加入团队"+this.name+",此链接24小时后失效</p>" // html 内容
+  }
 
 // 发送邮件
-  smtpTransport.sendMail(mailOptions, function(error, response){
+  smtpTransport.sendMail(mailOptions, function callback(error, response){
     if(error){
       console.log(error);
       callback(error);
@@ -113,4 +153,15 @@ Project.prototype.inviteMember = function (member, callback) {
     smtpTransport.close(); // 如果没用，关闭连接池
   });
 };
+
+Project.findBySSL= function (ssl, callback) {
+  var sql = 'SELECT * FROM project_member WHERE ss=?';
+  connection.query(sql,[ssl], function (err, rows) {
+    if (err) {
+      console.error('error SELECT: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+}
 module.exports = Project;

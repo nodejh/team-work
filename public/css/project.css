@@ -47,11 +47,9 @@
 }
 .demo-heading-note
 {
-    float: left;
+    margin-left: 45px;
 }
-.dropdown{
-    margin-left: 100px;
-}
+
 .section{
     margin-bottom: 50px;
     position: relative;

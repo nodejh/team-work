@@ -1,35 +1,7 @@
 <% include _head.ejs %>
 <link href="/css/topics.css" rel="stylesheet">
-<link href="utils/flat-ui/css/vendor/simditor.css" rel="stylesheet">
 <% include _header.ejs %>
-<div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">菜单</span>
-            </button>
-            <a class="navbar-brand" href="/">nucleus</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="projectindex">项目</a></li>
-                <li><a href="/home">周报</a></li>
-                <li><a href="#contact">动态</a></li>
-                <li><a href="#contact">个人中心</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">个人资料</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/logout">退出登录</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</div>
+<% include _nav1.ejs %>
 
 <div class="c-info">
   <% if (error) { %>
@@ -58,7 +30,7 @@
                 <div class="span3">
                     <input tabindex="1" type="text" name="subject" id="txt-title" style="width:100%" placeholder="    话题" />
                 </div>
-            </div>
+            </div class="form-item">
             <div>
                 <div>
                     <textarea tabindex="1" name="content" id="txt-content" autofocus></textarea>
@@ -179,5 +151,4 @@
 		document.getElementById("txt_begin").style.display="none";
 		document.getElementById("txt").style.display="block";
 	}
-    </script>
 <% include _foot.ejs %>

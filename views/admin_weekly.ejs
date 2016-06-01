@@ -1,6 +1,5 @@
 <% include _head.ejs %>
 <link href="/css/home.css" rel="stylesheet">
-<link href="/css/admin.css" rel="stylesheet">
 <% include _header.ejs %>
 <% include _nav.ejs %>
 
@@ -23,27 +22,7 @@
       <h3 class="page-title">
         周报总览
       </h3>
-      <div class="member-nav">
-        <ul>
-          <li class="active">
-            <a href="/admin/weekly" data-stack-replace="true" data-stack="true">本周周报</a>
-          </li>
 
-          <li class="">
-            <a href="/admin/weekly_all" data-stack-replace="true" data-stack="true">所有周报</a>
-          </li>
-
-          <!--<li class="">-->
-            <!--<a href="/members/2d0e1e95d8624f11b7835d7f1b6c20bd/calendar_events" data-stack-root="true" data-stack="true">日程</a>-->
-          <!--</li>-->
-
-          <!--<li class="">-->
-            <!--<a href="/members/2d0e1e95d8624f11b7835d7f1b6c20bd/weekly_reports" data-stack-replace="true" data-stack="true">周报</a>-->
-          <!--</li>-->
-
-
-        </ul>
-      </div>
       <% if (weeklys.length > 0) { %>
         <% weeklys.forEach(function (item) { %>
         <div class="member-week self">

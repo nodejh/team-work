@@ -7,10 +7,11 @@ function Weekly(title, week, file) {
 }
 
 // 上传周报操作
-Weekly.prototype.upload = function (user_id, callback) {
+Weekly.prototype.upload = function (user_id,project_id, callback) {
   var time = parseInt(new Date().getTime() / 1000);
   var data = {
     user_id: user_id,
+    project_id :project_id,
     title: this.title,
     week: this.week,
     file: this.file,
@@ -45,6 +46,17 @@ Weekly.findByUserId = function (user_id, callback) {
   });
 };
 
+//
+Weekly.findByProjectId = function (project_id, callback) {
+  var sql = 'SELECT * FROM weekly WHERE user_id=?';
+  connection.query(sql, [project_id], function (err, rows) {
+    if (err) {
+      console.error('error SELECT: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+};
 
 
 
@@ -62,22 +74,5 @@ Weekly.findAll = function (callback) {
   });
 };
 
-
-
-// 查看本周周报
-
-Weekly.findWeeklyByWeek = function (week, callback) {
-  var sql = 'SELECT * FROM weekly ' +
-    'LEFT JOIN user ' +
-    'ON weekly.user_id=user.id ' +
-    'WHERE weekly.week=?';
-  connection.query(sql, [week], function (err, rows) {
-    if (err) {
-      console.error('error SELECT: ' + err.stack);
-      return callback(err);
-    }
-    callback(null, rows);
-  });
-};
 
 module.exports = Weekly;

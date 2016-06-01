@@ -1,10 +1,35 @@
 <% include _head.ejs %>
-
-<link href="/stylesheets/project-index.css" rel="stylesheet">
+<link href="/css/home.css" rel="stylesheet">
+<link href="/css/project-index.css" rel="stylesheet">
 <% include _header.ejs %>
-<% include nav.ejs %>
-
-
+<div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">菜单</span>
+            </button>
+            <a class="navbar-brand" href="/">nucleus</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="projectindex">项目</a></li>
+                <li><a href="/home">周报</a></li>
+                <li><a href="#contact">动态</a></li>
+                <li><a href="#contact">个人中心</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人资料</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
 
 <div class="c-info">
     <% if (error) { %>
@@ -17,6 +42,16 @@
     <% } %>
 </div>
 
+<div class="c-info">
+    <% if (success) { %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= success %>
+    </div>
+    <% } %>
+</div>
 <div id="project-index">
     <div class="page-inner" id="page-projects">
         <div class="project-head">
@@ -38,9 +73,9 @@
 
             <% if (project.length > 0) { %>
             <% project.forEach(function (item) { %>
-            <a class="project">
+            <a  href="/project?ssl=<%= item.ss %>" class="project">
                 <span>
-                   <span class="badge"><img src='img/tasks.png'/></span> <p class="name"><%= item.project_name%></p>
+                   <span class="badge"><img src='img/tasks.png'/></span> <p  class="name"><%= item.project_name%></p>
                 </span>
             </a>
 
@@ -59,8 +94,4 @@
         <input type="hidden" id="select-plan-path" value="/teams/33e50bf86957490a9e6f0581cb1d7f74/plans">
     </div>
 </div>
-
-<% include _footer.ejs %>
-<% include _foot.ejs %>
-
-
+<% include footer.ejs %>

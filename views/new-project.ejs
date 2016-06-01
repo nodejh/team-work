@@ -1,6 +1,7 @@
 <% include _head.ejs %>
 <link href="/css/home.css" rel="stylesheet">
 <link href="/css/new-project.css" rel="stylesheet">
+<script src="/utils/flat-ui/js/vendor/jquery.min.js"></script>
 <% include _header.ejs %>
 <div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
     <div class="container">
@@ -58,7 +59,7 @@
         <a href="projectindex" class="before"><%= user.name %>的所有项目</a></div>
     <div class="panel panel-default panel-content">
         <div class="panel-body">
-            <form action="/newproject" method="post">
+            <form  method="post">
             <div class="creat-project">
                 <p>创建项目</p>
                 <div class="col-lg-10">
@@ -89,7 +90,21 @@
                                             <input type="email" class="invite-email no-border" name="email" placeholder="请输入新成员的邮箱">
 
                                             <div class="invite-role-field">
-                                                <select class="invite-role" id="choose-role" tabindex="-1">
+                                                <select class="invite-role" id="choose-role"  name="choose-role"tabindex="-1">
+                                                    <option value="0" selected="">成员</option>
+                                                    <option value="1">主管</option>
+                                                    <option value="2">管理员</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="invite-item invite-field">
+                                            <input type="email" class="invite-email no-border"  name="email" placeholder="请输入新成员的邮箱">
+
+                                            <div class="invite-role-field">
+                                                <select class="invite-role" id="choose-role"  name="choose-role" tabindex="-1">
                                                     <option value="0" selected="">成员</option>
                                                     <option value="1">管理员</option>
                                                     <option value="2">主管</option>
@@ -100,24 +115,10 @@
                                     </div>
                                     <div>
                                         <div class="invite-item invite-field">
-                                            <input type="email" class="invite-email no-border" placeholder="请输入新成员的邮箱">
+                                            <input type="email" class="invite-email no-border" name="email" placeholder="请输入新成员的邮箱">
 
                                             <div class="invite-role-field">
-                                                <select class="invite-role" id="choose-role" tabindex="-1">
-                                                    <option value="0" selected="">成员</option>
-                                                    <option value="1">管理员</option>
-                                                    <option value="2">主管</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="invite-item invite-field">
-                                            <input type="email" class="invite-email no-border" placeholder="请输入新成员的邮箱">
-
-                                            <div class="invite-role-field">
-                                                <select class="invite-role" id="choose-role" tabindex="-1">
+                                                <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
                                                     <option value="0" selected="">成员</option>
                                                     <option value="1">管理员</option>
                                                     <option value="3">主管</option>
@@ -150,7 +151,7 @@
                         </div> -->
                     </div>
                     <div style="margin: 30px 0 20px 0;">
-                        <button type="submit" class="btn btn-primary" id="btn-create-project" data-disable-with="正在创建..." data-success-text="创建成功">创建项目</button>
+                        <button type="button" class="btn btn-primary" id="btn-create-project" data-disable-with="正在创建..." data-success-text="创建成功">创建项目</button>
                         <a href="/teams/33e50bf86957490a9e6f0581cb1d7f74/projects" class="btn" >取消</a>
                     </div>
                 </div>
