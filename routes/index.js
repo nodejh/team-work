@@ -17,6 +17,9 @@ var checkLogin = require('../passport/checkLogin');
 var Weekly = require('../models/weekly.model');
 var User = require('../models/user.model');
 var Project =require('../models/project.model');
+var Account =require('../models/account.model');
+
+
 var routes = function (app) {
 
   // 首页
@@ -192,6 +195,56 @@ var routes = function (app) {
       });
     });
   });
+
+
+  // 找回密码
+  app.get('/find_password', checkLogin.checkNotLoginUserForm);
+  app.get('/find_password', checkLogin.checkNotLoginAdminForm);
+  app.get('/find_password', function(req, res) {
+    res.render('find_password', {
+      title: '找回密码',
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });
+
+
+  // 找回密码操作
+  app.post('/find_password', function(req, res) {
+    var email = req.body.email;
+    if (!myfun.checkEmail(email)) {
+      req.flash('error', '邮箱格式错误!');
+      return res.redirect('/find_password');
+    }
+
+    // 将用户操作存入数据库
+    var token = (new Date().getTime()) + myfun.randomString(10);
+    var md5 = crypto.createHash('md5');
+    token = md5.update(token).digest('hex');
+    var newAccount = new Account(email, token);
+    newAccount.insert(function(err, rows) {
+      // 发送邮件都邮箱
+      var subject = '找回密码';
+      var html = '请点击<a href="http://localhost:4001/rest_password?token="' + token + ' />' +
+        'http://localhost:4001/rest_password?token=' + token + '</a>找回密码.';
+      Account.sendMail(email, subject, html, function(err, send_res) {
+
+        if (err) {
+          console.log('error Account.sendMail: ', err);
+          req.flash('error', '发送失败, 请重试!');
+          return res.redirect('/find_password');
+        }
+
+        console.log('success newUser.insert', send_res);
+        req.flash('success', '我们已给您的邮箱发送了找回密码的链接,请打开邮箱查看.链接将在20分钟后失效!');
+        return res.redirect('/find_password');
+
+      });
+    });
+
+
+  });
+
 
 
   // 退出登录

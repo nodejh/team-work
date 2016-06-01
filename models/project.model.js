@@ -99,7 +99,7 @@ Project.prototype.inviteMember = function (member, callback) {
     to:member.email, // 收件列表
     subject: "成员邀请", // 标题
     html: "<p>请点击<a href='localhost:4000/project'>同意</a>加入团队"+this.name+",此链接24小时后失效</p>" // html 内容
-  }
+  };
 
 // 发送邮件
   smtpTransport.sendMail(mailOptions, function(error, response){

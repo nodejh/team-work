@@ -63,4 +63,21 @@ Weekly.findAll = function (callback) {
 };
 
 
+
+// 查看本周周报
+
+Weekly.findWeeklyByWeek = function (week, callback) {
+  var sql = 'SELECT * FROM weekly ' +
+    'LEFT JOIN user ' +
+    'ON weekly.user_id=user.id ' +
+    'WHERE weekly.week=?';
+  connection.query(sql, [week], function (err, rows) {
+    if (err) {
+      console.error('error SELECT: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+};
+
 module.exports = Weekly;

@@ -1,0 +1,29 @@
+
+.member-nav {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0 20px;
+}
+ul {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+.member-nav ul .active {
+    font-weight: bold;
+}
+.member-nav ul li {
+    float: left;
+}
+.member-nav ul a:hover, .member-nav ul .active a {
+    color: #84a099;
+}
+.member-nav ul a {
+    float: left;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    color: #999;
+    font-family: arial, sans-serif;
+}

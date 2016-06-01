@@ -651,3 +651,27 @@ ReferenceError: req is not defined
     at Function.process_params (G:\github\team-work\node_modules\express\lib\router\index.js:330:12)
     at next (G:\github\team-work\node_modules\express\lib\router\index.js:271:10)
     at next (G:\github\team-work\node_modules\express\lib\router\route.js:121:14)
+[Wed Jun 01 2016 15:34:31 GMT+0800 (CST)]/login
+TypeError: Cannot read property 'length' of undefined
+    at /Users/jh/inbox/node/team-work/routes/index.js:90:17
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
+    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:121:14)
+    at checkLogin.checkNotLoginAdminForm (/Users/jh/inbox/node/team-work/passport/checkLogin.js:75:5)
+[Wed Jun 01 2016 15:35:04 GMT+0800 (CST)]/find_password
+TypeError: Not a string or buffer
+    at TypeError (native)
+    at Hash.update (crypto.js:70:16)
+    at /Users/jh/inbox/node/team-work/routes/index.js:223:17
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
+    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
