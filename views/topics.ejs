@@ -53,7 +53,7 @@
 	  <div>
         <div><input type="button" name="subject" id="txt_begin" class="btn" value="点击发起讨论" onclick="show()" /></div>
         
-        <form action="" method="post" data-remote="true" data-type="json" id="txt" style="display:none">
+        <form action="/publish" method="post" data-remote="true" data-type="json" id="txt" style="display:none">
             <div class="form-item">
                 <div class="span3">
                     <input tabindex="1" type="text" name="subject" id="txt-title" style="width:100%" placeholder="    话题" />
@@ -179,5 +179,28 @@
 		document.getElementById("txt_begin").style.display="none";
 		document.getElementById("txt").style.display="block";
 	}
+    $('#btn-post').click(function () {
+        var title = document.getElementsByName("subject");
+        var content = document.getElementsByName("content");
+        var ssl = '<%= ssl %>';
+        alert(ssl);
+        var data = {
+            title: title.value,
+            content: content.value,
+            ssl:ssl
+        };
+
+        $.post('/publish', data, function (res) {
+            if (res.json.code == 200) {
+                alert('创建成功！');
+
+                window.location.href = this;
+
+            } else {
+                alert('创建失败！');
+                window.location.href = this;
+            }
+        });
+    });
     </script>
 <% include _foot.ejs %>

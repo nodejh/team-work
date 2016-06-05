@@ -5,7 +5,7 @@ function Topics(title,content) {
     this.content = content;
 }
 
-// 上传周报操作
+
 Topics.prototype.publish = function (user_id,project_id, callback) {
     var time = parseInt(new Date().getTime() / 1000);
     var data = {

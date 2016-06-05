@@ -495,6 +495,7 @@ var routes = function (app) {
           res.render('topics', {
             title: '讨论',
             topics: topics,
+            ssl:ssl,
             user: req.session.user,
             success: req.flash('success').toString(),
             error: req.flash('error').toString()
@@ -514,27 +515,26 @@ var routes = function (app) {
 
   app.post('/publish', checkLogin.checkLoginUserForm);
   app.post('/publish', function (req, res) {
-     var title =req.
-    console.log(ssl);
-    console.log(user_id);
-    Project.findByUserIdandssl(user_id,ssl,function (err,result) {
+     var title =req.body.subject;
+    var content = req.body.content;
+    var ssl =req.body.ssl;
+    var user =req.session.user;
+    var result;
+
+
+    Project.findByUserIdandssl(user.id,ssl,function (err,result) {
       if(err) {
         req.flash('error', '查找出错!');
         res.redirect('/projectindex');
       }
       if(result.length>0) {
         console.log(result);
-        Topics.findByProjectId(result[0].project_id, function (err, topics) {
-          if (err) {
-            req.flash('error', '查找出错!');
-            res.redirect('/projectindex');
-          }
-          res.render('topics', {
-            title: '讨论',
-            topics: topics,
-            user: req.session.user,
-            success: req.flash('success').toString(),
-            error: req.flash('error').toString()
+        var  topics =new Topics(title,content);
+        topics.publish(result[0].user_id,result.project_id,function (err,presult) {
+          req.flash('error', '插入出错!');
+          res.redirect('/projectindex');
+          return res.json({
+            code:200
           });
         });
       }

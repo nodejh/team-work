@@ -675,3 +675,67 @@ TypeError: Not a string or buffer
     at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
     at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
     at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
+[Sun Jun 05 2016 16:15:15 GMT+0900 (韩国标准时间)]/topics?ssl=b5d00867523641eee678e4cf7e623f46
+ReferenceError: H:\master\team-work\views\topics.ejs:186
+    184|         var title = document.getElementsByName("subject");
+    185|         var content = document.getElementsByName("content");
+ >> 186|         var ssl ='<%= project[0].ss%>';
+    187|         alert(ssl);
+    188|         var data = {
+    189|             title: title.value,
+
+project is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:57:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:495:15
+    at Query._callback (H:\master\team-work\models\topics.model.js:44:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Sun Jun 05 2016 16:17:36 GMT+0900 (韩国标准时间)]/topics?ssl=b5d00867523641eee678e4cf7e623f46
+TypeError: H:\master\team-work\views\topics.ejs:185
+    183|         var title = document.getElementsByName("subject");
+    184|         var content = document.getElementsByName("content");
+ >> 185|         var ssl ='<%= topics[0].ss%>';
+    186|         alert(ssl);
+    187|         var data = {
+    188|             title: title.value,
+
+Cannot read property 'ss' of undefined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:57:32)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:495:15
+    at Query._callback (H:\master\team-work\models\topics.model.js:44:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Sun Jun 05 2016 16:23:29 GMT+0900 (韩国标准时间)]/publish
+ReferenceError: user_id is not defined
+    at H:\master\team-work\routes\index.js:523:32
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Sun Jun 05 2016 16:48:24 GMT+0900 (韩国标准时间)]/publish
+ReferenceError: user_id is not defined
+    at H:\master\team-work\routes\index.js:531:32
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
