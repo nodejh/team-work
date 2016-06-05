@@ -18,8 +18,9 @@ Account.prototype.insert = function (callback) {
     time: time
   };
 
-  var insert = 'INSERT account SET ?';
+  var insert = 'INSERT INTO account SET ?';
   connection.query(insert, data, function (err, rows) {
+    console.log('向数据库插入找回密码记录 sql:', insert);
     if (err) {
       console.error('error insert: ' + err.stack);
       return callback(err);
