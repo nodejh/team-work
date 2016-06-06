@@ -1,6 +1,5 @@
-.DS_Store
-.idea/
-node_modules/
 .access.log
 .error.log
+.DS_Store
+.idea/
 public/uploads/
