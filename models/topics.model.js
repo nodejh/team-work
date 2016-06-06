@@ -12,8 +12,7 @@ Topics.prototype.publish = function (user_id,project_id, callback) {
         user_id: user_id,
         project_id:project_id,
         title: this.title,
-        week: this.week,
-        file: this.file,
+        content: this.content,
         time: time
     };
 

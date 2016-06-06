@@ -37,3 +37,5 @@
 .messages .archive-info .content{max-width:650px;display:inline-block;vertical-align:bottom;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .messages .archive-info a{color:#555}
 .messages .archive-info a:hover{color:#887}
+.message-title{display: block}
+.message-content{margin-top: 3px}

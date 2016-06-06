@@ -17,8 +17,12 @@
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
     "mysql": "^2.10.2",
+<<<<<<< HEAD
     "nodemailer": "^2.4.2",
     "nodemailer-smtp-transport": "^2.5.0",
+=======
+    "nodemailer": "^0.7.1",
+>>>>>>> 1810929054a42a0aa8ea317f4464c25d8eda6ae8
     "serve-favicon": "~2.3.0"
   }
 }

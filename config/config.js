@@ -30,7 +30,7 @@ var config = {
 
   nodemailer: {
     host: "smtp.qq.com", // 主机
-    secureConnection: false, // 使用 SSL
+    secureConnection: true, // 使用 SSL
     port: 465, // SMTP 端口
     auth: {
       user: "1002901669@qq.com", // 账号
