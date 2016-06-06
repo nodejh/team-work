@@ -1,5 +1,5 @@
 var connection = require('./db.model');
-var smtpTransport =require('./nodemailer.model');
+var sendMail =require('./mail.model');
 function Project(name,description,checkbox,ssl,manager_id) {
   this.name = name;
   this.description = description;
@@ -134,20 +134,18 @@ Project.findByUserId = function (user_id, callback) {
 Project.prototype.inviteMember = function (email, ssl,callback) {
 console.log(email);
 // 设置邮件内容
-  var mailOptions = {
-    from: "Fred Foo <1002901669@qq.com>", // 发件地址
-    to:email, // 收件列表
-    subject: "成员邀请", // 标题
-    html: "<p>请点击<a href='localhost:4000/check?ssl="+ssl+"'>同意</a>加入团队"+this.name+",此链接24小时后失效</p>" // html 内容
-  }
+
+    var subject= "成员邀请"; // 标题
+     var html= "<p>请点击<a href='localhost:4000/check?ssl="+ssl+"'>同意</a>加入团队"+this.name+",此链接24小时后失效</p>" ;// html 内容
+
 
 // 发送邮件
-  smtpTransport.sendMail(mailOptions, function callback(error, response){
+  sendMail(email,subject,html, function callback(error, response){
     if(error){
       console.log(error+email);
       callback(error);
     }else{
-      console.log("Message sent: " + response.message+email);
+      console.log("Message sent: " +email);
       callback(null,response);
     }
     smtpTransport.close(); // 如果没用，关闭连接池

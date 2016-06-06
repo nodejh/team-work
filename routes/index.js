@@ -412,49 +412,55 @@ var routes = function (app) {
           return res.redirect('/newproject');
         }
       }); 
+        var maillist;
+        
          for(var i=0;i<member.length;i++) {
            console.log(member.length);
-           var role1= member[i].role;
-           var email1=member[i].email;
+           var role1 = member[i].role;
+           var email1 = member[i].email;
            console.log(email1);
-            Project.findByEmail(email1,function (err3,result3) {
-              if (err3) {
-                console.log('新建项目失败：', err);
-                req.flash('error', '新建项目失败!');
-               return  res.redirect('/newproject');
-              }
-              if(result3.length==0)
-              {
-                req.flash('error', '该邀请成员不存在！!');
-               return  res.redirect('/newproject');
-              }
-              
-
-             project.inviteMember(email1, function (err4, ssl,result4) {
+           Project.findByEmail(email1, function (err3, result3) {
+             if (err3) {
+               console.log('新建项目失败：', err);
+               req.flash('error', '新建项目失败!');
+               return res.redirect('/newproject');
+             }
+             if (result3.length == 0) {
+               req.flash('error', '该邀请成员不存在！!');
+               return res.redirect('/newproject');
+             }
+           });
+           if (i < member.length - 1) {
+             maillist += email1 + ",";
+           }
+           var data2 = {
+             project_id: result2[0].project_id,
+             project_name: result2[0].name,
+             ss: result2[0].ss,
+             member_type: role1,
+             user_id:result3[0].id ,
+             accept:0
+           };
+           console.log(data2);
+           Project.insertmap(data2, function (err5, rows2) {
+             if (err5) {
+               console.log('新建项目失败：', err2);
+               req.flash('error', '新建项目失败!');
+               return res.redirect('/newproject');
+             }
+           });
+         }
+           maillist +=member[member.length-1].email;
+             project.inviteMember(maillist, function (err4, ssl,result4) {
                 if (err4) {
                   console.log('新建项目失败：', err);
                   req.flash('error', '新建项目失败!');
                   return   res.redirect('/newproject');
                 }
               });
-            var data2 = {
-              project_id: result2[0].project_id,
-              project_name: result2[0].name,
-              ss: result2[0].ss,
-              member_type: role1,
-              user_id:result3[0].id ,
-              accept:0
-            };
-              console.log(data2);
-            Project.insertmap(data2, function (err5, rows2) {
-              if (err5) {
-                console.log('新建项目失败：', err2);
-                req.flash('error', '新建项目失败!');
-                return res.redirect('/newproject');
-              }
-            });
-          });
-      }
+ 
+         
+      
       });
         //upload success
         req.flash('success', '新建项目成功!');
