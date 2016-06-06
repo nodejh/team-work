@@ -18,6 +18,9 @@ var Weekly = require('../models/weekly.model');
 var User = require('../models/user.model');
 var Project =require('../models/project.model');
 var Topics =require('../models/topics.model');
+var Account = require('../models/account.model');
+
+
 var routes = function (app) {
 
   // 首页
@@ -192,6 +195,79 @@ var routes = function (app) {
         res.redirect('/home');
       });
     });
+  });
+
+
+  // 找回密码页面
+  app.get('/find_password', function(req, res) {
+    res.render('find_password', {
+      title: '找回密码',
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });
+
+
+  // 找回密码操作
+  app.post('/find_password', checkLogin.checkNotLoginUserForm);
+  app.post('/find_password', checkLogin.checkNotLoginAdminForm);
+  app.post('/find_password', function(req, res) {
+    // 发送邮件成功后,进入到重置密码页面
+    var email = req.body.email;
+    if (!myfun.checkEmail(email)) {
+      req.flash('error', '邮箱格式错误!');
+      return res.redirect('/find_password');
+    }
+
+    // 查看改邮箱是否是系统用户
+    User.findUserByEmail(email, function (err, rows) {
+      if (err) {
+        console.log('error 检查是否已经注册过', err);
+        req.flash('error', '发送邮件失败, 请重试!');
+        return res.redirect('/find_password');
+      }
+
+      if (rows.length == 0) {
+        console.log('该邮箱尚未注册', err);
+        req.flash('error', '该邮箱尚未注册, 您可以直接注册!');
+        return res.redirect('/find_password');
+      }
+
+      // 将数据存入数据库,然后发送邮件
+      // 先将时间戳 hash,再与随即字符串拼接,得到唯一字符串
+      var time = new Date().getTime();
+      var md5 = crypto.createHash('md5');
+      var token = md5.update(time.toString()).digest('hex') + myfun.randomString(20);
+
+      console.log('token:', token);
+      var newAccount = new Account(email, token);
+      newAccount.insert(function (err, insert) {
+        if (err) {
+          console.log('找回密码时保存acount失败:', err);
+          req.flash('error', ' 发送邮件失败,请重试!');
+          return res.redirect('/find_password');
+        }
+        // 发送邮件
+        //subject, html
+        var url = req.hostname + '/reset_password?token=' + token;
+        console.log(url);
+        var subject = '你的网速办公,找回密码';
+        var html = '点击此链接重置密码<a href="'+url+'">'+url+'</a>';
+        Account.sendMail(email, subject, html, function(err, send_res) {
+
+          if (err) {
+            console.log('找回密码时发送邮件失败:', err);
+            req.flash('error', ' 发送邮件失败,请重试!');
+            return res.redirect('/find_password');
+          }
+          console.log('找回密码时发送邮件成功', send_res);
+          req.flash('success', ' 我们已将重置密码的链接发送至您的邮箱'+email+',链接30分钟后失效,请及时查看!');
+          return res.redirect('/find_password');
+        });
+      });
+
+    });
+
   });
 
 

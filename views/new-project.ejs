@@ -4,58 +4,60 @@
 <script src="/utils/flat-ui/js/vendor/jquery.min.js"></script>
 <% include _header.ejs %>
 <div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">菜单</span>
-            </button>
-            <a class="navbar-brand" href="/">nucleus</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="projectindex">项目</a></li>
-                <li><a href="/home">周报</a></li>
-                <li><a href="#contact">动态</a></li>
-                <li><a href="#contact">个人中心</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">个人资料</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/logout">退出登录</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">菜单</span>
+      </button>
+      <a class="navbar-brand" href="/">nucleus</a>
     </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="projectindex">项目</a></li>
+        <li><a href="/home">周报</a></li>
+        <li><a href="#contact">动态</a></li>
+        <li><a href="#contact">个人中心</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">个人资料</a></li>
+            <li class="divider"></li>
+            <li><a href="/logout">退出登录</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
 </div>
 
 
 <div class="c-info">
-    <% if (error) { %>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <%= error %>
-    </div>
-    <% } %>
+  <% if (error) { %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <%= error %>
+  </div>
+  <% } %>
 </div>
 
 <div class="c-info">
-    <% if (success) { %>
-    <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <%= success %>
-    </div>
-    <% } %>
+  <% if (success) { %>
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <%= success %>
+  </div>
+  <% } %>
 </div>
 <div class="new-project">
+  <a href="/projectindex">
     <div class="link-page-behind" id="behind">
+<<<<<<< HEAD
         <a href="projectindex" class="before"><%= user.name %>的所有项目</a></div>
     <div class="panel panel-default panel-content">
         <div class="panel-body">
@@ -77,69 +79,130 @@
                         <p>
                             邀请项目成员
                         </p>
+=======
+      <span class="before"><%= user.name %>的所有项目</span>
+    </div>
+  </a>
+  <div class="panel panel-default panel-content">
+    <div class="panel-body">
+      <form method="post">
+        <div class="creat-project">
+          <p>创建项目</p>
+          <div class="col-lg-10">
+            <div class="form-group">
+              <input class="form-control" value="" placeholder="项目名称" id="projectname" name="projectname" type="text">
+            </div>
+>>>>>>> af8ba96402db6adeccdf8738e589163f59314748
 
-                        <p>
-                            管理员可以邀请和移除项目成员，只有被邀请的团队成员才能访问该项目的信息。点击这里查看<a href="https://tower.im/help/faq/8/65/" target="_blank" rel="nofollow">如何设置成员权限</a>。
-                        </p>
-                        <div class="tab active" data-tab="email">
-                            <div class="form-group">
-                                <div id ="parent">
-                                    <div>
-                                        <div class="invite-item invite-field">
-                                            <input type="email" class="invite-email no-border" name="email" placeholder="请输入新成员的邮箱">
+            <div class="form-group">
+              <textarea class="form-control" id="description" name="description"
+                        placeholder="简单描述项目，便于其他人理解（选填）"></textarea>
+            </div>
+            <label class="checkbox" for="checkbox2">
+              <input checked="checked" value="1" id="checkbox" name="checkbox" data-toggle="checkbox" type="checkbox">
+              对访客隐藏敏感内容
+            </label>
+            <div>
+              <p>
+                邀请项目成员
+              </p>
 
-                                            <div class="invite-role-field">
-                                                <select class="invite-role" id="choose-role"  name="choose-role"tabindex="-1">
-                                                    <option value="0" selected="">成员</option>
-                                                    <option value="1">主管</option>
-                                                    <option value="2">管理员</option>
-                                                </select>
-                                            </div>
+              <p>
+                管理员可以邀请和移除项目成员，只有被邀请的团队成员才能访问该项目的信息。点击这里查看<a href="https://tower.im/help/faq/8/65/" target="_blank"
+                                                             rel="nofollow">如何设置成员权限</a>。
+              </p>
+              <div class="tab active" data-tab="email">
+                <div class="form-group">
+                  <div id="parent">
+                    <div>
+                      <div class="invite-item invite-field">
+                        <input type="email" class="invite-email no-border" name="email" placeholder="请输入新成员的邮箱">
 
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="invite-item invite-field">
-                                            <input type="email" class="invite-email no-border"  name="email" placeholder="请输入新成员的邮箱">
-
-                                            <div class="invite-role-field">
-                                                <select class="invite-role" id="choose-role"  name="choose-role" tabindex="-1">
-                                                    <option value="0" selected="">成员</option>
-                                                    <option value="1">管理员</option>
-                                                    <option value="2">主管</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="invite-item invite-field">
-                                            <input type="email" class="invite-email no-border" name="email" placeholder="请输入新成员的邮箱">
-
-                                            <div class="invite-role-field">
-                                                <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
-                                                    <option value="0" selected="">成员</option>
-                                                    <option value="1">管理员</option>
-                                                    <option value="3">主管</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <p><div class="btn btn-default" id="add">再加一个</div></p>
-                            </div>
+                        <div class="invite-role-field">
+                          <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
+                            <option value="0" selected="">成员</option>
+                            <option value="1">主管</option>
+                            <option value="2">管理员</option>
+                          </select>
                         </div>
 
+                      </div>
+                    </div>
+                    <div>
+                      <div class="invite-item invite-field">
+                        <input type="email" class="invite-email no-border" name="email" placeholder="请输入新成员的邮箱">
+
+                        <div class="invite-role-field">
+                          <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
+                            <option value="0" selected="">成员</option>
+                            <option value="1">管理员</option>
+                            <option value="2">主管</option>
+                          </select>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div>
+                      <div class="invite-item invite-field">
+                        <input type="email" class="invite-email no-border" name="email" placeholder="请输入新成员的邮箱">
+
+                        <div class="invite-role-field">
+                          <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
+                            <option value="0" selected="">成员</option>
+                            <option value="1">管理员</option>
+                            <option value="3">主管</option>
+                          </select>
+                        </div>
+
+<<<<<<< HEAD
 
                     </div>
                     <div style="margin: 30px 0 20px 0;">
                         <button type="button" class="btn btn-primary" id="btn-create-project" data-disable-with="正在创建..." data-success-text="创建成功">创建项目</button>
                         <a href="/teams/33e50bf86957490a9e6f0581cb1d7f74/projects" class="btn" >取消</a>
+=======
+                      </div>
+>>>>>>> af8ba96402db6adeccdf8738e589163f59314748
                     </div>
+                  </div>
+                  <p>
+                  <div class="btn btn-default" id="add">再加一个</div>
+                  </p>
                 </div>
+              </div>
+
+              <!-- <div class="tab" data-tab="wechat">
+                  <div class="form-item form-wechat-item">
+                      <div class="form-field">
+                          <div class="wechat-invite">
+                              <div class="qrcode-wrap loading" data-url="/wechat/qrcode?type=8">
+                                  <p class="indicator">正在加载二维码</p>
+                                  <img class="qrcode" alt="微信双保险二维码" title="扫描这个二维码获取微信邀请函" />
+                              </div>
+                              <div class="wechat-desc">
+                                  <h5>扫码邀请</h5>
+                                  <p>用微信扫描二维码获取邀请函，<br>
+                                      转发给微信好友，即可邀请他们加入你的项目。</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div> -->
             </div>
+<<<<<<< HEAD
+=======
+            <div style="margin: 30px 0 20px 0;">
+              <button type="button" class="btn btn-primary" id="btn-create-project" data-disable-with="正在创建..."
+                      data-success-text="创建成功">创建项目
+              </button>
+              <a href="/teams/33e50bf86957490a9e6f0581cb1d7f74/projects" class="btn">取消</a>
+            </div>
+          </div>
+>>>>>>> af8ba96402db6adeccdf8738e589163f59314748
         </div>
+      </form>
     </div>
-</div><script src="/js/newproject.js"></script>
+  </div>
+</div>
+<script src="/js/newproject.js"></script>
 <% include footer.ejs %>

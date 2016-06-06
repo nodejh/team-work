@@ -14,3 +14,22 @@ body.background {
 .login-screen h4 {
     color: #fff;
 }
+
+@media (max-width: 768px) {
+    .login-screen {
+        padding: 120px 10px;
+    }
+    .login-form {
+        margin-top: 100px;
+    }
+    .login-icon {
+        top: 60px;
+        margin: 0 auto;
+    }
+    .login-icon h4 {
+        position: absolute;
+        top: 0px;
+        left: 140px;
+        width: 200px;
+    }
+}

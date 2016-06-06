@@ -7,7 +7,7 @@ function Weekly(title, week, file) {
 }
 
 // 上传周报操作
-Weekly.prototype.upload = function (user_id,project_id, callback) {
+Weekly.prototype.upload = function (user_id, project_id, callback) {
   var time = parseInt(new Date().getTime() / 1000);
   var data = {
     user_id: user_id,
