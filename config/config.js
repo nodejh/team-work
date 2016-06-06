@@ -36,6 +36,12 @@ var config = {
       user: "1002901669@qq.com", // 账号
       pass: "yhjqfymtbhudbfcb" // 密码
     }
+  },
+
+  email: {
+    service: 'QQ',
+    user: '571963318@qq.com',
+    pass: ''
   }
 };
 

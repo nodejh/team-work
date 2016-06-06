@@ -19,7 +19,7 @@ var User = require('../models/user.model');
 var Project =require('../models/project.model');
 var Topics =require('../models/topics.model');
 var Account = require('../models/account.model');
-
+var sendMail = require('../models/mail.model');
 
 var routes = function (app) {
 
@@ -253,7 +253,7 @@ var routes = function (app) {
         console.log(url);
         var subject = '你的网速办公,找回密码';
         var html = '点击此链接重置密码<a href="'+url+'">'+url+'</a>';
-        Account.sendMail(email, subject, html, function(err, send_res) {
+        sendMail(email, subject, html, function(err, send_res) {
 
           if (err) {
             console.log('找回密码时发送邮件失败:', err);
@@ -267,6 +267,15 @@ var routes = function (app) {
       });
 
     });
+
+  });
+
+  // 重置密码操作
+  app.post('/reset_password', checkLogin.checkNotLoginUserForm);
+  app.post('/reset_password', checkLogin.checkNotLoginAdminForm);
+  app.post('/reset_password', function(req, res) {
+    var token = req.params.token;
+    console.log('reset password token: ' + toke);
 
   });
 
