@@ -853,3 +853,15 @@ Error: ER_NO_SUCH_TABLE: Table 'team.project_member' doesn't exist
     at Protocol._parsePacket (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/Protocol.js:280:23)
     at Parser.write (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/Parser.js:73:12)
 >>>>>>> af8ba96402db6adeccdf8738e589163f59314748
+[Tue Jun 07 2016 00:30:20 GMT+0800 (CST)]/reset_password?token=8f71695423119fd022d45cfe660e5da636hLhIsHA2qTGuoyj6iu
+ReferenceError: toke is not defined
+    at /Users/jh/inbox/node/team-work/routes/index.js:279:44
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
+    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:121:14)
+    at checkLogin.checkNotLoginAdminForm (/Users/jh/inbox/node/team-work/passport/checkLogin.js:75:5)

@@ -44,4 +44,21 @@ function User(name, email, password) {
 
 
 
+// 根据邮箱更新密码
+User.updatePasswordByEmail = function (email, password, callback) {
+  var sql = 'UPDATE user SET password=? WHERE email=?';
+  connection.query(sql, [password, email], function (err, rows) {
+    if (err) {
+      console.error('error update password by email: ' + err.stack);
+      return callback(err);
+    }
+
+    callback(null, rows);
+  });
+
+
+};
+
+
+
 module.exports = User;

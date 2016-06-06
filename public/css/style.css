@@ -19,7 +19,9 @@
 .c-left {
   font-size: .8em;
 }
-
+.display_none {
+  display: none;
+}
 .background {
   background-color: #f2f5e9;
 }
@@ -121,4 +123,10 @@
   position: absolute;
   top: 27px;
   right: 40px;
+}
+.c_title {
+  text-align: center;
+  color: #fff;
+  margin: 0 0 20px 0;
+  font-size: 2.5em;
 }
