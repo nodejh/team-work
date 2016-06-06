@@ -739,3 +739,39 @@ ReferenceError: user_id is not defined
     at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
     at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
     at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Sun Jun 05 2016 18:25:29 GMT+0900 (韩国标准时间)]/publish
+ReferenceError: comsole is not defined
+    at H:\master\team-work\routes\index.js:522:5
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Mon Jun 06 2016 18:46:04 GMT+0900 (韩国标准时间)]/newproject
+ReferenceError: success is not defined
+    at H:\master\team-work\routes\index.js:377:14
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Mon Jun 06 2016 18:52:05 GMT+0900 (韩国标准时间)]/newproject
+ReferenceError: success is not defined
+    at H:\master\team-work\routes\index.js:377:14
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)

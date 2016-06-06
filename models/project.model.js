@@ -95,9 +95,9 @@ Project.findByUserIdandssl = function (user_id,ssl, callback) {
   });
 }
 // 根据 user_id 查找项目
-Project.findByEmail = function (member, callback) {
+Project.findByEmail = function (email, callback) {
   var sql = 'SELECT * FROM user WHERE email=?';
-  connection.query(sql, [member.email], function (err, rows) {
+  connection.query(sql, [email], function (err, rows) {
     if (err) {
       console.error('error SELECT: ' + err.stack);
       return callback(err);
@@ -144,10 +144,10 @@ console.log(email);
 // 发送邮件
   smtpTransport.sendMail(mailOptions, function callback(error, response){
     if(error){
-      console.log(error);
+      console.log(error+email);
       callback(error);
     }else{
-      console.log("Message sent: " + response.message);
+      console.log("Message sent: " + response.message+email);
       callback(null,response);
     }
     smtpTransport.close(); // 如果没用，关闭连接池

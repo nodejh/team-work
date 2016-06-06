@@ -6,14 +6,13 @@ $('#btn-post').click(function () {
         content: content.value
     };
     $.post('/publish', data, function (res) {
-        if (res.json == success) {
-            alert('创建成功！');
-            // todo  跳转到个人中心
-            window.location.href = projectindex;
-
-        } else {
-            alert('创建失败！');
+        if(res.json.code=="success") {
+            alert(0);
             window.location.href = this;
+        }
+        else
+        {
+            window.location.href=this;
         }
     });
 });

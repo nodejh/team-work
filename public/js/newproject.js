@@ -40,14 +40,14 @@ $('#btn-create-project').click(function () {
         members:members
     };
    $.post('/newproject', data, function(res) {
-        if (res.json==success) {
+        if (res.code=="success") {
             alert('新建成功！');
             // todo  跳转到个人中心
-            window.location.href=projectindex;
+            window.location.href='/projectindex';
 
         } else {
             alert('新建失败！');
-            window.location.href=this;
+            window.location.href='/newproject';
         }
     });
 });
