@@ -546,7 +546,7 @@ var routes = function (app) {
     });
 
   });
-
+  app.get('/check', checkLogin.checkLoginUserForm);
   app.get('/check', function (req, res) {
     var ssl =req.query.ssl;
     var user = req.session.user;
@@ -565,16 +565,16 @@ var routes = function (app) {
        if(result[0].accept==1)
        {
          req.flash('error', '你已加入该团队!');
-         res.redirect('/project?ssl='+project[0].ss);
+         res.redirect('/project?ssl='+result[0].ss);
        }
         else {
-         Project.updateAccept(project,function (err,resu) {
+         Project.updateAccept(result[0],function (err,resu) {
            if(err) {
              req.flash('error', '查找出错!');
              res.redirect('/projectindex');
            }
-           req.flash('success', '欢迎您加入了'+project[0].project_name+'项目');
-           res.redirect('/project?ssl='+project[0].ssl);
+           req.flash('success', '欢迎您加入了'+result[0].project_name+'项目');
+           res.redirect('/project?ssl='+result[0].ssl);
          });
        }
       }
