@@ -27,7 +27,7 @@ Project.prototype.insert = function (callback) {
   connection.query(insert, data, function (err, rows) {
     if (err) {
       console.error('error insert: ' + err.stack);
-      return callback(error);
+      return callback(err);
     }
 
     callback(null, rows);
@@ -134,11 +134,8 @@ Project.findByUserId = function (user_id, callback) {
 Project.prototype.inviteMember = function (email, ssl,callback) {
 console.log(email);
 // 设置邮件内容
-
     var subject= "成员邀请"; // 标题
      var html= "<p>请点击<a href='localhost:4000/check?ssl="+ssl+"'>同意</a>加入团队"+this.name+",此链接24小时后失效</p>" ;// html 内容
-
-
 // 发送邮件
   sendMail(email,subject,html, function callback(error, response){
     if(error){

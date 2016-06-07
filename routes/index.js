@@ -412,7 +412,7 @@ var routes = function (app) {
           return res.redirect('/newproject');
         }
       }); 
-        var maillist;
+        var maillist="";
         
          for(var i=0;i<member.length;i++) {
            console.log(member.length);
@@ -429,10 +429,8 @@ var routes = function (app) {
                req.flash('error', '该邀请成员不存在！!');
                return res.redirect('/newproject');
              }
-           });
-           if (i < member.length - 1) {
-             maillist += email1 + ",";
-           }
+
+
            var data2 = {
              project_id: result2[0].project_id,
              project_name: result2[0].name,
@@ -449,15 +447,26 @@ var routes = function (app) {
                return res.redirect('/newproject');
              }
            });
+           });       
+           maillist += email1 + ",";
+           console.log(maillist);
          }
-           maillist +=member[member.length-1].email;
-             project.inviteMember(maillist, function (err4, ssl,result4) {
-                if (err4) {
-                  console.log('新建项目失败：', err);
-                  req.flash('error', '新建项目失败!');
-                  return   res.redirect('/newproject');
-                }
-              });
+       // maillist.substring(0,maillist.length-1);
+        maillist +=member[member.length-1].email;
+        console.log(maillist);
+        var subject= "成员邀请"; // 标题
+        var html= "<p>请点击<a href='localhost:4000/check?ssl="+ssl+"'>同意</a>加入团队"+projectname+",此链接24小时后失效</p>" ;// html 内容// 发送邮件
+        sendMail(maillist, subject, html, function(err, send_res) {
+
+          if (err) {
+            console.log('邀请成员时发送邮件失败:', err);
+            req.flash('error', ' 发送邮件失败,请重试!');
+            return res.redirect('newproject');
+          }
+          console.log('邀请成员时发送邮件成功', send_res);
+          req.flash('success', '我们已发送好友邀请,请及时查看!');
+
+        });
  
          
       

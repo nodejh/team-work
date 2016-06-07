@@ -4,7 +4,6 @@ var config = require('../config/config')
 
 smtpTransport = nodemailer.createTransport(smtpTransport({
   service: config.email.service,
-  secureConnection: config.email.secureConnection, // 使用 SSL
   auth: {
     user: config.email.user,
     pass: config.email.pass

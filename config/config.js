@@ -39,9 +39,7 @@ var config = {
   },
 
   email: {
-    user:"XM04-项目管理子系统",
     service: 'QQ',
-    secureConnection: true, // 使用 SSL
     user:'1002901669@qq.com',
     pass:'yhjqfymtbhudbfcb'
   }
