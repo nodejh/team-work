@@ -13,12 +13,11 @@ var storage = multer.diskStorage({
 var upload = multer({
   storage: storage
 });
-var config = require('../config/config');
 var checkLogin = require('../passport/checkLogin');
 var Weekly = require('../models/weekly.model');
 var User = require('../models/user.model');
-var Project = require('../models/project.model');
-var Topics = require('../models/topics.model');
+var Project =require('../models/project.model');
+var Topics =require('../models/topics.model');
 var Account = require('../models/account.model');
 var sendMail = require('../models/mail.model');
 
@@ -39,17 +38,12 @@ var routes = function (app) {
   });
 
   // 用户主页
-<<<<<<< HEAD
   app.get('/allweekly', checkLogin.checkLoginUserForm);
   app.get('/allweekly', function (req, res,next) {
-=======
-  app.get('/home', checkLogin.checkLoginUserForm);
-  app.get('/home', function (req, res, next) {
->>>>>>> 6f1789cb43e5a515138bb8a61ace1585745961cc
 
     // 查找用户信息
     var email = req.session.user.email;
-    User.findUserByEmail(email, function (err, rows) {
+    User.findUserByEmail(email, function(err, rows) {
       if (err) {
         console.log('查找用户信息失败');
         return next(err);
@@ -117,20 +111,14 @@ var routes = function (app) {
 
       // 将密码加密
       var md5 = crypto.createHash('md5');
-      password = md5.update(req.body.password).digest('hex');
-      console.log(password);
+      password = md5.update(req.body.password).digest('hex');  console.log(password);
       if (password != rows[0].password) {
         // 登陆成功,将用户信息存入 session
         req.flash('error', '密码错误!');
         return res.redirect('/login');
       }
-<<<<<<< HEAD
-        req.session.user = rows[0];
-        res.redirect('/projectindex');
-=======
       req.session.user = rows[0];
-      res.redirect('/home');
->>>>>>> 6f1789cb43e5a515138bb8a61ace1585745961cc
+      res.redirect('/projectindex');
     });
   });
 
@@ -211,7 +199,7 @@ var routes = function (app) {
 
 
   // 找回密码页面
-  app.get('/find_password', function (req, res) {
+  app.get('/find_password', function(req, res) {
     res.render('find_password', {
       title: '找回密码',
       success: req.flash('success').toString(),
@@ -223,7 +211,7 @@ var routes = function (app) {
   // 找回密码操作
   app.post('/find_password', checkLogin.checkNotLoginUserForm);
   app.post('/find_password', checkLogin.checkNotLoginAdminForm);
-  app.post('/find_password', function (req, res) {
+  app.post('/find_password', function(req, res) {
     // 发送邮件成功后,进入到重置密码页面
     var email = req.body.email;
     if (!myfun.checkEmail(email)) {
@@ -261,12 +249,11 @@ var routes = function (app) {
         }
         // 发送邮件
         //subject, html
-        var url = 'http://' + req.hostname + ":" + config.port + '/reset_password?token=' + token;
+        var url = req.hostname + '/reset_password?token=' + token;
         console.log(url);
-        var subject = 'Nucleus 你的网上办公,找回密码';
-        var html = '点击此链接重置密码<a href="' + url + '" alt="找回密码">' + url + '</a>';
-        console.log('htl: ', html);
-        sendMail(email, subject, html, function (err, send_res) {
+        var subject = '你的网速办公,找回密码';
+        var html = '点击此链接重置密码<a href="'+url+'">'+url+'</a>';
+        sendMail(email, subject, html, function(err, send_res) {
 
           if (err) {
             console.log('找回密码时发送邮件失败:', err);
@@ -274,7 +261,7 @@ var routes = function (app) {
             return res.redirect('/find_password');
           }
           console.log('找回密码时发送邮件成功', send_res);
-          req.flash('success', ' 我们已将重置密码的链接发送至您的邮箱' + email + ',链接30分钟后失效,请及时查看!');
+          req.flash('success', ' 我们已将重置密码的链接发送至您的邮箱'+email+',链接30分钟后失效,请及时查看!');
           return res.redirect('/find_password');
         });
       });
@@ -283,81 +270,18 @@ var routes = function (app) {
 
   });
 
-  // 重置密码页面
-  app.get('/reset_password', checkLogin.checkNotLoginUserForm);
-  app.get('/reset_password', checkLogin.checkNotLoginAdminForm);
-  app.get('/reset_password', function (req, res) {
-    var token = req.query.token;
-    console.log('reset password token: ' + token);
-    res.render('reset_password', {
-      title: '重置密码',
-      token: token,
-      success: req.flash('success').toString(),
-      error: req.flash('error').toString()
-    });
-  });
-
-
   // 重置密码操作
   app.post('/reset_password', checkLogin.checkNotLoginUserForm);
   app.post('/reset_password', checkLogin.checkNotLoginAdminForm);
-  app.post('/reset_password', function (req, res) {
-    var token = req.body.token;
-    var password = req.body.password;
-    var re_password = req.body.re_password;
-    if (password.length < 6) {
-      req.flash('error', '密码长度不能小于6位');
-      return res.redirect('/reset_password?token=' + token);
-    }
-    if (password != re_password) {
-      req.flash('error', '两次密码不一致');
-      return res.redirect('/reset_password?token=' + token);
-    }
+  app.post('/reset_password', function(req, res) {
+    var token = req.params.token;
+    console.log('reset password token: ' + toke);
 
-    Account.findByToken(token, function (err, rows) {
-
-      if (err) {
-        console.log('重置密码,查询数据库失败', err);
-        req.flash('error', '重置密码链接错误,请重新发送邮件并进入邮箱查看!');
-        return res.redirect('/reset_password?token=' + token);
-      }
-
-      if (rows.length == 0) {
-        req.flash('error', '重置密码链接错误,请重新发送邮件并进入邮箱查看!');
-        return res.redirect('/reset_password?token=' + token);
-      }
-
-      // 判断时间是否过期
-      var current_time = parseInt(new Date().getTime() / 1000);
-      var difference = config.difference_time;
-      if (rows[0].time + difference < current_time) {
-        console.log('链接已过期');
-        req.flash('error', '链接已过期,请重新发送邮件!');
-        return res.redirect('/reset_password?token=' + token);
-      }
-
-      // 更新密码
-      var email = rows[0].email;
-      var md5 = crypto.createHash('md5');
-      password = md5.update(password).digest('hex');
-
-      User.updatePasswordByEmail(email, password, function (err, rows) {
-
-        if (err) {
-          console.error('error update password: ', err);
-          req.flash('error', '重置密码失败,请重试!');
-          return res.redirect('/reset_password?token=' + token);
-        }
-        // 重置密码成功
-        req.flash('success', '重置密码成功,你可以使用新密码登录!');
-        return res.redirect('/reset_password?token=' + token);
-      });
-    });
   });
 
 
   // 退出登录
-  app.get('/logout', function (req, res) {
+  app.get('/logout', function(req, res){
     req.session.destroy();
     res.redirect('/');
   });
@@ -368,13 +292,13 @@ var routes = function (app) {
   app.get('/upload', function (req, res) {
     // 查找用户信息
     var email = req.session.user.email;
-    User.findUserByEmail(email, function (err, rows) {
+    User.findUserByEmail(email, function(err, rows) {
       if (err) {
         console.log('查找用户信息失败');
         return next(err);
       }
       var user = rows[0];
-      var user_id = user.id;
+      var user_id =user.id;
       Project.findByUserId(user_id, function (err, project) {
         if (err) {
           console.log('查找用户项目信息失败123');
@@ -383,7 +307,7 @@ var routes = function (app) {
         res.render('upload', {
           title: '上传周报',
           user: user,
-          project: project,
+          project :project,
           success: req.flash('success').toString(),
           error: req.flash('error').toString()
         });
@@ -400,7 +324,7 @@ var routes = function (app) {
       if (error) {
         console.log('上传周报失败：', error);
         req.flash('error', '上传周报失败!');
-       return  res.redirect('/weekly');
+        return  res.redirect('/weekly');
       }
       var ssl =req.body.ssl;
       var title = req.body.title;
@@ -412,22 +336,22 @@ var routes = function (app) {
       Project.findBySSL(ssl,function (err1,result1) {
         if (err1) {
           req.flash('error', '上传失败，请重试!');
-         return  res.redirect('/weekly?ssl='+ssl);
+          return  res.redirect('/weekly?ssl='+ssl);
         }
         // upload success
         console.log(result1);
         weekly.upload(user_id,result1[0].project_id, result1[0].name,function (err, rows) {
-        if (err) {
-          req.flash('error', '上传失败，请重试!');
-          return res.redirect('/upload');
-        }
-        // upload success
-        req.flash('success', '上传成功!');
-        res.redirect('allweekly');
-      });
+          if (err) {
+            req.flash('error', '上传失败，请重试!');
+            return res.redirect('/upload');
+          }
+          // upload success
+          req.flash('success', '上传成功!');
+          res.redirect('allweekly');
+        });
 
       });
-     
+
     });
   });
   // 新建项目页面
@@ -435,7 +359,7 @@ var routes = function (app) {
   app.get('/newproject', function (req, res) {
     res.render('new-project', {
       title: '新建项目',
-      user: req.session.user,
+      user:req.session.user,
       success: req.flash('success').toString(),
       error: req.flash('error').toString()
     });
@@ -446,122 +370,106 @@ var routes = function (app) {
   app.post('/newproject', checkLogin.checkLoginUserForm);
   app.post('/newproject', function (req, res) {
 
-    var projectname = req.body.project_name;
-    var description = req.body.description;
-    var checkbox = req.body.checkbox;
+    var projectname =req.body.project_name;
+    var description =req.body.description;
+    var checkbox =req.body.checkbox;
     var members = req.body.members;
-    var member = JSON.parse(members);
-    var manager = req.session.user;
-    var str = projectname + manager.id;
+    var member =JSON.parse(members);
+    var manager =req.session.user;
+    var str = projectname+manager.id;
 
     var md5 = crypto.createHash('md5');
-<<<<<<< HEAD
     var  ssl = md5.update(str).digest('hex');
-   console.log('weewwerwwrrwewsdfsdfffsd');
+    console.log('weewwerwwrrwewsdfsdfffsd');
     Project.findByUserIdandname(manager.id,projectname,function (err1,result1) {
       if(result1.length>0)
       {
-          console.log('新建项目失败：', err1);
-          req.flash('error', '已存在该项目!');
-          return  res.json({
-            code:"double"
-          });
-        }
-
-    //  console.log(result);
-
-    var project =new Project(projectname,description,checkbox,ssl,manager.id);
-=======
-    var ssl = md5.update(str).digest('hex');
-    console.log('weewwerwwrrwewsdfsdfffsd');
-    Project.findByUserIdandname(manager.id, projectname, function (err1, result1) {
-      if (result1.length > 0) {
         console.log('新建项目失败：', err1);
         req.flash('error', '已存在该项目!');
-        return res.redirect('/newproject');
+        return  res.json({
+          code:"double"
+        });
       }
+
       //  console.log(result);
-    });
-    var project = new Project(projectname, description, checkbox, ssl, manager.id);
->>>>>>> 6f1789cb43e5a515138bb8a61ace1585745961cc
 
-    project.insert(function (err1, rows) {
+      var project =new Project(projectname,description,checkbox,ssl,manager.id);
 
-      if (err1) {
-        console.log('新建项目失败：', err1);
-        req.flash('error', '新建项目失败!');
-        return res.redirect('/newproject');
-      }
-    });
+      project.insert(function (err1,rows) {
 
-    Project.findByUserIdandname(manager.id, projectname, function (err2, result2) {
-      if (err2) {
-        console.log('新建项目失败：', err);
-        req.flash('error', '新建项目失败!');
-        return res.redirect('/newproject');
-      }
-      var data = {
-        project_id: result2[0].project_id,
-        project_name: result2[0].name,
-        ss: result2[0].ss,
-        member_type: '1',
-        user_id: manager.id,
-        accept: 1
-      };
-      console.log(123);
-      Project.insertmap(data, function (err2, rows) {
+        if (err1) {
+          console.log('新建项目失败：', err1);
+          req.flash('error', '新建项目失败!');
+          return  res.redirect('/newproject');
+        }
+      });
+
+      Project.findByUserIdandname(manager.id,projectname,function (err2,result2) {
         if (err2) {
-          console.log('新建项目失败：', err2);
+          console.log('新建项目失败：', err);
           req.flash('error', '新建项目失败!');
           return res.redirect('/newproject');
         }
-<<<<<<< HEAD
-      }); 
+        var data ={
+          project_id:result2[0].project_id,
+          project_name:result2[0].name,
+          ss:result2[0].ss,
+          member_type:'1',
+          user_id:manager.id,
+          accept:1
+        };
+        console.log(123);
+        Project.insertmap(data,function (err2,rows) {
+          if (err2) {
+            console.log('新建项目失败：', err2);
+            req.flash('error', '新建项目失败!');
+            return res.redirect('/newproject');
+          }
+        });
         var maillist="";
-        
-         for(var i=0;i<member.length;i++) {
-           console.log(member.length);
-           var role1 = member[i].role;
-           var email1 = member[i].email;
-           console.log(email1);
-           Project.findByEmail(email1, function (err3, result3) {
-             if (err3) {
-               console.log('新建项目失败：', err);
-               req.flash('error', '新建项目失败!');
-               return res.redirect('/newproject');
-             }
-             if (result3.length == 0) {
-               req.flash('error', '该邀请成员不存在！!');
-               return res.redirect('/newproject');
-             }
+
+        for(var i=0;i<member.length;i++) {
+          console.log(member.length);
+          var role1 = member[i].role;
+          var email1 = member[i].email;
+          console.log(email1);
+          Project.findByEmail(email1, function (err3, result3) {
+            if (err3) {
+              console.log('新建项目失败：', err);
+              req.flash('error', '新建项目失败!');
+              return res.redirect('/newproject');
+            }
+            if (result3.length == 0) {
+              req.flash('error', '该邀请成员不存在！!');
+              return res.redirect('/newproject');
+            }
 
 
-           var data2 = {
-             project_id: result2[0].project_id,
-             project_name: result2[0].name,
-             ss: result2[0].ss,
-             member_type: role1,
-             user_id:result3[0].id ,
-             accept:0
-           };
-           console.log(data2);
-           Project.insertmap(data2, function (err5, rows2) {
-             if (err5) {
-               console.log('新建项目失败：', err2);
-               req.flash('error', '新建项目失败!');
-               return res.redirect('/newproject');
-             }
-           });
-           });       
-           maillist += email1 + ",";
-           console.log(maillist);
-         }
-       // maillist.substring(0,maillist.length-1);
+            var data2 = {
+              project_id: result2[0].project_id,
+              project_name: result2[0].name,
+              ss: result2[0].ss,
+              member_type: role1,
+              user_id:result3[0].id ,
+              accept:0
+            };
+            console.log(data2);
+            Project.insertmap(data2, function (err5, rows2) {
+              if (err5) {
+                console.log('新建项目失败：', err2);
+                req.flash('error', '新建项目失败!');
+                return res.redirect('/newproject');
+              }
+            });
+          });
+          maillist += email1 + ",";
+          console.log(maillist);
+        }
+        // maillist.substring(0,maillist.length-1);
         maillist +=member[member.length-1].email;
         console.log(maillist);
         var subject= "成员邀请"; // 标题
-        var url="localhost:4001/check?ssl="+ssl;
-        var html= "<p>请点击<a href='"+url+"'>同意</a>加入团队"+projectname+",此链接24小时后失效</p>" ;// html 内容// 发送邮件
+        var html= "<p>请点击<a href='localhost:4000/check?ssl="+ssl+"'>同意</a>加入团队"+projectname+",此链接24小时后失效</p>" ;// html 内容// 发送邮件
         sendMail(maillist, subject, html, function(err, send_res) {
 
           if (err) {
@@ -575,68 +483,20 @@ var routes = function (app) {
         });
 
 
-      
-=======
->>>>>>> 6f1789cb43e5a515138bb8a61ace1585745961cc
+
       });
-      for (var i = 0; i < member.length; i++) {
-        console.log(member.length);
-        var role1 = member[i].role;
-        var email1 = member[i].email;
-        console.log(email1);
-        Project.findByEmail(email1, function (err3, result3) {
-          if (err3) {
-            console.log('新建项目失败：', err);
-            req.flash('error', '新建项目失败!');
-            return res.redirect('/newproject');
-          }
-          if (result3.length == 0) {
-            req.flash('error', '该邀请成员不存在！!');
-            return res.redirect('/newproject');
-          }
+      //upload success
+      req.flash('success', '新建项目成功!');
+      return res.json({
+        code:"success"
+      });
 
-<<<<<<< HEAD
-     });
-=======
-
-          project.inviteMember(email1, function (err4, ssl, result4) {
-            if (err4) {
-              console.log('新建项目失败：', err);
-              req.flash('error', '新建项目失败!');
-              return res.redirect('/newproject');
-            }
-          });
-          var data2 = {
-            project_id: result2[0].project_id,
-            project_name: result2[0].name,
-            ss: result2[0].ss,
-            member_type: role1,
-            user_id: result3[0].id,
-            accept: 0
-          };
-          console.log(data2);
-          Project.insertmap(data2, function (err5, rows2) {
-            if (err5) {
-              console.log('新建项目失败：', err2);
-              req.flash('error', '新建项目失败!');
-              return res.redirect('/newproject');
-            }
-          });
-        });
-      }
     });
-    //upload success
-    req.flash('success', '新建项目成功!');
-    return res.json({
-      code: "success"
-    });
-
->>>>>>> 6f1789cb43e5a515138bb8a61ace1585745961cc
 
   });
   //项目主页面
   app.get('/projectindex', checkLogin.checkLoginUserForm);
-  app.get('/projectindex', function (req, res, next) {
+  app.get('/projectindex', function (req, res,next) {
     console.log(req.session.user);
     var email = req.session.user.email;
     User.findUserByEmail(email, function (err, rows) {
@@ -665,55 +525,33 @@ var routes = function (app) {
     });
   });
 
-  
+
   app.get('/project', checkLogin.checkLoginUserForm);
   app.get('/project', function (req, res) {
-    var ssl = req.query.ssl;
-    var user_id = req.session.user.id;
+    var ssl =req.query.ssl;
+    var user_id=req.session.user.id;
     console.log(ssl);
-<<<<<<< HEAD
-    Project.findBySSL(ssl,function (err,result)
+    Project.findByUserIdandssl(user_id,ssl,function (err,result)
     {
       if(err)
       {
-=======
-    Project.findByUserIdandssl(user_id, ssl, function (err, result) {
-      if (err) {
->>>>>>> 6f1789cb43e5a515138bb8a61ace1585745961cc
         req.flash('error', '查找出错!');
         res.redirect('/projectindex');
       }
 
-<<<<<<< HEAD
-      if(result.length>0) {
-        Project.findBySSL2(ssl, function (err2, result2) {
-          if (err2) {
-            req.flash('error', '查找出错!');
-            res.redirect('/projectindex');
-          }
-
-          console.log(result);
-          res.render('project', {
-            title: '项目管理',
-            user: req.session.user,
-            project: result[0],
-            projectinf:result2,
-            success: req.flash('success').toString(),
-            error: req.flash('error').toString()
-          });
-=======
-      if (result.length > 0) {
+      if(result.length>0)
+      {
         console.log(result);
         res.render('project', {
           title: '项目管理',
-          user: req.session.user,
-          project: result[0],
+          user:req.session.user,
+          project:result[0],
           success: req.flash('success').toString(),
           error: req.flash('error').toString()
->>>>>>> 6f1789cb43e5a515138bb8a61ace1585745961cc
         });
       }
-      else {
+      else
+      {
         console.log(result[0].ss);
         req.flash('error', '该项目不存在或已删除!');
         res.redirect('/projectindex');
@@ -724,51 +562,38 @@ var routes = function (app) {
   });
   app.get('/check', checkLogin.checkLoginUserForm);
   app.get('/check', function (req, res) {
-    var ssl = req.query.ssl;
+    var ssl =req.query.ssl;
     var user = req.session.user;
     console.log(ssl);
-    Project.findByUserIdandssl(user.id, ssl, function (err, result) {
-      if (err) {
+    Project.findByUserIdandssl(user.id,ssl,function (err,result)
+    {
+      if(err)
+      {
         req.flash('error', '查找出错!');
         res.redirect('/projectindex');
       }
 
-      if (result.length > 0) {
+      if(result.length>0)
+      {
 
-<<<<<<< HEAD
-       if(result[0].accept==1)
-       {
-         req.flash('error', '你已加入该团队!');
-         res.redirect('/project?ssl='+result[0].ss);
-       }
-        else {
-         Project.updateAccept(result[0],function (err,resu) {
-           if(err) {
-             req.flash('error', '查找出错!');
-             res.redirect('/projectindex');
-           }
-           req.flash('success', '欢迎您加入了'+result[0].project_name+'项目');
-           res.redirect('/project?ssl='+result[0].ssl);
-         });
-       }
-=======
-        if (result[0].accept == 1) {
+        if(result[0].accept==1)
+        {
           req.flash('error', '你已加入该团队!');
-          res.redirect('/project?ssl=' + project[0].ss);
+          res.redirect('/project?ssl='+result[0].ss);
         }
         else {
-          Project.updateAccept(project, function (err, resu) {
-            if (err) {
+          Project.updateAccept(result[0],function (err,resu) {
+            if(err) {
               req.flash('error', '查找出错!');
               res.redirect('/projectindex');
             }
-            req.flash('success', '欢迎您加入了' + project[0].project_name + '项目');
-            res.redirect('/project?ssl=' + project[0].ssl);
+            req.flash('success', '欢迎您加入了'+result[0].project_name+'项目');
+            res.redirect('/project?ssl='+result[0].ssl);
           });
         }
->>>>>>> 6f1789cb43e5a515138bb8a61ace1585745961cc
       }
-      else {
+      else
+      {
         req.flash('error', '该项目不存在或已删除!');
         res.redirect('/home');
       }
@@ -779,16 +604,16 @@ var routes = function (app) {
   app.get('/topics', checkLogin.checkLoginUserForm);
   app.get('/topics', function (req, res) {
     console.log(1);
-    var ssl = req.query.ssl;
-    var user_id = req.session.user.id;
+    var ssl =req.query.ssl;
+    var user_id =req.session.user.id;
     console.log(ssl);
     console.log(user_id);
-    Project.findByUserIdandssl(user_id, ssl, function (err, result) {
-      if (err) {
+    Project.findByUserIdandssl(user_id,ssl,function (err,result) {
+      if(err) {
         req.flash('error', '查找出错!');
-      return   res.redirect('/projectindex');
+        return   res.redirect('/projectindex');
       }
-      if (result.length > 0) {
+      if(result.length>0) {
         console.log(result);
         Topics.findByProjectId(result[0].project_id, function (err, topics) {
           if (err) {
@@ -798,28 +623,21 @@ var routes = function (app) {
           res.render('topics', {
             title: '讨论',
             topics: topics,
-            ssl: ssl,
+            ssl:ssl,
             user: req.session.user,
             success: req.flash('success').toString(),
             error: req.flash('error').toString()
           });
         });
       }
-      else {
+      else
+      {
         req.flash('error', '该项目不存在或已删除!');
-       return  res.redirect('/projectindex');
+        return  res.redirect('/projectindex');
       }
 
 
     });
-  });
-
-
-  app.get('/document', checkLogin.checkLoginUserForm);
-  app.get('/document', function (req, res,next) {
-        res.render('document', {
-          title: "",
-        });
   });
 
 
@@ -855,7 +673,7 @@ var routes = function (app) {
       else
       {
         req.flash('error', '该项目不存在或已删除!');
-       return res.redirect('/projectindex');
+        return res.redirect('/projectindex');
       }
 
 
@@ -863,36 +681,37 @@ var routes = function (app) {
   });
   app.post('/publish', checkLogin.checkLoginUserForm);
   app.post('/publish', function (req, res) {
-    var title = req.body.title;
+    var title =req.body.title;
     var content = req.body.content;
-    var ssl = req.body.ss;
-    var user = req.session.user;
-    Project.findByUserIdandssl(user.id, ssl, function (err, result) {
-      if (err) {
+    var ssl =req.body.ss;
+    var user =req.session.user;
+    Project.findByUserIdandssl(user.id,ssl,function (err,result) {
+      if(err) {
         req.flash('error', '查找出错!');
         res.redirect('/projectindex');
       }
-      if (result.length > 0) {
+      if(result.length>0) {
         console.log(result);
-        var topics = new Topics(title, content);
-        topics.publish(result[0].user_id, result[0].project_id, function (err, presult) {
-          if (err) {
+        var  topics =new Topics(title,content);
+        topics.publish(result[0].user_id,result[0].project_id,function (err,presult) {
+          if(err) {
             console.log(err);
             req.flash('error', '插入出错!');
             return res.json({
-              code: "error"
+              code:"error"
             });
           }
-          else {
+          else{
             req.flash('success', '发布讨论成功');
             return res.json({
-              code: "success"
+              code:"success"
             });
           }
 
         });
       }
-      else {
+      else
+      {
         req.flash('error', '该项目不存在或已删除!');
         res.redirect('/projectindex');
       }
@@ -901,6 +720,7 @@ var routes = function (app) {
     });
   });
 };
+
 
 
 module.exports = routes;
