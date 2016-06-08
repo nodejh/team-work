@@ -38,8 +38,8 @@ var routes = function (app) {
   });
 
   // 用户主页
-  app.get('/home', checkLogin.checkLoginUserForm);
-  app.get('/home', function (req, res,next) {
+  app.get('/allweekly', checkLogin.checkLoginUserForm);
+  app.get('/allweekly', function (req, res,next) {
 
     // 查找用户信息
     var email = req.session.user.email;
@@ -51,7 +51,7 @@ var routes = function (app) {
       var user = rows[0];
       // 查找改用户的周报
       var user_id = user.id;
-      Weekly.findByUserId(user_id, function (err, weeklys) {
+      Weekly.findByUserId (user_id, function (err, weeklys) {
         if (err) {
           console.log('查找用户周报信息失败');
           return next(err);
@@ -118,7 +118,7 @@ var routes = function (app) {
         return res.redirect('/login');
       }
         req.session.user = rows[0];
-        res.redirect('/home');
+        res.redirect('/projectindex');
     });
   });
 
@@ -320,27 +320,38 @@ var routes = function (app) {
   app.post('/upload', checkLogin.checkLoginUserForm);
   var uploadWeekly = upload.single('weekly');
   app.post('/upload', function (req, res) {
-    uploadWeekly(req, res, function (err) {
-      if (err) {
-        console.log('上传周报失败：', err);
-        req.flash('error', '上传成功!');
-        res.redirect('/upload');
+    uploadWeekly(req, res, function (error) {
+      if (error) {
+        console.log('上传周报失败：', error);
+        req.flash('error', '上传周报失败!');
+       return  res.redirect('/weekly');
       }
-
+      var ssl =req.body.ssl;
       var title = req.body.title;
       var week = req.body.week;
       var filename = req.file.filename;
       var user_id = req.session.user.id;
+      console.log(ssl);
       var weekly = new Weekly(title, week, filename);
-      weekly.upload(user_id, function (err, rows) {
+      Project.findBySSL(ssl,function (err1,result1) {
+        if (err1) {
+          req.flash('error', '上传失败，请重试!');
+         return  res.redirect('/weekly?ssl='+ssl);
+        }
+        // upload success
+        console.log(result1);
+        weekly.upload(user_id,result1[0].project_id, result1[0].name,function (err, rows) {
         if (err) {
           req.flash('error', '上传失败，请重试!');
           return res.redirect('/upload');
         }
         // upload success
         req.flash('success', '上传成功!');
-        res.redirect('/upload');
+        res.redirect('allweekly');
       });
+
+      });
+     
     });
   });
   // 新建项目页面
@@ -375,10 +386,13 @@ var routes = function (app) {
       {
           console.log('新建项目失败：', err1);
           req.flash('error', '已存在该项目!');
-          return   res.redirect('/newproject');
+          return  res.json({
+            code:"double"
+          });
         }
+
     //  console.log(result);
-    });
+
     var project =new Project(projectname,description,checkbox,ssl,manager.id);
 
     project.insert(function (err1,rows) {
@@ -455,7 +469,8 @@ var routes = function (app) {
         maillist +=member[member.length-1].email;
         console.log(maillist);
         var subject= "成员邀请"; // 标题
-        var html= "<p>请点击<a href='localhost:4000/check?ssl="+ssl+"'>同意</a>加入团队"+projectname+",此链接24小时后失效</p>" ;// html 内容// 发送邮件
+        var url="localhost:4001/check?ssl="+ssl;
+        var html= "<p>请点击<a href='"+url+"'>同意</a>加入团队"+projectname+",此链接24小时后失效</p>" ;// html 内容// 发送邮件
         sendMail(maillist, subject, html, function(err, send_res) {
 
           if (err) {
@@ -467,8 +482,8 @@ var routes = function (app) {
           req.flash('success', '我们已发送好友邀请,请及时查看!');
 
         });
- 
-         
+
+
       
       });
         //upload success
@@ -477,7 +492,7 @@ var routes = function (app) {
         code:"success"
         });
 
-
+     });
 
   });
   //项目主页面
@@ -517,7 +532,7 @@ var routes = function (app) {
     var ssl =req.query.ssl;
     var user_id=req.session.user.id;
     console.log(ssl);
-    Project.findByUserIdandssl(user_id,ssl,function (err,result)
+    Project.findBySSL(ssl,function (err,result)
     {
       if(err)
       {
@@ -525,15 +540,22 @@ var routes = function (app) {
         res.redirect('/projectindex');
       }
 
-      if(result.length>0)
-      {
-        console.log(result);
-        res.render('project', {
-          title: '项目管理',
-          user:req.session.user,
-          project:result[0],
-          success: req.flash('success').toString(),
-          error: req.flash('error').toString()
+      if(result.length>0) {
+        Project.findBySSL2(ssl, function (err2, result2) {
+          if (err2) {
+            req.flash('error', '查找出错!');
+            res.redirect('/projectindex');
+          }
+
+          console.log(result);
+          res.render('project', {
+            title: '项目管理',
+            user: req.session.user,
+            project: result[0],
+            projectinf:result2,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+          });
         });
       }
       else
@@ -597,7 +619,7 @@ var routes = function (app) {
     Project.findByUserIdandssl(user_id,ssl,function (err,result) {
       if(err) {
         req.flash('error', '查找出错!');
-        res.redirect('/projectindex');
+      return   res.redirect('/projectindex');
       }
       if(result.length>0) {
         console.log(result);
@@ -619,7 +641,7 @@ var routes = function (app) {
       else
       {
         req.flash('error', '该项目不存在或已删除!');
-        res.redirect('/projectindex');
+       return  res.redirect('/projectindex');
       }
 
 
@@ -627,6 +649,52 @@ var routes = function (app) {
   });
 
 
+  app.get('/document', checkLogin.checkLoginUserForm);
+  app.get('/document', function (req, res,next) {
+        res.render('document', {
+          title: "",
+        });
+  });
+
+
+  app.get('/weekly', checkLogin.checkLoginUserForm);
+  app.get('/weekly', function (req, res) {
+    console.log(1);
+    var ssl =req.query.ssl;
+    var user_id =req.session.user.id;
+    console.log(ssl);
+    console.log(user_id);
+    Project.findByUserIdandssl(user_id,ssl,function (err,result) {
+      if(err) {
+        req.flash('error', '查找出错!');
+        res.redirect('/projectindex');
+      }
+      if(result.length>0) {
+        console.log(result);
+        Weekly.findByProjectId(result[0].project_id, function (err, weekly) {
+          if (err) {
+            req.flash('error', '查找出错!');
+            return    res.redirect('/projectindex');
+          }
+          res.render('upload', {
+            title: '周报',
+            weeklys: weekly,
+            ssl:ssl,
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+          });
+        });
+      }
+      else
+      {
+        req.flash('error', '该项目不存在或已删除!');
+       return res.redirect('/projectindex');
+      }
+
+
+    });
+  });
   app.post('/publish', checkLogin.checkLoginUserForm);
   app.post('/publish', function (req, res) {
      var title =req.body.title;

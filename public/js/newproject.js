@@ -45,7 +45,12 @@ $('#btn-create-project').click(function () {
             // todo  跳转到个人中心
             window.location.href='/projectindex';
 
-        } else {
+        }
+        else if (res.code=="double"){
+            alert('新建失败！');
+            window.location.href='/newproject';
+        }
+        else {
             alert('新建失败！');
             window.location.href='/newproject';
         }

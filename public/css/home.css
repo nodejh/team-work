@@ -44,7 +44,7 @@ select {
     border-radius: 3px;
     border-color: rgb(169, 169, 169);
 }
-.btn:hover, .btn:focus {
+.btn :hover, .btn:focus {
     outline: none;
     color: #25ecdd;
 }

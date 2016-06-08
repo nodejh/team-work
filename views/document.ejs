@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<% include _head.ejs %>
+<link href="/css/topics.css" rel="stylesheet">
+<link href="utils/flat-ui/css/vendor/simditor.css" rel="stylesheet">
+<% include _header.ejs %>
+            <div class="page-inner">
+                <div class="doc-wrap">
+                    <form  action="/projects/a422d56cdb3548bea24e3edb01a8c594/docs"
+                          method="post" data-remote="true">
+
+                        <div class="form-item doc-title-wrap">
+                            <div class="form-field">
+                                <input name="doc_title" class="doc-title" placeholder="文档标题" />
+                            </div>
+                        </div>
+                        <div class="form-item wmd-panel-wrap">
+                            <div class="form-field">
+                                <div class="doc-editor">
+                                    <textarea id="txt-content" name="doc_content" class="doc-content"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doc-bottom-bar">
+                            <div class="form-item visitor-lock">
+                            </div>
+                            <div class="form-item save-btns-wrap">
+                                <div class="form-field">
+                                    <button type="submit" class="btn btn-mini btn-create-doc" data-disable-with="保存中..." data-success-text="保存成功">发布</button>
+                                    <button type="button" class="btn btn-x btn-cancel-quit">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+
+</div>
+
+
+<% include _footer.ejs %>
+</body>
+<script src="/utils/flat-ui/js/vendor/module.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/uploader.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/hotkeys.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/simditor.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/simditor-demo.js"></script>
+</html>

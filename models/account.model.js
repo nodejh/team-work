@@ -30,6 +30,19 @@ Account.prototype.insert = function (callback) {
 };
 
 
+Account.findByToken = function (token, callback) {
+  var sql = 'SELECT * FROM account WHERE token=?';
+  connection.query(sql, [token], function(err, rows) {
+    console.log('根据token查找找回密码记录: ', sql);
+    if (err) {
+     console.error('error select: ', err);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+};
+
+
 // 根据邮箱邀请成员
 Account.sendMail = function (email, subject, html, callback) {
 

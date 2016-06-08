@@ -1,5 +1,4 @@
-.access.log
-.error.log
 .DS_Store
 .idea/
 public/uploads/
+.error.log
