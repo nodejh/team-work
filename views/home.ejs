@@ -21,9 +21,6 @@
     <div class="col-xs-10 col-xs-offset-1 page">
       <h3 class="page-title">
         周报总览
-        <a href="/upload" class="btn btn-sm btn-success upload-weekly">
-          <span class="fui-new"></span>上传
-        </a>
       </h3>
 
       <% if (weeklys.length > 0) { %>
@@ -32,8 +29,9 @@
           <div class="member-week-content">
             <div class="section section-report">
               <h4 class="title">第 <strong><%= item.week %></strong> 周</h4>
-              <p><a href="#"><%= item.title %></a>
+              <p><a href="#"><%=item.project_name%>项目第<%= item.week %>周周报</a>
               </p>
+              <p><strong>备注信息：</strong><%=item.title%></p>
               <div class="reports">
                 <p class="report-update-info">
                   <%

@@ -14,7 +14,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="projectindex">项目</a></li>
-                <li><a href="/home">周报</a></li>
+                <li><a href="/allweekly">周报</a></li>
                 <li><a href="#contact">动态</a></li>
                 <li><a href="#contact">个人中心</a></li>
             </ul>
@@ -31,11 +31,33 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
+<div class="c-info">
+    <% if (error) { %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= error %>
+    </div>
+    <% } %>
+</div>
+<div class="c-info">
+    <% if (success) { %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= success %>
+    </div>
+    <% } %>
+</div>
 <div id="project" class="page-inner">
     <div class="project-content">
         <div class="project-header">
             <div class="project-hd-info">
-                <p><%= project.project_name%></p>
+                <p><%= project.name%></p>
+                <%if(project.checkbox==1){%>
+                <p><%=project.description%></p><%}%>
             </div>
 
             <div class="project-links">
@@ -46,7 +68,7 @@
                 </a>
 
                 <a href="/projects/a422d56cdb3548bea24e3edb01a8c594/members" class="link-admin-members" title="邀请新成员加入项目" data-stack="" data-nocache="">
-                    <span class="main">1</span>
+                    <span class="main"><%= projectinf.length%></span>
                     <span>成员</span>
                 </a>
 
@@ -66,7 +88,7 @@
                 </h5>
             </div>
             <div class="section section-messages" id="topics" data-droppable="">
-                <h5><a  href="#">讨论</a>
+                <h5><a>讨论</a>
                     <a id="topic" href="/topics?ssl=<%= project.ss%>" class="btn demo-heading-note">发起讨论</a>
                 </h5>
             </div>
@@ -86,8 +108,8 @@
                 </h5>
             </div>
             <div class="section section-data" id="todolists">
-                <h5><a href="#">周报</a>
-                    <button id="weekly" class="btn demo-heading-note">创建周报</button>
+                <h5><a>周报</a>
+                    <a id="topic" href="/weekly?ssl=<%= project.ss%>" class="btn demo-heading-note">创建周报</a>
                 </h5>
             </div>
 

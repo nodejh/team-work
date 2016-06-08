@@ -31,7 +31,7 @@ var sendMail = function (recipient, subject, html, callback) {
       console.log(error);
       callback(error);
     }
-    console.log('发送成功')
+    console.log('发送成功');
     callback(null, response);
   });
 };
