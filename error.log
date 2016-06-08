@@ -243,6 +243,7 @@ ReferenceError: H:\master\team-work\views\project.ejs:71
     73|                 </a>
     74| 
 
+<<<<<<< HEAD
 projectinf is not defined
     at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:56:23)
     at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
@@ -274,3 +275,64 @@ projectinf is not defined
     at H:\master\team-work\routes\index.js:545:13
     at Query._callback (H:\master\team-work\models\project.model.js:94:5)
     at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+=======
+error is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:24:12)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:203:9
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
+[Sun Jun 05 2016 19:32:09 GMT+0800 (CST)]/find_password
+ReferenceError: newUser is not defined
+    at /Users/jh/inbox/node/team-work/routes/index.js:223:26
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
+    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:121:14)
+    at checkLogin.checkNotLoginAdminForm (/Users/jh/inbox/node/team-work/passport/checkLogin.js:75:5)
+[Sun Jun 05 2016 20:05:01 GMT+0800 (CST)]/projectindex
+Error: ER_NO_SUCH_TABLE: Table 'team.project_member' doesn't exist
+    at Query.Sequence._packetToError (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:48:14)
+    at Query.ErrorPacket (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Query.js:83:18)
+    at Protocol._parsePacket (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/Parser.js:73:12)
+    at Protocol.write (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/Connection.js:96:28)
+    at emitOne (events.js:90:13)
+    at Socket.emit (events.js:182:7)
+    at readableAddChunk (_stream_readable.js:147:16)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    --------------------
+    at Protocol._enqueue (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/Protocol.js:141:48)
+    at Connection.query (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/Connection.js:201:25)
+    at Function.Project.findByUserId (/Users/jh/inbox/node/team-work/models/project.model.js:125:14)
+    at /Users/jh/inbox/node/team-work/routes/index.js:458:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/user.model.js:41:6)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+    at Query._handleFinalResultPacket (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Query.js:144:8)
+    at Query.EofPacket (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Query.js:128:8)
+    at Protocol._parsePacket (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/Protocol.js:280:23)
+    at Parser.write (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/Parser.js:73:12)
+>>>>>>> af8ba96402db6adeccdf8738e589163f59314748
+[Tue Jun 07 2016 00:30:20 GMT+0800 (CST)]/reset_password?token=8f71695423119fd022d45cfe660e5da636hLhIsHA2qTGuoyj6iu
+ReferenceError: toke is not defined
+    at /Users/jh/inbox/node/team-work/routes/index.js:279:44
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:131:13)
+    at Route.dispatch (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:277:22
+    at Function.process_params (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:330:12)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/index.js:271:10)
+    at next (/Users/jh/inbox/node/team-work/node_modules/express/lib/router/route.js:121:14)
+    at checkLogin.checkNotLoginAdminForm (/Users/jh/inbox/node/team-work/passport/checkLogin.js:75:5)
+>>>>>>> 6f1789cb43e5a515138bb8a61ace1585745961cc

@@ -1,4 +1,7 @@
 .DS_Store
 .idea/
 public/uploads/
+<<<<<<< HEAD
 .error.log
+=======
+>>>>>>> 6f1789cb43e5a515138bb8a61ace1585745961cc
