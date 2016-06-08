@@ -1,5 +1,5 @@
 .DS_Store
 .idea/
 public/uploads/
-.error.log
-.access.log
+error.log
+access.log
