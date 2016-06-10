@@ -436,3 +436,163 @@ projectinf is not defined
     at /Users/jh/inbox/node/team-work/routes/index.js:547:13
     at Query._callback (/Users/jh/inbox/node/team-work/models/project.model.js:94:5)
     at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+[Sat Jun 11 2016 03:50:31 GMT+0800 (CST)]/upload
+ReferenceError: /Users/jh/inbox/node/team-work/views/upload.ejs:65
+    63|                         </div>
+    64|                     </div>
+ >> 65|                     <input type="hidden"value="<%=ssl%>" name="ssl"/>
+    66|                 </form>
+    67|             </div>
+    68|         </div>
+
+ssl is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:51:23)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:308:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/project.model.js:130:5)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+[Sat Jun 11 2016 03:51:01 GMT+0800 (CST)]/upload
+ReferenceError: /Users/jh/inbox/node/team-work/views/upload.ejs:65
+    63|                         </div>
+    64|                     </div>
+ >> 65|                     <input type="hidden"value="<%=ssl%>" name="ssl"/>
+    66|                 </form>
+    67|             </div>
+    68|         </div>
+
+ssl is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:51:23)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:308:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/project.model.js:130:5)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+[Sat Jun 11 2016 03:51:03 GMT+0800 (CST)]/upload
+ReferenceError: /Users/jh/inbox/node/team-work/views/upload.ejs:65
+    63|                         </div>
+    64|                     </div>
+ >> 65|                     <input type="hidden"value="<%=ssl%>" name="ssl"/>
+    66|                 </form>
+    67|             </div>
+    68|         </div>
+
+ssl is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:51:23)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:308:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/project.model.js:130:5)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+[Sat Jun 11 2016 03:51:18 GMT+0800 (CST)]/upload
+ReferenceError: /Users/jh/inbox/node/team-work/views/upload.ejs:65
+    63|                         </div>
+    64|                     </div>
+ >> 65|                     <input type="hidden"value="<%=ssl%>" name="ssl"/>
+    66|                 </form>
+    67|             </div>
+    68|         </div>
+
+ssl is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:51:23)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:308:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/project.model.js:130:5)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+[Sat Jun 11 2016 03:52:04 GMT+0800 (CST)]/upload
+ReferenceError: /Users/jh/inbox/node/team-work/views/upload.ejs:65
+    63|                         </div>
+    64|                     </div>
+ >> 65|                     <input type="hidden"value="<%=ssl%>" name="ssl"/>
+    66|                 </form>
+    67|             </div>
+    68|         </div>
+
+ssl is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:51:23)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:308:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/project.model.js:130:5)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+[Sat Jun 11 2016 04:05:10 GMT+0800 (CST)]/project?ssl=e196032f757777cdff8db260ff23b54b
+ReferenceError: /Users/jh/inbox/node/team-work/views/project.ejs:71
+    69| 
+    70|                 <a href="/projects/a422d56cdb3548bea24e3edb01a8c594/members" class="link-admin-members" title="邀请新成员加入项目" data-stack="" data-nocache="">
+ >> 71|                     <span class="main"><%= projectinf.length%></span>
+    72|                     <span>成员</span>
+    73|                 </a>
+    74| 
+
+projectinf is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:56:23)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:547:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/project.model.js:94:5)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+[Sat Jun 11 2016 04:05:12 GMT+0800 (CST)]/project?ssl=7f4920fb41fc24e43955e456b6038bf0
+ReferenceError: /Users/jh/inbox/node/team-work/views/project.ejs:71
+    69| 
+    70|                 <a href="/projects/a422d56cdb3548bea24e3edb01a8c594/members" class="link-admin-members" title="邀请新成员加入项目" data-stack="" data-nocache="">
+ >> 71|                     <span class="main"><%= projectinf.length%></span>
+    72|                     <span>成员</span>
+    73|                 </a>
+    74| 
+
+projectinf is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:56:23)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:547:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/project.model.js:94:5)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
+[Sat Jun 11 2016 04:05:18 GMT+0800 (CST)]/project?ssl=45357a5c731751a44000d1ba2c0e25fb
+ReferenceError: /Users/jh/inbox/node/team-work/views/project.ejs:71
+    69| 
+    70|                 <a href="/projects/a422d56cdb3548bea24e3edb01a8c594/members" class="link-admin-members" title="邀请新成员加入项目" data-stack="" data-nocache="">
+ >> 71|                     <span class="main"><%= projectinf.length%></span>
+    72|                     <span>成员</span>
+    73|                 </a>
+    74| 
+
+projectinf is not defined
+    at eval (eval at <anonymous> (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:464:12), <anonymous>:56:23)
+    at returnedFn (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:493:17)
+    at View.exports.renderFile [as engine] (/Users/jh/inbox/node/team-work/node_modules/ejs/lib/ejs.js:350:31)
+    at View.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/view.js:126:8)
+    at tryRender (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:639:10)
+    at EventEmitter.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/application.js:591:3)
+    at ServerResponse.render (/Users/jh/inbox/node/team-work/node_modules/express/lib/response.js:961:7)
+    at /Users/jh/inbox/node/team-work/routes/index.js:547:13
+    at Query._callback (/Users/jh/inbox/node/team-work/models/project.model.js:94:5)
+    at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
