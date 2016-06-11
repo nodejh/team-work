@@ -1,12 +1,14 @@
-<!DOCTYPE html>
 <% include _head.ejs %>
 <link href="/css/topics.css" rel="stylesheet">
 <link href="utils/flat-ui/css/vendor/simditor.css" rel="stylesheet">
+<link href="/css/document.css" rel="stylesheet">
 <% include _header.ejs %>
-            <div class="page-inner">
+<div class="wrapper">
+    <div class="container">
+        <div class="page">
+            <div class="page-inner" id="page-doc-new">
                 <div class="doc-wrap">
-                    <form  action="/projects/a422d56cdb3548bea24e3edb01a8c594/docs"
-                          method="post" data-remote="true">
+                    <form>
 
                         <div class="form-item doc-title-wrap">
                             <div class="form-field">
@@ -31,16 +33,21 @@
                             </div>
                         </div>
                     </form>
-                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
+<input type="hidden" id="member-admin" />
+<input type="hidden" id="member-owner" />
 
 <% include _footer.ejs %>
-</body>
 <script src="/utils/flat-ui/js/vendor/module.min.js"></script>
 <script src="/utils/flat-ui/js/vendor/uploader.min.js"></script>
 <script src="/utils/flat-ui/js/vendor/hotkeys.min.js"></script>
 <script src="/utils/flat-ui/js/vendor/simditor.min.js"></script>
 <script src="/utils/flat-ui/js/vendor/simditor-demo.js"></script>
-</html>
+<% include _foot.ejs %>

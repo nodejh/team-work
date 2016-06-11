@@ -13,6 +13,7 @@ var storage = multer.diskStorage({
 var upload = multer({
   storage: storage
 });
+var config = require('../config/config');
 var checkLogin = require('../passport/checkLogin');
 var Weekly = require('../models/weekly.model');
 var User = require('../models/user.model');
@@ -249,7 +250,7 @@ var routes = function (app) {
         }
         // 发送邮件
         //subject, html
-        var url = req.hostname + '/reset_password?token=' + token;
+        var url = "http://" + req.hostname + ":" + config.port + '/reset_password?token=' + token;
         console.log(url);
         var subject = '你的网速办公,找回密码';
         var html = '点击此链接重置密码<a href="'+url+'">'+url+'</a>';
@@ -469,8 +470,10 @@ var routes = function (app) {
         maillist +=member[member.length-1].email;
         console.log(maillist);
         var subject= "成员邀请"; // 标题
-        var url="localhost:4001/check?ssl="+ssl;
-        var html= "<p>请点击<a href='"+url+"'>同意</a>加入团队"+projectname+",此链接24小时后失效</p>" ;// html 内容// 发送邮件
+
+        var url = "http://" + req.hostname + ":" +  config.port + "/check?ssl=" + ssl;
+        var html= "<p>请点击<a href=\" " + url + " \">同意</a>加入团队"+projectname+",此链接24小时后失效</p>" ;// html 内容// 发送邮件
+
         sendMail(maillist, subject, html, function(err, send_res) {
 
           if (err) {
