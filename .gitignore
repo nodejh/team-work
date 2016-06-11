@@ -3,3 +3,4 @@
 public/uploads/
 error.log
 access.log
+config/config.server.js

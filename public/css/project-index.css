@@ -1,5 +1,9 @@
 .project-head{
-    padding: 10px 30px 50px; height: 35px;
+    position: absolute;
+    top: 27px;
+    float: right;
+    right: 40px;
+    font-size: 1em;
 }
 .project-body{
     margin: 0 30px 80px;

@@ -5,7 +5,8 @@
     font-size: 18px;
     color: #888888;
     background: #f9f9f9;
-    width:940px;position: relative;left: 204px;
+    position: relative;
+    /*left: 204px;*/
 }
 .project-type-section input[type=radio] {
     display: none;
@@ -59,13 +60,14 @@ input.invite-email {
 }
 .new-project{
     display: block;
+    margin: 0 15px;
 }
 .before{
     position: relative;left:40px;
 
 }
 .panel-content{
-    width: 960px;margin-left: 195px;
+    /*width: 960px;margin-left: 195px;*/
 }
 .creat-project{
     margin: 0px 40px 40px 40px

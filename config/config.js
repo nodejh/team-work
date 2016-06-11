@@ -42,6 +42,13 @@ var config = {
     service: 'QQ',
     user:'1002901669@qq.com',
     pass:'yhjqfymtbhudbfcb'
+  },
+
+  oauth: {
+    qq: {
+      id: '',
+      key: ''
+    }
   }
 };
 
