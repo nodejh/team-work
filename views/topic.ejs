@@ -1,0 +1,190 @@
+<% include _head.ejs %>
+<link href="/css/topics.css" rel="stylesheet">
+<link href="utils/flat-ui/css/vendor/simditor.css" rel="stylesheet">
+<% include _header.ejs %>
+<div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">菜单</span>
+            </button>
+            <a class="navbar-brand" href="/">nucleus</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="projectindex">项目</a></li>
+                <li><a href="/allweekly">周报</a></li>
+                <li><a href="#contact">动态</a></li>
+                <li><a href="#contact">个人中心</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人资料</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="c-info">
+  <% if (error) { %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= error %>
+    </div>
+  <% } %>
+</div>
+
+
+<div class="c-info">
+    <% if (success) { %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= success %>
+    </div>
+    <% } %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 page">
+      <div>
+      	<h1 class="page-title">
+       	   讨论
+        </h1>
+      </div>
+      <div class="messages">
+          <div class="message ">
+            
+              <a href="" target="_blank" title="王婷"><img alt="王婷" class="avatar" src="/assets/default_avatars/noon.jpg" /></a>
+          
+              <div class="name">
+                  <a href="/members/1f6873339bbe4993a49d52c9ff790410" data-stack-root="true" data-stack="true" title="王婷">王婷</a>
+              </div>
+          
+              <a data-stack href="/projects/b0d22b74f322456d9fdc9d654dc44f4b/todos/7a95dc3957944ca0b218f50d5055a1f5" class="message-link">
+                  <span class="message-title">
+                          <span class="todo-rest">2016-1-3</span>
+                  </span>
+                  <span class="message-content">
+                      撩妹
+                  </span>
+              </a>
+           </div>
+	  </div>
+     
+
+        <% topic.forEach(function (item) { %>
+          <h4 class="title">回复</h4>
+          <div class="messages">
+            <div class="message ">
+              <a href="" target="_blank" title="王婷"><img alt="王婷" class="avatar" src="/assets/default_avatars/noon.jpg" /></a>
+          
+              <div class="name">
+                  <a href="/members/1f6873339bbe4993a49d52c9ff790410" data-stack-root="true" data-stack="true" title="王婷">王婷</a>
+              </div>
+          
+              <a data-stack href="/projects/b0d22b74f322456d9fdc9d654dc44f4b/todos/7a95dc3957944ca0b218f50d5055a1f5" class="message-link">
+                  <span class="message-title">
+                          <span class="todo-rest">2016-1-3</span>
+                  </span>
+                  <span class="message-content">
+                      6666
+                  </span>
+              </a>
+             </div>
+             
+             
+             <div class="message ">
+            
+              <a href="" target="_blank" title="王婷"><img alt="王婷" class="avatar" src="/assets/default_avatars/noon.jpg" /></a>
+          
+              <div class="name">
+                  <a href="/members/1f6873339bbe4993a49d52c9ff790410" data-stack-root="true" data-stack="true" title="王婷">王婷</a>
+              </div>
+          
+              <a data-stack href="/projects/b0d22b74f322456d9fdc9d654dc44f4b/todos/7a95dc3957944ca0b218f50d5055a1f5" class="message-link">
+                  <span class="message-title">
+                          <span class="todo-rest">2016-1-3</span>
+                  </span>
+                  <span class="message-content">
+                      6666
+                  </span>
+              </a>
+             </div>
+          </div>
+        
+        
+      
+
+        <input type="button" name="subject" id="txt_begin" class="btn" value="点击发表评论" onclick="show()" />
+        <form action="" method="post" data-remote="true" data-type="json" id="txt" style="display:none">
+
+            <div  class="form-item">
+                <div>
+                    <textarea tabindex="1" name="content" id="txt-content" autofocus></textarea>
+                </div>
+            </div>
+            <div class="form-item">
+                <button tabindex="1" class="btn" id="btn-post" type="submit" data-disable-with="正在提交...">发表评论</button>
+                <a tabindex="2" href="javascript:;" class="btn" id="link-cancel-post">取消</a>
+            </div>
+        </form>
+         <% }%>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include _footer.ejs %>
+<script src="/utils/flat-ui/js/vendor/module.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/uploader.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/hotkeys.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/simditor.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/simditor-demo.js"></script>
+<script>
+	function show(){		
+		document.getElementById("txt_begin").style.display="none";
+		document.getElementById("txt").style.display="block";
+	}
+    $('#btn-post').click(function () {
+        var title = document.getElementById("txt-title").value;
+        var content = document.getElementById("txt-content").value;
+        var ssl = '<%= ssl %>';
+      alert(title);
+        var data = {
+            title: title,
+            content: content,
+            ss:ssl
+        };
+         alert(ssl);
+        $.post('/publish', data, function (res) {
+            alert(1);
+            if (res.code=="success") {
+                alert('新建成功！');
+                // todo  跳转到个人中心
+                window.location.href='/topics?ssl='+ssl;
+
+            } else {
+                alert(res.code);
+                window.location.href='/projectindex';
+            }
+        });
+    });
+    document.getElementById('link-cancel-post').addEventListener('click', function(e) {
+        document.getElementById("txt_begin").style.display="block";
+        document.getElementById("txt").style.display="none";
+        // 当<a>触发click时，处理业务
+    }, false);
+    </script>
+<% include _foot.ejs %>
