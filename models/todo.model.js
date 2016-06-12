@@ -48,5 +48,29 @@ Todo.findByProjectId = function (project_id, callback) {
 };
 
 
+// 根据 project_id 查找主题
+Todo.findById = function (todo_id, callback) {
+    var sql = 'SELECT * FROM todo WHERE todo_id=?';
+    connection.query(sql, [todo_id], function (err, rows) {
+        if (err) {
+            console.error('error SELECT: ' + err.stack);
+            return callback(err);
+        }
+        callback(null, rows);
+    });
+};
+
+
+// 根据 user_id 查找项目
+Todo.finish = function (todo_id, callback) {
+    var sql = 'UPDATE todo SET  finished=? WHERE todo_id=?';
+    connection.query(sql, [1,todo_id], function (err, rows) {
+        if (err) {
+            console.error('error SELECT: ' + err.stack);
+            return callback(err);
+        }
+        callback(null, rows);
+    });
+}
 
 module.exports = Todo;

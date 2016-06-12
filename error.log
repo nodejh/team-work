@@ -659,3 +659,43 @@ Date.getTime is not a function
     at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
     at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
     at H:\master\team-work\routes\index.js:684:17
+[Sun Jun 12 2016 18:44:21 GMT+0900 (韩国标准时间)]/todo?ssl=88f8ec571e3fba57977decfcb75d4857
+ReferenceError: H:\master\team-work\views\todo.ejs:107
+    105|                     <img class="avatar" src="/img/bj.jpg" />  <div class="name"><%=item.user_name%></div>   <span class="message-title">截至日期</span><span class="message-content"><% var date=new Date(item.finish_time)%><%= date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()%></span>
+    106|                     <div class="comment-info"><input class="custom-checkbox" value="<%item.todo_id%>" id="checkbox1" data-toggle="checkbox" type="checkbox"<% if(user.id!=item.admin_id){%> disabled=""<% }%> ></div>
+ >> 107|                     <% if( $('#checkbox1').checked==ture){
+    108|                          var todo_id =$('#checkbox1').value;
+    109|                         var data={
+    110|                           todo_id:todo_id
+
+$ is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:84:12)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:68:14)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:684:17
+[Sun Jun 12 2016 18:44:21 GMT+0900 (韩国标准时间)]/todo?ssl=88f8ec571e3fba57977decfcb75d4857
+ReferenceError: H:\master\team-work\views\todo.ejs:107
+    105|                     <img class="avatar" src="/img/bj.jpg" />  <div class="name"><%=item.user_name%></div>   <span class="message-title">截至日期</span><span class="message-content"><% var date=new Date(item.finish_time)%><%= date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()%></span>
+    106|                     <div class="comment-info"><input class="custom-checkbox" value="<%item.todo_id%>" id="checkbox1" data-toggle="checkbox" type="checkbox"<% if(user.id!=item.admin_id){%> disabled=""<% }%> ></div>
+ >> 107|                     <% if( $('#checkbox1').checked==ture){
+    108|                          var todo_id =$('#checkbox1').value;
+    109|                         var data={
+    110|                           todo_id:todo_id
+
+$ is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:84:12)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:68:14)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:684:17

@@ -830,6 +830,44 @@ var routes = function (app) {
 
     });
   });
+
+  app.post('/mission', checkLogin.checkLoginUserForm);
+  app.post('/mission', function (req, res) {
+    var todo_id =req.body.todo_id;
+    Todo.findById(todo_id,function (err,result) {
+      if(err) {
+        req.flash('error', '查找出错!');
+        res.redirect('/projectindex');
+      }
+      if(result.length>0)
+      {
+   
+        Todo.finish(todo_id,function (err2,result2) {
+          if(err2) {
+            console.log(err2);
+            req.flash('error', '插入出错!');
+            return res.json({
+              code:"error"
+            });
+          }
+          else{
+            req.flash('success', '任务完成');
+            return res.json({
+              code:"success"
+            });
+          }
+
+        });
+      }
+      else
+      {
+        req.flash('error', '该项目不存在或已删除!');
+        res.redirect('/projectindex');
+      }
+
+
+    });
+  });
 };
 
 
