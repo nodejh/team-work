@@ -639,3 +639,23 @@ topics is not defined
     at H:\master\team-work\routes\index.js:659:15
     at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
     at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+[Sun Jun 12 2016 17:21:48 GMT+0900 (韩国标准时间)]/todo?ssl=88f8ec571e3fba57977decfcb75d4857
+TypeError: H:\master\team-work\views\todo.ejs:79
+    77|             <% todos.forEach(function (item) { %>
+    78|                 <div class="task">
+ >> 79|                     <p><input type="checkbox"> &nbsp&nbsp <%=item.user_name%> &nbsp&nbsp <% var date=new Date.getTime(item.finish_time)%><%=date%></p>
+    80|                 </div>
+    81|                 <% }); %>
+    82|             </div>
+
+Date.getTime is not a function
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:79:17)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:74:14)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:684:17

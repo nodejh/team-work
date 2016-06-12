@@ -43,6 +43,19 @@ function User(name, email, password) {
  };
 
 
+User.findUserById = function (user_id, callback) {
+
+    var select = 'SELECT * FROM user WHERE id=?';
+    connection.query(select, [user_id], function (err, rows) {
+        if (err) {
+            console.error('error select: ' + err.stack);
+            return callback(err);
+        }
+
+        callback(null, rows);
+    });
+};
+
 
 // 根据邮箱更新密码
 User.updatePasswordByEmail = function (email, password, callback) {

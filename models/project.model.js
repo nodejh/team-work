@@ -130,6 +130,7 @@ Project.findByUserId = function (user_id, callback) {
     callback(null, rows);
   });
 }
+
 // 根据邮箱邀请成员
 Project.prototype.inviteMember = function (email, ssl,callback) {
 console.log(email);

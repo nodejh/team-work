@@ -6,11 +6,12 @@ function Todo(finish_time,content) {
 }
 
 
-Todo.prototype.insert = function (admin_id,member_id,project_id, callback) {
+Todo.prototype.insert = function (admin_id,member_id,user_name,project_id, callback) {
     var time = parseInt(new Date().getTime() / 1000);
     var data = {
         admin_id: admin_id,
         member_id:member_id,
+        user_name:user_name,
         project_id:project_id,
         finish_time: this.finish_time,
         content: this.content,
