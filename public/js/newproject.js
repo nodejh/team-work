@@ -4,7 +4,7 @@ $('#add').click(function () {
     html +=" <div class='invite-field invite-item '>";
     html +="<input type='email' class='invite-email no-border' name='email' placeholder='请输入新成员的邮箱'>";
     html +="<div class='invite-role-field'>";
-    html +="<select class='invite-role' id='choose-role' tabindex='-1'>";
+    html +="<select class='invite-role' id='choose-role'name='choose-role' tabindex='-1'>";
     html +="<option value='0' selected>成员</option>";
     html +="<option value='1'>管理员</option>";
     html +="<option value='2'>主管</option>";
@@ -24,7 +24,7 @@ $('#btn-create-project').click(function () {
    var email = document.getElementsByName("email");
     var role = document.getElementsByName("choose-role");
     var length=email.length;
-  //  alert(email[1].value);
+  //  alert();
     for(var i=0;i<length-1;i++)
     {
 

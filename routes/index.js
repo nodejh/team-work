@@ -19,6 +19,7 @@ var Weekly = require('../models/weekly.model');
 var User = require('../models/user.model');
 var Project =require('../models/project.model');
 var Topics =require('../models/topics.model');
+var Todo =require('../models/todo.model');
 var Account = require('../models/account.model');
 var sendMail = require('../models/mail.model');
 
@@ -547,7 +548,7 @@ var routes = function (app) {
         Project.findBySSL2(ssl, function (err2, result2) {
           if (err2) {
             req.flash('error', '查找出错!');
-            res.redirect('/projectindex');
+           return  res.redirect('/projectindex');
           }
 
           console.log(result);
@@ -654,21 +655,44 @@ var routes = function (app) {
 
   app.get('/todo', checkLogin.checkLoginUserForm);
   app.get('/todo', function (req, res) {
-
-
+    console.log(1);
+    var ssl =req.query.ssl;
+    var user_id =req.session.user.id;
+    console.log(ssl);
+    console.log(user_id);
+    Project.findByUserIdandssl(user_id,ssl,function (err,result) {
+      if(err) {
+        req.flash('error', '查找出错!');
+        return   res.redirect('/projectindex');
+      }
+      if(result.length>0) {
+        console.log(result);
+        Todo.findByProjectId(result[0].project_id, function (err, todos) {
+          if (err) {
+            req.flash('error', '查找出错!');
+            res.redirect('/projectindex');
+          }
           res.render('todo', {
             title: '任务',
-            todos:[],
+            todos: todos,
+            ssl:ssl,
             user: req.session.user,
             success: req.flash('success').toString(),
             error: req.flash('error').toString()
           });
+        });
+      }
+      else
+      {
+        req.flash('error', '该项目不存在或已删除!');
+        return  res.redirect('/projectindex');
+      }
 
 
-
+    });
   });
 
-   
+
   app.get('/document', checkLogin.checkLoginUserForm);
   app.get('/document', function (req, res,next) {
         res.render('document', {
