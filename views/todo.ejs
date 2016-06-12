@@ -1,0 +1,117 @@
+<% include _head.ejs %>
+<link href="/utils/flat-ui/css/vendor/lyz.calendar.css" rel="stylesheet" type="text/css" />
+<style>
+    .form-item{
+        margin:10px auto 30px auto;
+    }
+</style>
+<% include _header.ejs %>
+<% include _nav1.ejs %>
+
+<div class="c-info">
+    <% if (error) { %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= error %>
+    </div>
+    <% } %>
+</div>
+<div class="c-info">
+    <% if (success) { %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= success %>
+    </div>
+    <% } %>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 page">
+            <div>
+                <h1 class="page-title">
+                    任务
+                </h1>
+            </div>
+            <div>
+                <div><input type="button"  id="todo_begin" class="btn" value="添加任务" onclick="show()" /></div>
+
+                <form action="" method="post" data-remote="true" data-type="json" id="todo" style="display:none">
+                    <div class="form-item">
+                        <input  type="text"  class="form-control" id="todo-title" tabindex="1" placeholder="     任务描述" />
+                    </div>
+                    <div class="form-item">
+                        <div class="invite-role-field">
+                            任务负责人：
+                            <select  class="form-control" id="choose-people" tabindex="1">
+                                <option value="0">王婷</option>
+                                <option value="1">毛浩宇</option>
+                                <option value="2">蒋航</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        任务完成时间：
+                        <input id="txtEndDate" class="form-control" id="choose-time" tabindex="1"/>
+                    </div>
+                    <div class="form-item">
+                        <button tabindex="1" class="btn" id="btn-post" type="submit" data-disable-with="正在提交...">发起任务</button>
+                        <a tabindex="2" href="javascript:;" class="btn" id="link-cancel-post">取消</a>
+                    </div>
+                </form>
+
+
+            </div>
+
+
+            <% if (todos.length > 0) { %>
+            <% todos.forEach(function (item) { %>
+            <h4 class="title">正在进行的任务</h4>
+            <div class="tasks">
+                <div class="task">
+                    <p><input type="checkbox"> &nbsp&nbsp 负责人姓名 &nbsp&nbsp 任务截止时间</p>
+                </div>
+                <div class="task">
+                    <p><input type="checkbox"> &nbsp&nbsp 负责人姓名 &nbsp&nbsp 任务截止时间</p>
+                </div>
+                <div class="task">
+                    <p><input type="checkbox"> &nbsp&nbsp 负责人姓名 &nbsp&nbsp 任务截止时间</p>
+                </div>
+            </div>
+
+            <% }); %>
+            <% } else { %>
+            <div class="empty">
+                暂无任务
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/utils/flat-ui/js/vendor/jquery-1.5.1.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/utils/flat-ui/js/flat-ui.min.js"></script>
+
+<script src="/utils/flat-ui/js/vendor/lyz.calendar.min.js" type="text/javascript"></script>
+
+<script>
+    function show(){
+        document.getElementById("todo_begin").style.display="none";
+        document.getElementById("todo").style.display="block";
+    }
+    document.getElementById('link-cancel-post').addEventListener('click', function(e) {
+        document.getElementById("todo_begin").style.display="block";
+        document.getElementById("todo").style.display="none";
+        // 当<a>触发click时，处理业务
+    }, false);
+
+    $(function () {
+        $("#txtEndDate").calendar();
+    });
+</script>
+<% include _foot.ejs %>

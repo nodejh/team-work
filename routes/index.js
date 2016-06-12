@@ -652,6 +652,23 @@ var routes = function (app) {
   });
 
 
+  app.get('/todo', checkLogin.checkLoginUserForm);
+  app.get('/todo', function (req, res) {
+
+
+          res.render('todo', {
+            title: '任务',
+            todos:[],
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+          });
+
+
+
+  });
+
+   
   app.get('/document', checkLogin.checkLoginUserForm);
   app.get('/document', function (req, res,next) {
         res.render('document', {

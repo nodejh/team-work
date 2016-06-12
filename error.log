@@ -599,3 +599,43 @@ projectinf is not defined
     at Query._callback (/Users/jh/inbox/node/team-work/models/project.model.js:94:5)
     at Query.Sequence.end (/Users/jh/inbox/node/team-work/node_modules/mysql/lib/protocol/sequences/Sequence.js:96:24)
 >>>>>>> e54456214d7932a8ac136c99a64d8d2afce50a30
+[Sun Jun 12 2016 11:33:53 GMT+0900 (韩国标准时间)]/todo
+ReferenceError: H:\master\team-work\views\topics.ejs:89
+    87| 
+    88| 
+ >> 89|       <% if (topics.length > 0) { %>
+    90|         <% topics.forEach(function (item) { %>
+    91|           <h4 class="title">正在进行的讨论</h4>
+    92|           <div class="messages">
+
+topics is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:45:12)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:659:15
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+[Sun Jun 12 2016 11:35:23 GMT+0900 (韩国标准时间)]/todo
+ReferenceError: H:\master\team-work\views\topics.ejs:89
+    87| 
+    88| 
+ >> 89|       <% if (topics.length > 0) { %>
+    90|         <% topics.forEach(function (item) { %>
+    91|           <h4 class="title">正在进行的讨论</h4>
+    92|           <div class="messages">
+
+topics is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:45:12)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:659:15
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
