@@ -85,12 +85,12 @@
 
     </div>
 
-
+        <h4 class="title">正在进行的讨论</h4>
+        <div class="messages" id="messages">
       <% if (topics.length > 0) { %>
         <% topics.forEach(function (item) { %>
-          <h4 class="title">正在进行的讨论</h4>
-          <div class="messages">
-            <div class="message ">
+
+            <div class="message " id="message" name="<%= item.id %>">
               <img class="avatar" src="/img/bj.jpg" />
               <div class="name">
                   <%=item.user_name%>
@@ -98,30 +98,34 @@
                   <span class="message-title">
                           <span class="todo-rest"><%= item.title%></span>
                   </span>
-                <a>
+                <p>
                   <span class="message-content">
                       <%- item.content%>
                   </span>
-                </a>
-                <input type="button" name="subject" id="begin" class="btn" value="点击发表评论" onclick="show1()" />
-                <form action="" method="post" data-remote="true" data-type="json" id="form1"  style="display:none">
+                </p>
+                <section id="parent">
+                    <input type="button" name="subject" id="begin" class="btn" value="点击发表评论" onclick="show1()" />
+                    <div  id="form1"  style="display:none">
 
-                    <div  class="form-item">
-                        <div>
-                            <textarea tabindex="1" name="content" id="commit" ></textarea>
+                        <div  class="form-item">
+                            <div>
+                                <input type="hidden" value="<%= item.id%>" id="topic_id">
+                                <input type="text"  class="form-control" tabindex="1" name="content" id="commit" />
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <button tabindex="1" class="btn" id="submit" data-disable-with="正在提交...">发表评论</button>
+                            <a tabindex="2" href="javascript:;" class="btn" id="link-cancel-post">取消</a>
                         </div>
                     </div>
-                    <div class="form-item">
-                        <button tabindex="1" class="btn" id="btn-post" type="submit" data-disable-with="正在提交...">发表评论</button>
-                        <a tabindex="2" href="javascript:;" class="btn" id="link-cancel-post">取消</a>
-                    </div>
-                </form>
+                </section>
+
               <div class="comment-info">
           
-                      <a href="/projects/b0d22b74f322456d9fdc9d654dc44f4b/todos/7a95dc3957944ca0b218f50d5055a1f5" class="comments-count" data-stack="true">2</a>
+                      <a href="" class="comments-count" data-stack="true">2</a>
               </div>
             </div>
-          </div>
+
 
         <% }); %>
       <% } else { %>
@@ -129,6 +133,7 @@
         暂时没有发起过讨论
       </div>
       <% } %>
+        </div>
     </div>
   </div>
 </div>
@@ -174,6 +179,54 @@
             }
         });
     });
+    $('#submit').click(function () {
+
+        var content = document.getElementById("commit").value;
+        var topic_id = document.getElementById("topic_id").value;
+        var ssl = '<%= ssl %>';
+        var data = {
+            content: content,
+            topic_id:topic_id
+        };
+        $.post('/commit', data, function (res) {
+            if (res.code=="success") {
+                alert('评论成功！');
+                // todo  跳转到个人中心
+                window.location.href='/topics?ssl='+ssl;
+
+            } else {
+                alert('评论失败');
+                window.location.href='/projectindex';
+            }
+        });
+    });
+    $('#message').click(function () {
+
+        var topic_id = document.getElementById("message").getAttribute('name');
+        alert(topic_id);
+        if(topic_id!="") {
+            var data = {
+                topic_id: topic_id
+            };
+            $.post('/comment', data, function (res) {
+                var comments = res.comments;
+                var parent = document.getElementById("parent");
+                for (var i = 0; i < comments.length; i++) {
+                    var html = "";
+                    html += "<input type=\"button\" name=\"subject\" id=\"begin\" class=\"btn\" value=\"点击发表评论\" onclick=\"show1()\" />";
+                    html += " <div  id=\"form1\"  style=\"display:none\">";
+
+                    html += "  <div  class=\"form-item\"> <div>";
+                    html += "<input type=\"hidden\" value=\"<%= item.id %>\" id=\"topic_id\">";
+                    html += "  <input type=\"text\"  class=\"form-control\" tabindex=\"1\" name=\"content\" id=\"commit\" /> </div> </div>"
+                    html += "   <div class=\"form-item\">";
+                    html += "   <button tabindex=\"1\" class=\"btn\" id=\"submit\" data-disable-with=\"正在提交...\">发表评论</button>";
+                    html += " <a tabindex=\"2\" href=\"javascript:;\" class=\"btn\" id=\"link-cancel-post\">取消</a> </div> </div>";
+
+                }
+            });
+        }
+        });
     document.getElementById('link-cancel-post').addEventListener('click', function(e) {
         document.getElementById("txt_begin").style.display="block";
         document.getElementById("txt").style.display="none";

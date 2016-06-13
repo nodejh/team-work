@@ -19,6 +19,7 @@ var Weekly = require('../models/weekly.model');
 var User = require('../models/user.model');
 var Project =require('../models/project.model');
 var Topics =require('../models/topics.model');
+var Commit =require('../models/commit.model');
 var Todo =require('../models/todo.model');
 var Account = require('../models/account.model');
 var sendMail = require('../models/mail.model');
@@ -620,24 +621,23 @@ var routes = function (app) {
     console.log(1);
     var ssl =req.query.ssl;
     var user_id =req.session.user.id;
-    console.log(ssl);
-    console.log(user_id);
+
     Project.findByUserIdandssl(user_id,ssl,function (err,result) {
       if(err) {
         req.flash('error', '查找出错!');
       return   res.redirect('/projectindex');
       }
       if(result.length>0) {
-        console.log(result);
-        Topics.findByProjectId(result[0].project_id, function (err, topics) {
-          if (err) {
+        Topics.findByProjectId(result[0].project_id, function (err2, topics) {
+          if (err2) {
             req.flash('error', '查找出错!');
-            res.redirect('/projectindex');
+           return  res.redirect('/projectindex');
           }
           console.log(topics);
           res.render('topics', {
             title: '讨论',
             topics: topics,
+            comment:comment,
             ssl:ssl,
             user: req.session.user,
             success: req.flash('success').toString(),
@@ -762,7 +762,7 @@ var routes = function (app) {
     Project.findByUserIdandssl(user_id,ssl,function (err,result) {
       if(err) {
         req.flash('error', '查找出错!');
-        res.redirect('/projectindex');
+        return res.redirect('/projectindex');
       }
       if(result.length>0) {
         console.log(result);
@@ -799,7 +799,7 @@ var routes = function (app) {
     Project.findByUserIdandssl(user.id,ssl,function (err,result) {
       if(err) {
         req.flash('error', '查找出错!');
-        res.redirect('/projectindex');
+       return  res.redirect('/projectindex');
       }
       if(result.length>0) {
         console.log(result);
@@ -824,13 +824,50 @@ var routes = function (app) {
       else
       {
         req.flash('error', '该项目不存在或已删除!');
-        res.redirect('/projectindex');
+        return res.redirect('/projectindex');
       }
 
 
     });
   });
 
+  app.post('/commit', checkLogin.checkLoginUserForm);
+  app.post('/commit', function (req, res) {
+
+    var content = req.body.content;
+    var topic_id =req.body.topic_id;
+    var user =req.session.user;
+
+        Topics.findById(topic_id, function (err1, result) {
+          if (err1) {
+            req.flash('error', '查找出错!');
+            return res.redirect('/projectindex');
+          }
+          if (result.length > 0) {
+
+            var commit = new Commit(content);
+            commit.insert(result[0].id,user.id,user.name, function (err2, presult) {
+              if (err2) {
+                console.log(err2);
+                req.flash('error', '插入出错!');
+                return res.json({
+                  code: "error"
+                });
+              }
+              req.flash('success', '发布评论成功');
+              return res.json({
+                code:"success"
+              });
+            });
+          }
+          else {
+            req.flash('error', '该讨论不存在或已删除!');
+            res.redirect('/projectindex');
+          }
+        });
+
+  });
+  
   app.post('/mission', checkLogin.checkLoginUserForm);
   app.post('/mission', function (req, res) {
     var todo_id =req.body.todo_id;
@@ -872,6 +909,7 @@ var routes = function (app) {
 
 app.get('/event', checkLogin.checkLoginUserForm);
 app.get('/event', function (req, res) {
+  var user =req.session.user;
 
   res.render('event', {
     title: '动态',

@@ -45,6 +45,16 @@ Topics.findByProjectId = function (project_id, callback) {
     });
 };
 
-
+// 根据 project_id 查找主题
+Topics.findById = function (topic_id, callback) {
+    var sql = 'SELECT * FROM topics WHERE id=?';
+    connection.query(sql, [topic_id], function (err, rows) {
+        if (err) {
+            console.error('error SELECT: ' + err.stack);
+            return callback(err);
+        }
+        callback(null, rows);
+    });
+};
 
 module.exports = Topics;

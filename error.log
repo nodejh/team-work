@@ -743,3 +743,83 @@ weeklys is not defined
     at H:\master\team-work\routes\index.js:876:7
     at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
     at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+[Mon Jun 13 2016 15:37:31 GMT+0900 (韩国标准时间)]/commit
+ReferenceError: ssl is not defined
+    at H:\master\team-work\routes\index.js:841:40
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Mon Jun 13 2016 15:38:10 GMT+0900 (韩国标准时间)]/commit
+ReferenceError: ssl is not defined
+    at H:\master\team-work\routes\index.js:841:40
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Mon Jun 13 2016 15:38:28 GMT+0900 (韩国标准时间)]/commit
+ReferenceError: ssl is not defined
+    at H:\master\team-work\routes\index.js:841:40
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Mon Jun 13 2016 15:38:33 GMT+0900 (韩国标准时间)]/commit
+ReferenceError: ssl is not defined
+    at H:\master\team-work\routes\index.js:841:40
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Mon Jun 13 2016 15:40:17 GMT+0900 (韩国标准时间)]/commit
+ReferenceError: ssl is not defined
+    at H:\master\team-work\routes\index.js:841:40
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Mon Jun 13 2016 21:32:44 GMT+0900 (韩国标准时间)]/topics?ssl=b42a86db0221aa3e38893aa52675407b
+ReferenceError: H:\master\team-work\views\topics.ejs:220
+    218| 
+    219|                     html += "  <div  class=\"form-item\"> <div>";
+ >> 220|                     html += "<input type=\"hidden\" value=\"<%= item.id %>\" id=\"topic_id\">";
+    221|                     html += "  <input type=\"text\"  class=\"form-control\" tabindex=\"1\" name=\"content\" id=\"commit\" /> </div> </div>"
+    222|                     html += "   <div class=\"form-item\">";
+    223|                     html += "   <button tabindex=\"1\" class=\"btn\" id=\"submit\" data-disable-with=\"正在提交...\">发表评论</button>";
+
+item is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:87:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:650:15
+    at Query._callback (H:\master\team-work\models\topics.model.js:44:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)

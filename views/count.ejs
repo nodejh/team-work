@@ -1,0 +1,140 @@
+<% include _head.ejs %>
+<link href="/css/home.css" rel="stylesheet">
+<link href="/css/event.css" rel="stylesheet">
+<% include _header.ejs %>
+
+<div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">菜单</span>
+            </button>
+            <a class="navbar-brand" href="/">nucleus</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="projectindex">项目</a></li>
+                <li><a href="/allweekly">周报</a></li>
+                <li class="active"><a href="/event">动态</a></li>
+                <li><a href="#contact">个人中心</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人资料</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="c-info">
+    <% if (error) { %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= error %>
+    </div>
+    <% } %>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 page">
+            <div class="page-inner" data-page-name="数据统计" id="page-project-stats">
+
+                <div class="section section-stats">
+                    <h3>统计</h3>
+
+                    <ul class="summary">
+                        <li>
+                            <span class="name">待处理任务</span>
+                            <span class="count">0</span>
+                        </li>
+                        <li>
+                            <span class="name">延误任务</span>
+                            <span class="count ">0</span>
+                        </li>
+                        <li>
+                            <span class="name">总任务数</span>
+                            <span class="count">3</span>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                <div class="section section-contribution">
+                    <h3>贡献</h3>
+                    <p class="desc">
+                        截至目前，共有 <span class="members count">1</span> 位成员对项目做出了贡献<span class="todos">，共完成 <span class="count"></span> 条任务</span><span style="display: inline;" class="messages">，产生 <span class="count">3</span> 条讨论</span><span style="display: inline;" class="docs">，创建 <span class="count">3</span> 篇文档</span><span style="display: inline;" class="files">，上传 <span class="count">1</span> 个文件</span>。
+                    </p>
+
+                    <table class="contribution-table">
+                        <tbody><tr>
+                            <td class="member">
+                                <img src="/assets/default_avatars/waves.jpg" class="avatar">
+                                <span class="name text-overflow">wangting</span>
+                            </td>
+                            <td class="contribution">
+                                <div class="bar">
+                                    <span class="count">3</span>
+                                    <div class="inner-bar" data-tooltip="wangting 完成了 3 条任务" data-position="top" style="width: 100%">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr></tbody>
+                    </table>
+
+
+                    <div class="init init-stats-contribution hide">
+                        <p class="title">hmmm... 项目还没有任何进展，快去干活吧！</p>
+                    </div>
+                </div>
+
+                <script type="text/html" id="tpl-progress-todolist">
+                    <tr data-url="{{ url }}">
+                        <td class="todolist text-overflow">
+                            <span class="name">{{ name }}</span>
+                        </td>
+                        <td class="progress">
+                            <div class="bar">
+                                <div class="inner-bar" style="width: {{ progressWidth }}%"></div>
+                            </div>
+                            <span class="count">{{ count }}</span>
+                        </td>
+                    </tr>
+                </script>
+
+                <script type="text/html" id="tpl-contribution-member">
+                    <tr>
+                        <td class="member">
+                            <img src="{{ avatar }}" class= "avatar"/>
+                            <span class="name text-overflow">{{ name }}</span>
+                        </td>
+                        <td class="contribution">
+                            <div class="bar">
+                                <span class="count">{{ count }}</span>
+                                <div class="inner-bar" data-tooltip="{{ name }} 完成了 {{ count }} 条任务" data-position="top" style="width: {{ contributionWidth }}%">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </script>
+
+                <input id="stats-data" value="{&quot;members_count&quot;:1,&quot;documents_count&quot;:3,&quot;topics_count&quot;:3,&quot;attachments_count&quot;:1,&quot;progress&quot;:1.0,&quot;todolist&quot;:{},&quot;members&quot;:{&quot;b677c5d05f674f81b2b30a782b42250a&quot;:{&quot;avatar&quot;:&quot;/assets/default_avatars/waves.jpg&quot;,&quot;name&quot;:&quot;wangting&quot;,&quot;completed_todos_count&quot;:3}}}" type="hidden">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<% include _footer.ejs %>
+<% include _foot.ejs %>
