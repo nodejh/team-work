@@ -1,0 +1,414 @@
+<% include _head.ejs %>
+<link href="/css/home.css" rel="stylesheet">
+<link href="/css/event.css" rel="stylesheet">
+<% include _header.ejs %>
+
+<div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">菜单</span>
+            </button>
+            <a class="navbar-brand" href="/">nucleus</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="projectindex">项目</a></li>
+                <li><a href="/allweekly">周报</a></li>
+                <li class="active"><a href="/event">动态</a></li>
+                <li><a href="#contact">个人中心</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人资料</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="c-info">
+    <% if (error) { %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= error %>
+    </div>
+    <% } %>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 page">
+            <div class="events-day" data-absdate="2016-05-18T00:00:00+08:00">
+                <h4 class="events-day-title"><span class="date">5/18</span><span class="day">周三</span></h4>
+                <div class="events-day-content">
+                    <div class="events-ancestor" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1">
+                        <h5 class="events-ancestor-title">
+                            <a href="/projects/d4f721d3308442eead2aecdbb40fc8d1" target="_blank" title="dssdsdf">dssdsdf</a>
+                        </h5>
+                        <div class="event event-comment" id="event-59432726" data-commentable-guid="b072666c00ea48699f707b4eb902d346" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a class="event-created-at" data-created-at="2016-05-18T17:43:28+08:00" href="#event-59432726">17:43</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				回复了讨论
+			</span>
+			<span class="event-commentable">
+				<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/messages/b072666c00ea48699f707b4eb902d346" class="message-rest" data-stack="true">iiojio</a>
+			</span>
+                                </div>
+                                <div class="event-body">
+                                    <a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/messages/b072666c00ea48699f707b4eb902d346#d3ead73d2667474a9669135fc97f822d" class="event-text" data-stack="true" title="123">123</a>
+
+
+                                </div>
+                            </div>
+                        </div><div class="event event-comment" id="event-59432678" data-commentable-guid="b072666c00ea48699f707b4eb902d346" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a class="event-created-at" data-created-at="2016-05-18T17:43:21+08:00" href="#event-59432678">17:43</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				回复了讨论
+			</span>
+			<span class="event-commentable">
+				<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/messages/b072666c00ea48699f707b4eb902d346" class="message-rest" data-stack="true">iiojio</a>
+			</span>
+                                </div>
+                                <div class="event-body">
+                                    <a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/messages/b072666c00ea48699f707b4eb902d346#469b7d4b55fe46d5be20f13540ce1b43" class="event-text" data-stack="true" title="1234567890">1234567890</a>
+
+
+                                </div>
+                            </div>
+                        </div><div class="event event-comment" id="event-59432592" data-commentable-guid="b072666c00ea48699f707b4eb902d346" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a class="event-created-at" data-created-at="2016-05-18T17:43:04+08:00" href="#event-59432592">17:43</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				回复了讨论
+			</span>
+			<span class="event-commentable">
+				<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/messages/b072666c00ea48699f707b4eb902d346" class="message-rest" data-stack="true">iiojio</a>
+			</span>
+                                </div>
+                                <div class="event-body">
+                                    <a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/messages/b072666c00ea48699f707b4eb902d346#d35907609f7949958b0a6a2e998cbb7b" class="event-text" data-stack="true" title="123456789">123456789</a>
+
+
+                                </div>
+                            </div>
+                        </div><div class="event event-comment" id="event-59432537" data-commentable-guid="b072666c00ea48699f707b4eb902d346" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a class="event-created-at" data-created-at="2016-05-18T17:42:54+08:00" href="#event-59432537">17:42</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				回复了讨论
+			</span>
+			<span class="event-commentable">
+				<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/messages/b072666c00ea48699f707b4eb902d346" class="message-rest" data-stack="true">iiojio</a>
+			</span>
+                                </div>
+                                <div class="event-body">
+                                    <a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/messages/b072666c00ea48699f707b4eb902d346#381e450dde6540b5a6285ab74bee61d4" class="event-text" data-stack="true" title="1237989080">1237989080</a>
+
+
+                                </div>
+                            </div>
+                        </div></div><div class="events-ancestor" data-ancestor-guid="344e5dfb974740c2a52e34428f04bc3e">
+                        <h5 class="events-ancestor-title">
+                            <a href="/projects/344e5dfb974740c2a52e34428f04bc3e" target="_blank" title="23">23</a>
+                        </h5>
+                        <div class="event event-common event-project-add" id="event-59432260" data-ancestor-guid="344e5dfb974740c2a52e34428f04bc3e" data-ancestor-name="23" data-ancestor-url="/projects/344e5dfb974740c2a52e34428f04bc3e">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59432260" data-created-at="2016-05-18T17:42:01+08:00" class="event-created-at">17:42</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				创建了项目
+			</span>
+			<span class="event-text">
+				<a href="/projects/344e5dfb974740c2a52e34428f04bc3e" class="emphasize" target="_blank">23</a>
+			</span>
+                                </div>
+                            </div>
+                        </div></div><div class="events-ancestor" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1">
+                        <h5 class="events-ancestor-title">
+                            <a href="/projects/d4f721d3308442eead2aecdbb40fc8d1" target="_blank" title="dssdsdf">dssdsdf</a>
+                        </h5>
+                        <div class="event event-common event-message-add" id="event-59431742" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+                            <i class="icon-event"></i>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59431742" data-created-at="2016-05-18T17:40:18+08:00" class="event-created-at">17:40</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				创建了讨论
+			</span>
+			<span class="event-text">
+				<span class="emphasize">
+					<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/messages/b072666c00ea48699f707b4eb902d346" class="message-rest" data-stack="true">iiojio</a>
+				</span>
+			</span>
+                                </div>
+                                <div class="event-body">
+                                    <span class="event-text" title="opoippo">opoippo</span>
+
+
+                                </div>
+                            </div>
+                        </div><div class="event event-common event-message-add" id="event-59431553" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+                            <i class="icon-event"></i>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59431553" data-created-at="2016-05-18T17:39:43+08:00" class="event-created-at">17:39</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				创建了讨论
+			</span>
+			<span class="event-text">
+				<span class="emphasize">
+					<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/messages/ea104f14fd8b4fb38f49da756d3425e3" class="message-rest" data-stack="true">qwewq</a>
+				</span>
+			</span>
+                                </div>
+                                <div class="event-body">
+                                    <span class="event-text" title="12323121">12323121</span>
+
+
+                                </div>
+                            </div>
+                        </div></div><div class="events-ancestor" data-ancestor-guid="36fb36bb6c8e4f4b9883aa4a77384c34">
+                        <h5 class="events-ancestor-title">
+                            <a href="/teams/36fb36bb6c8e4f4b9883aa4a77384c34/weekly_reports" target="_blank" title="周报">周报</a>
+                        </h5>
+                        <div class="event event-common event-week-add" id="event-59389006" data-ancestor-guid="36fb36bb6c8e4f4b9883aa4a77384c34" data-ancestor-name="周报" data-ancestor-url="/teams/36fb36bb6c8e4f4b9883aa4a77384c34/weekly_reports">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+                            <i class="icon-event"></i>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59389006" data-created-at="2016-05-18T15:16:03+08:00" class="event-created-at">15:16</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				创建了周报
+			</span>
+			<span class="event-text">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a/weekly_reports?start_at=2016-05-16" class="emphasize" data-stack="true">wangting的周报（2016年第21周）</a>
+			</span>
+                                </div>
+                            </div>
+                        </div></div><div class="events-ancestor" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1">
+                        <h5 class="events-ancestor-title">
+                            <a href="/projects/d4f721d3308442eead2aecdbb40fc8d1" target="_blank" title="dssdsdf">dssdsdf</a>
+                        </h5>
+                        <div class="event event-common event-document-add" id="event-59388750" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+                            <i class="icon-event"></i>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59388750" data-created-at="2016-05-18T15:15:04+08:00" class="event-created-at">15:15</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				创建了文档
+			</span>
+			<span class="event-text">
+				<span class="emphasize">
+					<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/docs/e01815f78d1f4c89abff8c7558f4392b" class="document-rest" data-stack="true">新建文档</a>
+				</span>
+			</span>
+                                </div>
+                            </div>
+                        </div><div class="event event-common event-document-add" id="event-59388666" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+                            <i class="icon-event"></i>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59388666" data-created-at="2016-05-18T15:14:44+08:00" class="event-created-at">15:14</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				创建了文档
+			</span>
+			<span class="event-text">
+				<span class="emphasize">
+					<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/docs/f902c735eda54a358381884dd5bbfd25" class="document-rest" data-stack="true">新建文档</a>
+				</span>
+			</span>
+                                </div>
+                            </div>
+                        </div><div class="event event-common event-todo-close" id="event-59387958" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+                            <i class="icon-event"></i>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59387958" data-created-at="2016-05-18T15:12:30+08:00" class="event-created-at">15:12</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				完成了任务
+			</span>
+			<span class="event-text">
+				<span class="emphasize">
+					<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/todos/8f8c15c7217345c79d5c04d118924e56" class="todo-rest" data-stack="true">123456</a>
+				</span>
+			</span>
+                                </div>
+                            </div>
+                        </div><div class="event event-common event-todo-close" id="event-59387935" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+                            <i class="icon-event"></i>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59387935" data-created-at="2016-05-18T15:12:26+08:00" class="event-created-at">15:12</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				完成了任务
+			</span>
+			<span class="event-text">
+				<span class="emphasize">
+					<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/todos/7cfe6363c2c143d0a370227c9700421a" class="todo-rest" data-stack="true">123</a>
+				</span>
+			</span>
+                                </div>
+                            </div>
+                        </div><div class="event event-common event-todo-add" id="event-59387906" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+                            <i class="icon-event"></i>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59387906" data-created-at="2016-05-18T15:12:22+08:00" class="event-created-at">15:12</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				创建了任务
+			</span>
+			<span class="event-text">
+				<span class="emphasize">
+					<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/todos/7cfe6363c2c143d0a370227c9700421a" class="todo-rest" data-stack="true">123</a>
+				</span>
+			</span>
+                                </div>
+                            </div>
+                        </div><div class="event event-common event-todo-add" id="event-59387804" data-ancestor-guid="d4f721d3308442eead2aecdbb40fc8d1" data-ancestor-name="dssdsdf" data-ancestor-url="/projects/d4f721d3308442eead2aecdbb40fc8d1">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+                            <i class="icon-event"></i>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59387804" data-created-at="2016-05-18T15:12:08+08:00" class="event-created-at">15:12</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				创建了任务
+			</span>
+			<span class="event-text">
+				<span class="emphasize">
+					<a href="/projects/d4f721d3308442eead2aecdbb40fc8d1/todos/8f8c15c7217345c79d5c04d118924e56" class="todo-rest" data-stack="true">123456</a>
+				</span>
+			</span>
+                                </div>
+                            </div>
+                        </div></div><div class="events-ancestor" data-ancestor-guid="dab9206ff0544cce808e888200e17920">
+                        <h5 class="events-ancestor-title">
+                            <a href="/teams/36fb36bb6c8e4f4b9883aa4a77384c34/calendars" target="_blank" title="法定假日">法定假日</a>
+                        </h5>
+                        <div class="event event-common event-calendarevent-add" id="event-59387480" data-ancestor-guid="dab9206ff0544cce808e888200e17920" data-ancestor-name="法定假日" data-ancestor-url="/teams/36fb36bb6c8e4f4b9883aa4a77384c34/calendars">
+
+                            <a href="/members/b677c5d05f674f81b2b30a782b42250a" class="from" target="_blank"><img alt="wangting" class="avatar" src="https://tower.im/assets/default_avatars/waves.jpg"></a>
+                            <i class="icon-event"></i>
+
+                            <div class="event-main">
+                                <div class="event-head">
+                                    <a href="#event-59387480" data-created-at="2016-05-18T15:10:56+08:00" class="event-created-at">15:10</a>
+			<span class="event-actor">
+				<a href="/members/b677c5d05f674f81b2b30a782b42250a" class="link-member" target="_blank">wangting</a>
+			</span>
+			<span class="event-action">
+				创建了日程
+			</span>
+			<span class="event-text">
+				<span class="emphasize">
+					<a href="/teams/36fb36bb6c8e4f4b9883aa4a77384c34/calendar_events/0746dd27f8324b52badf199570e529c6" class="calendar_event-rest" data-stack="true">新的日程安排</a>
+				</span>
+			</span>
+                                </div>
+                            </div>
+                        </div></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<% include _footer.ejs %>
+<% include _foot.ejs %>

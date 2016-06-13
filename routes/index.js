@@ -194,7 +194,7 @@ var routes = function (app) {
           password: password,
           type: 1
         };
-        res.redirect('/home');
+        res.redirect('/projectindex');
       });
     });
   });
@@ -382,7 +382,7 @@ var routes = function (app) {
 
     var md5 = crypto.createHash('md5');
     var  ssl = md5.update(str).digest('hex');
-   console.log('weewwerwwrrwewsdfsdfffsd');
+   console.log(description);
     Project.findByUserIdandname(manager.id,projectname,function (err1,result1) {
       if(result1.length>0)
       {
@@ -418,6 +418,7 @@ var routes = function (app) {
         ss:result2[0].ss,
         member_type:'1',
         user_id:manager.id,
+        user_name:manager.name,
         accept:1
       };
         console.log(123);
@@ -453,6 +454,7 @@ var routes = function (app) {
              ss: result2[0].ss,
              member_type: role1,
              user_id:result3[0].id ,
+             user_name:result3[0].name,
              accept:0
            };
            console.log(data2);
@@ -541,7 +543,7 @@ var routes = function (app) {
       if(err)
       {
         req.flash('error', '查找出错!');
-        res.redirect('/projectindex');
+       return  res.redirect('/projectindex');
       }
 
       if(result.length>0) {
@@ -607,7 +609,7 @@ var routes = function (app) {
       else
       {
         req.flash('error', '该项目不存在或已删除!');
-        res.redirect('/home');
+        res.redirect('/projectindex');
       }
     });
 
@@ -632,6 +634,7 @@ var routes = function (app) {
             req.flash('error', '查找出错!');
             res.redirect('/projectindex');
           }
+          console.log(topics);
           res.render('topics', {
             title: '讨论',
             topics: topics,
@@ -667,18 +670,27 @@ var routes = function (app) {
       }
       if(result.length>0) {
         console.log(result);
-        Todo.findByProjectId(result[0].project_id, function (err, todos) {
-          if (err) {
+        Project.findBySSL2(ssl, function (err1, result1) {
+          if (err1) {
             req.flash('error', '查找出错!');
-            res.redirect('/projectindex');
+            return res.redirect('/projectindex');
           }
-          res.render('todo', {
-            title: '任务',
-            todos: todos,
-            ssl:ssl,
-            user: req.session.user,
-            success: req.flash('success').toString(),
-            error: req.flash('error').toString()
+          Todo.findByProjectId(result[0].project_id, function (err, todos) {
+            if (err) {
+              req.flash('error', '查找出错!');
+             return  res.redirect('/projectindex');
+            }
+            console.log(todos);
+            res.render('todo', {
+              title: '任务',
+              member_type:result[0].member_type,
+              todos: todos,
+              projectinf: result1,
+              ssl: ssl,
+              user: req.session.user,
+              success: req.flash('success').toString(),
+              error: req.flash('error').toString()
+            });
           });
         });
       }
@@ -692,6 +704,45 @@ var routes = function (app) {
     });
   });
 
+  app.post('/todo', checkLogin.checkLoginUserForm);
+  app.post('/todo', function (req, res) {
+    var finish_time =req.body.time;
+    var content = req.body.content;
+    var member_id =req.body.people;
+    var ssl =req.body.ss;
+    var user =req.session.user;
+    Project.findByUserIdandssl(user.id,ssl,function (err1,result) {
+      if(err1) {
+        req.flash('error', '查找出错!');
+         return  res.redirect('/projectindex');
+      }
+      if(result.length>0) {
+        console.log(result);
+        var  todo =new Todo(finish_time,content);
+        User.findUserById(member_id,function (err2,result2) {
+        todo.insert(result[0].user_id,member_id,result2[0].name,result[0].project_id,function (err3,presult) {
+          if(err3) {
+            console.log(err);
+            req.flash('error', '插入出错!');
+            return res.redirect('/projectindex');
+          }
+          else{
+            req.flash('success', '发布任务成功');
+            return res.redirect('/todo?ssl='+ssl);
+          }
+
+        });
+      });
+      }
+      else
+      {
+        req.flash('error', '该项目不存在或已删除!');
+        return res.redirect('/projectindex');
+      }
+
+
+    });
+    });
 
   app.get('/document', checkLogin.checkLoginUserForm);
   app.get('/document', function (req, res,next) {
@@ -753,7 +804,7 @@ var routes = function (app) {
       if(result.length>0) {
         console.log(result);
         var  topics =new Topics(title,content);
-        topics.publish(result[0].user_id,result[0].project_id,function (err,presult) {
+        topics.publish(result[0].user_id,result[0].user_name,result[0].project_id,function (err,presult) {
        if(err) {
          console.log(err);
          req.flash('error', '插入出错!');
@@ -779,6 +830,57 @@ var routes = function (app) {
 
     });
   });
+
+  app.post('/mission', checkLogin.checkLoginUserForm);
+  app.post('/mission', function (req, res) {
+    var todo_id =req.body.todo_id;
+    Todo.findById(todo_id,function (err,result) {
+      if(err) {
+        req.flash('error', '查找出错!');
+        res.redirect('/projectindex');
+      }
+      if(result.length>0)
+      {
+   
+        Todo.finish(todo_id,function (err2,result2) {
+          if(err2) {
+            console.log(err2);
+            req.flash('error', '插入出错!');
+            return res.json({
+              code:"error"
+            });
+          }
+          else{
+            req.flash('success', '任务完成');
+            return res.json({
+              code:"success"
+            });
+          }
+
+        });
+      }
+      else
+      {
+        req.flash('error', '该项目不存在或已删除!');
+        res.redirect('/projectindex');
+      }
+
+
+    });
+  });
+
+
+app.get('/event', checkLogin.checkLoginUserForm);
+app.get('/event', function (req, res) {
+
+  res.render('event', {
+    title: '动态',
+    user: req.session.user,
+    success: req.flash('success').toString(),
+    error: req.flash('error').toString()
+  });
+});
+
 };
 
 

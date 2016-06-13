@@ -6,10 +6,11 @@ function Topics(title,content) {
 }
 
 
-Topics.prototype.publish = function (user_id,project_id, callback) {
+Topics.prototype.publish = function (user_id,user_name,project_id, callback) {
     var time = parseInt(new Date().getTime() / 1000);
     var data = {
         user_id: user_id,
+        user_name:user_name,
         project_id:project_id,
         title: this.title,
         content: this.content,

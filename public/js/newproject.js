@@ -17,7 +17,7 @@ $('#add').click(function () {
 });
 $('#btn-create-project').click(function () {
     var projectname = $('#projectname').val();
-    var description = $('#describe').val();
+    var description = $('#description').val();
     var checkbox = $('#checkbox').val();
     alert(projectname);
     var members ="[" ;

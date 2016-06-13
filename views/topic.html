@@ -1,4 +1,4 @@
-<% include _head.ejs %>
+﻿<% include _head.ejs %>
 <link href="/css/topics.css" rel="stylesheet">
 <link href="utils/flat-ui/css/vendor/simditor.css" rel="stylesheet">
 <% include _header.ejs %>
@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="projectindex">项目</a></li>
                 <li><a href="/allweekly">周报</a></li>
-                <li><a href="/event">动态</a></li>
+                <li><a href="#contact">动态</a></li>
                 <li><a href="#contact">个人中心</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -59,80 +59,92 @@
     <div class="col-xs-10 col-xs-offset-1 page">
       <div>
       	<h1 class="page-title">
-       	   话题讨论
+       	   讨论
         </h1>
       </div>
-	  <div>
-        <div><input type="button" name="subject" id="txt_begin" class="btn" value="点击发起讨论" onclick="show()" /></div>
-        
-        <div  data-remote="true" data-type="json" id="txt" style="display:none">
-            <div class="form-item">
-                <div class="span3">
-                    <input tabindex="1" type="text" name="subject" id="txt-title" style="width:100%" placeholder="    话题" />
-                </div>
-            </div>
-            <div>
-                <div>
-                    <textarea tabindex="1" name="content" id="txt-content" ></textarea>
-                </div>
-            </div>
-            <div class="form-item">
-                <button tabindex="1" class="btn" id="btn-post" data-disable-with="正在提交...">发起讨论</button>
-                <a tabindex="2" href="javascript:;" class="btn" id="link-cancel-post">取消</a>
-            </div>
-        </div>
+      <div class="messages">
+          <div class="message ">
+            
+              <a href="" target="_blank" title="王婷"><img alt="王婷" class="avatar" src="/assets/default_avatars/noon.jpg" /></a>
+          
+              <div class="name">
+                  <a href="/members/1f6873339bbe4993a49d52c9ff790410" data-stack-root="true" data-stack="true" title="王婷">王婷</a>
+              </div>
+          
+              <a data-stack href="/projects/b0d22b74f322456d9fdc9d654dc44f4b/todos/7a95dc3957944ca0b218f50d5055a1f5" class="message-link">
+                  <span class="message-title">
+                          <span class="todo-rest">2016-1-3</span>
+                  </span>
+                  <span class="message-content">
+                      撩妹
+                  </span>
+              </a>
+           </div>
+	  </div>
+     
 
-
-    </div>
-
-
-      <% if (topics.length > 0) { %>
-        <% topics.forEach(function (item) { %>
-          <h4 class="title">正在进行的讨论</h4>
+        <% topic.forEach(function (item) { %>
+          <h4 class="title">回复</h4>
           <div class="messages">
             <div class="message ">
-              <img class="avatar" src="/img/bj.jpg" />
-              <div class="name">
-                  <%=item.user_name%>
-              </div>
-                  <span class="message-title">
-                          <span class="todo-rest"><%= item.title%></span>
-                  </span>
-                <a>
-                  <span class="message-content">
-                      <%- item.content%>
-                  </span>
-                </a>
-                <input type="button" name="subject" id="begin" class="btn" value="点击发表评论" onclick="show1()" />
-                <form action="" method="post" data-remote="true" data-type="json" id="form1"  style="display:none">
-
-                    <div  class="form-item">
-                        <div>
-                            <textarea tabindex="1" name="content" id="commit" ></textarea>
-                        </div>
-                    </div>
-                    <div class="form-item">
-                        <button tabindex="1" class="btn" id="btn-post" type="submit" data-disable-with="正在提交...">发表评论</button>
-                        <a tabindex="2" href="javascript:;" class="btn" id="link-cancel-post">取消</a>
-                    </div>
-                </form>
-              <div class="comment-info">
+              <a href="" target="_blank" title="王婷"><img alt="王婷" class="avatar" src="/assets/default_avatars/noon.jpg" /></a>
           
-                      <a href="/projects/b0d22b74f322456d9fdc9d654dc44f4b/todos/7a95dc3957944ca0b218f50d5055a1f5" class="comments-count" data-stack="true">2</a>
+              <div class="name">
+                  <a href="/members/1f6873339bbe4993a49d52c9ff790410" data-stack-root="true" data-stack="true" title="王婷">王婷</a>
               </div>
-            </div>
+          
+              <a data-stack href="/projects/b0d22b74f322456d9fdc9d654dc44f4b/todos/7a95dc3957944ca0b218f50d5055a1f5" class="message-link">
+                  <span class="message-title">
+                          <span class="todo-rest">2016-1-3</span>
+                  </span>
+                  <span class="message-content">
+                      6666
+                  </span>
+              </a>
+             </div>
+             
+             
+             <div class="message ">
+            
+              <a href="" target="_blank" title="王婷"><img alt="王婷" class="avatar" src="/assets/default_avatars/noon.jpg" /></a>
+          
+              <div class="name">
+                  <a href="/members/1f6873339bbe4993a49d52c9ff790410" data-stack-root="true" data-stack="true" title="王婷">王婷</a>
+              </div>
+          
+              <a data-stack href="/projects/b0d22b74f322456d9fdc9d654dc44f4b/todos/7a95dc3957944ca0b218f50d5055a1f5" class="message-link">
+                  <span class="message-title">
+                          <span class="todo-rest">2016-1-3</span>
+                  </span>
+                  <span class="message-content">
+                      6666
+                  </span>
+              </a>
+             </div>
           </div>
+        
+        
+      
 
-        <% }); %>
-      <% } else { %>
-      <div class="empty">
-        暂时没有发起过讨论
+        <input type="button" name="subject" id="txt_begin" class="btn" value="点击发表评论" onclick="show()" />
+        <form action="" method="post" data-remote="true" data-type="json" id="txt">
+
+            <div  class="form-item">
+                <div>
+                    <textarea tabindex="1" name="content" id="txt-content" autofocus></textarea>
+                </div>
+            </div>
+            <div class="form-item">
+                <button tabindex="1" class="btn" id="btn-post" type="submit" data-disable-with="正在提交...">发表评论</button>
+                <a tabindex="2" href="javascript:;" class="btn" id="link-cancel-post">取消</a>
+            </div>
+        </form>
+         <% }%>
+
       </div>
-      <% } %>
     </div>
   </div>
 </div>
-
 
 <% include _footer.ejs %>
 <script src="/utils/flat-ui/js/vendor/module.min.js"></script>
@@ -145,11 +157,6 @@
 		document.getElementById("txt_begin").style.display="none";
 		document.getElementById("txt").style.display="block";
 	}
-
-    function show1(){
-        document.getElementById("begin").style.display="none";
-        document.getElementById("form1").style.display="block";
-    }
     $('#btn-post').click(function () {
         var title = document.getElementById("txt-title").value;
         var content = document.getElementById("txt-content").value;
