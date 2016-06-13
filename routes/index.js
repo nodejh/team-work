@@ -194,7 +194,7 @@ var routes = function (app) {
           password: password,
           type: 1
         };
-        res.redirect('/home');
+        res.redirect('/projectindex');
       });
     });
   });
@@ -382,7 +382,7 @@ var routes = function (app) {
 
     var md5 = crypto.createHash('md5');
     var  ssl = md5.update(str).digest('hex');
-   console.log('weewwerwwrrwewsdfsdfffsd');
+   console.log(description);
     Project.findByUserIdandname(manager.id,projectname,function (err1,result1) {
       if(result1.length>0)
       {
@@ -868,6 +868,19 @@ var routes = function (app) {
 
     });
   });
+
+
+app.get('/event', checkLogin.checkLoginUserForm);
+app.get('/event', function (req, res) {
+
+  res.render('event', {
+    title: '动态',
+    user: req.session.user,
+    success: req.flash('success').toString(),
+    error: req.flash('error').toString()
+  });
+});
+
 };
 
 

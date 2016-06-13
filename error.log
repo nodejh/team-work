@@ -699,3 +699,47 @@ $ is not defined
     at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
     at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
     at H:\master\team-work\routes\index.js:684:17
+[Mon Jun 13 2016 12:54:30 GMT+0900 (韩国标准时间)]/event
+ReferenceError: user is not defined
+    at H:\master\team-work\routes\index.js:880:15
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Mon Jun 13 2016 12:56:36 GMT+0900 (韩国标准时间)]/event
+ReferenceError: weekly is not defined
+    at H:\master\team-work\routes\index.js:880:14
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
+    at Route.dispatch (H:\master\team-work\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at H:\master\team-work\node_modules\express\lib\router\index.js:277:22
+    at Function.process_params (H:\master\team-work\node_modules\express\lib\router\index.js:330:12)
+    at next (H:\master\team-work\node_modules\express\lib\router\index.js:271:10)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:121:14)
+    at checkLogin.checkLoginUserForm (H:\master\team-work\passport\checkLogin.js:10:5)
+[Mon Jun 13 2016 13:53:14 GMT+0900 (韩国标准时间)]/event
+ReferenceError: H:\master\team-work\views\event.ejs:53
+    51|             </h3>
+    52| 
+ >> 53|             <% if (weeklys.length > 0) { %>
+    54|             <% weeklys.forEach(function (item) { %>
+    55|             <div class="member-week self">
+    56|                 <div class="member-week-content">
+
+weeklys is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:36:12)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:876:7
+    at Layer.handle [as handle_request] (H:\master\team-work\node_modules\express\lib\router\layer.js:95:5)
+    at next (H:\master\team-work\node_modules\express\lib\router\route.js:131:13)
