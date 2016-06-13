@@ -211,7 +211,7 @@
     $('#upload_file').click(function () {
 
       var folder_html = select_folder_html();
-       console.log(folder_html);
+      console.log(folder_html);
       if (folder_html.length == 0) {
         swal({
           title: "没有文件夹",
@@ -238,6 +238,7 @@
         cancelButtonText: '取消',
         confirmButtonText: "选好了",
         closeOnConfirm: false,
+        showLoaderOnConfirm: true,
         html: true
       }, function () {
         //// 跳转到具体的文件夹页面
@@ -245,10 +246,41 @@
         //window.location.href = '/folder_upload?folder_id=' + folder_id;
 
         // 上传文件的 form
+        var form_id = random_string(5) + (new Date().getTime());
+        var folder_id = $('#select_folder input[name="folder"]:checked').val();
+        var form_html = upload_file_form_html(form_id, folder_id);
+        $('#upload_file_form').append(form_html);
+        $('#input_' + form_id).click();
+        // 上传文件
+        $('#input_' + form_id).on('change', function () {
+          var files = $(this).get(0).files;
+          console.log(files);
+          var formData = new FormData();
+          formData.append('uploads', files[0], files[0].name);
+          formData.append('folder_id', folder_id);
+          console.log(formData);
 
-
+          $.ajax({
+            url: '/api/file_upload',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+              console.log('upload successful!\n' + data);
+              console.log(data);
+              if (data.code == 0) {
+                swal("Good job!", "上传成功!", "success");
+              } else {
+                sweetAlert("Oops...", "上传失败,请重试!", "error");
+              }
+            },
+            error: function (data) {
+              sweetAlert("Oops...", "上传失败,请重试!", "error");
+            }
+          });
+        });
       });
-
     });
   }
 
@@ -264,17 +296,32 @@
 
     var html = '<div class="form-group c_select_folder" id="select_folder">';
     folder.forEach(function (item, index) {
-      html += '<label class="radio" for="radio' + index + '">' +
-        ' <input type="radio" name="folder" data-toggle="radio" value="' + item.id + '" id="radio' + index + '" required="" checked="" class="custom-radio">' +
-        '<span class="icons">' +
-        '<span class="icon-unchecked"></span>' +
-        '<span class="icon-checked"></span>' +
-        '</span>' +
-        '' + item.name +
-        '</label>';
+      
+      console.log(index);
+      if (index > 0) {
+        html += '<label class="radio" for="radio' + index + '">' +
+          '<input type="radio" name="folder" data-toggle="radio" value="' + item.id + '" id="radio' + index + '" required="" class="custom-radio">' +
+          '<span class="icons">' +
+          '<span class="icon-unchecked"></span>' +
+          '<span class="icon-checked"></span>' +
+          '</span>' +
+          '' + item.name +
+          '</label>';
+      } else {
+        html += '<label class="radio" for="radio' + index + '">' +
+          '<input type="radio" name="folder" data-toggle="radio" value="' + item.id + '" id="radio' + index + '" checked required="" class="custom-radio">' +
+          '<span class="icons">' +
+          '<span class="icon-unchecked"></span>' +
+          '<span class="icon-checked"></span>' +
+          '</span>' +
+          '' + item.name +
+          '</label>';
+      }
+      
+
     });
     html += '</div>';
-
+    
     return {
       length: folder.length,
       html: html
@@ -282,35 +329,23 @@
   }
 
 
+  function upload_file_form_html(form_id, folder_id) {
+    return '<form class="form-horizontal display_none" role="form" action="/folder_upload" method="post" enctype="multipart/form-data">' +
+      '<input type="file" class="form-control" name="file" id=input_' + form_id + '>' +
+      '<input type="text" class="form-control" name="folder_id" value="' + folder_id + '">' +
+      '<button type="submit" id=submit_' + form_id + '>submit</button>' +
+      '</form>';
+  }
 
-  function upload_file_form() {
-  //<form class="form-horizontal" role="form" action="/folder_upload" method="post" enctype="multipart/form-data">
-  //    <div class="form-group">
-  //    <label for="title" class="col-lg-2 control-label">周数</label>
-  //    <div class="col-lg-10">
-  //    <input type="number" class="form-control" id="week" name="week" placeholder="请输入周数" required>
-  //  </div>
-  //  </div>
-  //
-  //  <div class="form-group">
-  //    <label for="weekly" class="col-lg-2 control-label">文件</label>
-  //    <div class="col-lg-10">
-  //    <input type="file" class="form-control" name="weekly" id="weekly" required>
-  //  <p class="help-block">点击选择需要上传的文件.</p>
-  //    </div>
-  //    </div>
-  //    <div class="form-group">
-  //    <label for="title" class="col-lg-2 control-label">备注</label>
-  //    <div class="col-lg-10">
-  //    <input type="text" class="form-control" id="title" name="title" placeholder="你有什么想说的吗？" required>
-  //  </div>
-  //  </div>
-  //  <div class="form-group">
-  //    <div class="col-lg-offset-2 col-lg-10">
-  //    <button type="submit" class="btn btn-primary" id="upload">上传</button>
-  //    </div>
-  //    </div>
-  //    </form>
+
+  function random_string(length) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < length; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
   }
 
 

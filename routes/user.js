@@ -1,3 +1,8 @@
+var path = require('path');
+//var formidable = require('formidable');
+var fs = require('fs');
+var formidable = require('express-formidable');
+
 var config = require('../config/config');
 var checkLogin = require('../passport/checkLogin');
 
@@ -177,34 +182,40 @@ var routes = function (app) {
   });
 
 
-  // 上传文件页面
-  app.get('/folder_upload', checkLogin.checkLoginUserForm);
-  app.get('/folder_upload', function (req, res, next) {
-    var folder_id = req.query.folder_id;
-    res.render('folder_upload', {
-      title: '上传文件',
-      user: req.session.user,
-      folder_id: folder_id,
-      success: req.flash('success').toString(),
-      error: req.flash('error').toString()
+  // 上传文件操作
+  app.post('/api/file_upload', checkLogin.checkLoginUserJson);
+  app.post('/api/file_upload', function (req, res, next) {
+
+    var folder_id = req.body.folder_id;
+    var file = req.body.uploads;
+    var name = file.name;
+    var path = file.path.substr(file.path.lastIndexOf('/') + 1);
+
+    // 将输入存入数据库
+    var new_file = new File(folder_id, name, path);
+    new_file.insert(function(err, rows) {
+
+      if (err) {
+        console.log('upload save to db error: ', err);
+        res.json({
+          code: 1,
+          msg: 'upload error'
+        });
+      }
+
+      res.json({
+        code: 0,
+        msg: 'upload success'
+      });
     });
   });
 
-
-  // 上传文件操作
-  app.post('/folder_upload', checkLogin.checkLoginUserJson);
-  app.post('/folder_upload', function (req, res, next) {
-    var folder_id = req.query.folder_id;
-
-
-  });
 
 
   // 所有文件夹
   app.post('/all_folder', checkLogin.checkLoginUserJson);
   app.post('/all_folder', function (req, res, next) {
     var user_id = req.session.user.id;
-
 
 
   });
