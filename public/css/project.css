@@ -55,3 +55,28 @@
     position: relative;
     width: 100%;
 }
+
+.c_file {
+    margin: 30px 20px 0 105px;
+
+}
+.c_file_img {
+    width: 120px;
+    height: 100px;
+    text-align: center;
+    cursor: pointer;
+    margin: 10px 0;
+}
+.c_file_img img {
+    display: inline;
+    width: 90%;
+    text-align: center;
+}
+.c_file_title {
+    font-size: 14px;
+    font-weight: 100;
+    text-align: center;
+}
+.c_file_title:hover {
+    color: #4298ba;
+}
