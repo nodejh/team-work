@@ -1,9 +1,10 @@
 var connection = require('./db.model');
 
-function File(folder_id, name, path) {
+function File(folder_id, name, path, size) {
   this.folder_id = folder_id;
   this.name = name;
   this.path = path;
+  this.size = size;
 }
 
 
@@ -14,7 +15,9 @@ File.prototype.insert = function(callback) {
     folder_id: this.folder_id,
     name: this.name,
     path: this.path,
-    time: time
+    size: this.size,
+    time: time,
+    modify_time: time
   };
 
   var insert = 'INSERT file SET ?';
@@ -54,8 +57,9 @@ File.findFilesByFolderId = function (folder_id, callback) {
  * @param callback
  */
 File.renameById = function (id, name, callback) {
-  var sql = 'UPDATE file SET name=? WHERE id=?';
-  connection.query(sql, [name, id], function (err, rows) {
+  var time = parseInt(new Date().getTime() / 1000);
+  var sql = 'UPDATE file SET name=?,modify_time WHERE id=?';
+  connection.query(sql, [name, time, id], function (err, rows) {
     if (err) {
       console.error('error UPDATE: ' + err);
       return callback(err);

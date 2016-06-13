@@ -12,7 +12,8 @@ Folder.prototype.insert = function(callback) {
   var data = {
     user_id: this.user_id,
     name: this.name,
-    time: time
+    time: time,
+    modify_time: time
   };
 
   var insert = 'INSERT folder SET ?';

@@ -176,6 +176,7 @@ var routes = function (app) {
     res.render('folder', {
       title: '上传文件',
       folder_id: folder_id,
+      user: req.session.user,
       success: req.flash('success').toString(),
       error: req.flash('error').toString()
     });
@@ -190,9 +191,10 @@ var routes = function (app) {
     var file = req.body.uploads;
     var name = file.name;
     var path = file.path.substr(file.path.lastIndexOf('/') + 1);
-
+    var size = file.size;
+     console.log('uploads: ', req.body.uploads);
     // 将输入存入数据库
-    var new_file = new File(folder_id, name, path);
+    var new_file = new File(folder_id, name, path, size);
     new_file.insert(function(err, rows) {
 
       if (err) {
