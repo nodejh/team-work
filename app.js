@@ -9,6 +9,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 
 var index = require('./routes/index');
+var user = require('./routes/user');
 var admin = require('./routes/admin');
 var config = require('./config/config');
 
@@ -43,6 +44,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 用户相关
 index(app);
+//用户的一些操作
+user(app);
 // 管理员相关
 admin(app);
 

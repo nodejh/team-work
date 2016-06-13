@@ -2,6 +2,7 @@
 <link href="css/project.css" rel="stylesheet">
 <link href="/css/home.css" rel="stylesheet">
 <link href="/css/new-project.css" rel="stylesheet">
+<link href="/utils/sweetalert/sweetalert.css" rel="stylesheet">
 <% include _header.ejs %>
 <% include _nav.ejs %>
 <div class="c-info">
@@ -88,43 +89,20 @@
             <div class="section section-file" id="todolists">
               <h5><a href="#">文件</a>
                 <div class="btn-group">
-                  <button class="btn btn-default btn-xs c_margin_left c_btn" type="button">上传文件</button>
+                  <button class="btn btn-default btn-xs c_margin_left c_btn" id="upload_file_button" type="button">上传文件</button>
                   <button data-toggle="dropdown" class="btn btn-default dropdown-toggle btn-xs c_btn_select" type="button">
                     <span class="caret"></span>
                     <span class="sr-only">上传文件</span>
                   </button>
                   <ul role="menu" class="dropdown-menu">
+                    <li><a href="javascript:;" id="upload_file">上传文件</a></li>
                     <li><a href="javascript:;" id="create_folder">创建文件夹</a></li>
-                    <li><a href="javascript:;">上传文件</a></li>
                   </ul>
                 </div>
 
                 <div class="c_file">
-                  <div class="row">
-                    <div class="col-xs-6 col-md-3">
-                      <div class="c_file_img">
-                        <img src="/img/site/file.png" alt="file" />
-                        <p class="c_file_title">参考资料</p>
-                      </div>
-                    </div>
-                    <div class="col-xs-6 col-md-3">
-                      <div class="c_file_img">
-                        <img src="/img/site/file.png" alt="file" />
-                        <p class="c_file_title">需求文档</p>
-                      </div>
-                    </div>
-                    <div class="col-xs-6 col-md-3">
-                      <div class="c_file_img">
-                        <img src="/img/site/file.png" alt="file" />
-                        <p class="c_file_title">设计图</p>
-                      </div>
-                    </div>
-                    <div class="col-xs-6 col-md-3">
-                      <div class="c_file_img">
-                        <img src="/img/site/file.png" alt="file" />
-                        <p class="c_file_title">其它</p>
-                      </div>
-                    </div>
+                  <p class="display_none" id="no_folder_tips">您还没有创建过文件夹, <a href="javascript:;" id="create_folder_link">点此创建</a></p>
+                  <div class="row" id="folder">
                   </div>
                 </div>
               </h5>
@@ -152,5 +130,6 @@
 
 
 <% include _footer.ejs %>
-<script src="js/project.js"></script>
+<script src="/js/project.js"></script>
+<script src="/utils/sweetalert/sweetalert-dev.js"></script>
 <% include _foot.ejs %>

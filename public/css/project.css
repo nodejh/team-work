@@ -76,7 +76,28 @@
     font-size: 14px;
     font-weight: 100;
     text-align: center;
+    margin: 0;
 }
-.c_file_title:hover {
+.c_file_img:hover .c_file_title{
     color: #4298ba;
+}
+.c_file_tips,
+.c_file_tips a {
+    font-size: 12px;
+    color: #4298ba;
+    margin: 0;
+}
+.c_file_tips span {
+    margin: 0 5px;
+}
+.c_file_tips span:hover,
+.c_file_tips a span:hover{
+    text-decoration: underline;
+}
+.c_select_folder {
+    text-align: left;
+    margin: 10px;
+}
+.c_select_folder label {
+    cursor: pointer;
 }
