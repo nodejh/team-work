@@ -7,8 +7,10 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 // var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
+var formidable = require('express-formidable');
 
 var index = require('./routes/index');
+var user = require('./routes/user');
 var admin = require('./routes/admin');
 var config = require('./config/config');
 
@@ -40,9 +42,15 @@ app.use(session({
 }));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(formidable.parse({
+  uploadDir: __dirname + '/public/folders/',
+  keepExtensions: true
+}));
 
 // 用户相关
 index(app);
+//用户的一些操作
+user(app);
 // 管理员相关
 admin(app);
 
