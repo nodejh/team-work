@@ -19,20 +19,22 @@ $('#btn-create-project').click(function () {
     var projectname = $('#projectname').val();
     var description = $('#description').val();
     var checkbox = $('#checkbox').val();
-    alert(projectname);
-    var members ="[" ;
+
    var email = document.getElementsByName("email");
     var role = document.getElementsByName("choose-role");
     var length=email.length;
-  //  alert();
+    if(email[0].value!="")
+    var members ="[" ;
     for(var i=0;i<length-1;i++)
     {
-
-       members +="{\"email\":\""+ email[i].value+"\",\"role\":"+role[i].value+"},";
-
+      if(email[i].value!="") {
+          members += "{\"email\":\"" + email[i].value + "\",\"role\":" + role[i].value + "},";
+      }
     }
-    members +="{\"email\":\""+ email[length-1].value+"\",\"role\":"+role[length-1].value+"}]";
-    alert(members);
+    if(email[i].value!="") {
+        members += "{\"email\":\"" + email[length - 1].value + "\",\"role\":" + role[length - 1].value + "}]";
+    }
+
     var data = {
         project_name:projectname,
         description:description,
