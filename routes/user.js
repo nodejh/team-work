@@ -222,13 +222,30 @@ var routes = function (app) {
 
 
 
-  // 所有文件夹
-  app.post('/all_folder', checkLogin.checkLoginUserJson);
-  app.post('/all_folder', function (req, res, next) {
-    var user_id = req.session.user.id;
-
-
+  // 删除文件
+  app.get('/file/delete/:id/:folder_id', checkLogin.checkLoginUserForm);
+  app.get('/file/delete/:id/:folder_id', function (req, res, next) {
+    var id = req.params.id;
+    var folder_id = req.params.folder_id;
+    File.deleteById(id, function (err, rows) {
+      if (err) {
+        req.flash('error', '删除失败,请重试!');
+        return res.redirect('/folder?folder_id=' + folder_id);
+      }
+      req.flash('success', '删除成功!');
+      return res.redirect('/folder?folder_id=' + folder_id);
+    });
   });
+
+
+
+  // 所有文件夹
+  //app.get('/all_folder', checkLogin.checkLoginUserJson);
+  //app.get('/all_folder', function (req, res, next) {
+  //  var user_id = req.session.user.id;
+  //
+  //
+  //});
 
 
 };

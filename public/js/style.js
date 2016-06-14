@@ -15,7 +15,6 @@
   });
 
 
-
   // 警告框10秒后删除
   $('div[role="alert"]').each(function() {
     var $this = $(this);

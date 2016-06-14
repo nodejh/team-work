@@ -1,6 +1,7 @@
 <% include _head.ejs %>
 <link href="/css/home.css" rel="stylesheet">
 <link href="/css/new-project.css" rel="stylesheet">
+<link href="/utils/sweetalert/sweetalert.css" rel="stylesheet">
 <link href="/css/folder.css" rel="stylesheet">
 <% include _header.ejs %>
 <% include _nav.ejs %>
@@ -41,10 +42,14 @@
       </a>
     </div>
 
+
+    <input type="number" class="display_none" id="folder_id" value="<%= folder_id %>">
+
     <div class="col-xs-10 col-xs-offset-1 page">
       <div class="dir-title">
         <div class="crumb">
-          <a class="link-dir ui-droppable" href="/all_folder" data-guid="0" data-stack="" data-stack-replace="">文件</a>
+          <!--<a class="link-dir ui-droppable" href="/all_folder" data-guid="0" data-stack="" data-stack-replace="">文件</a>-->
+          <a class="link-dir ui-droppable" href="javascript:;" data-guid="0" data-stack="" data-stack-replace="">文件</a>
           <span class="separator twr twr-angle-right">/</span>
           <span class="current-dir">参考资料</span>
         </div>
@@ -56,7 +61,6 @@
           </button>
           <ul role="menu" class="dropdown-menu">
             <li><a href="javascript:;" id="upload_file">上传文件</a></li>
-            <li><a href="javascript:;" id="create_folder">创建文件夹</a></li>
           </ul>
         </div>
       </div>
@@ -98,9 +102,9 @@
           %>
           <th> <%= current_year %> <%= current_month %> <%= current_day %> <%= hours %>:<%= minutes %></th>
           <td>
-            <div class="display_none id_action_file">
-              <a href="javascript:;" class="id_download">下载</a>
-              <a href="javascript:;" class="id_delete">删除</a>
+            <div class="display_none c_folder_file_action id_action_file">
+              <a href="/folders/<%= item.path %>" class="id_download" download="<%= item.name %>">下载</a>
+              <a href="/file/delete/<%= item.id %>/<%= folder_id %>">删除</a>
             </div>
           </td>
         </tr>
@@ -116,7 +120,9 @@
 </div>
 
 
-<% include _footer.ejs %>
-<script type="text/javascript" src="/js/folder.js"></script>
+<div class="display_none" id="upload_file_form"></div>
 
+<% include _footer.ejs %>
+<script src="/utils/sweetalert/sweetalert-dev.js"></script>
+<script type="text/javascript" src="/js/folder.js"></script>
 <% include _foot.ejs %>
