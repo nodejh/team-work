@@ -280,13 +280,76 @@ var routes = function (app) {
 
   });
 
+// 重置密码页面
+  app.get('/reset_password', checkLogin.checkNotLoginUserForm);
+  app.get('/reset_password', checkLogin.checkNotLoginAdminForm);
+  app.get('/reset_password', function (req, res) {
+    var token = req.query.token;
+    console.log('reset password token: ' + token);
+    res.render('reset_password', {
+      title: '重置密码',
+      token: token,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });
+
+
   // 重置密码操作
   app.post('/reset_password', checkLogin.checkNotLoginUserForm);
   app.post('/reset_password', checkLogin.checkNotLoginAdminForm);
-  app.post('/reset_password', function(req, res) {
-    var token = req.params.token;
-    console.log('reset password token: ' + toke);
+  app.post('/reset_password', function (req, res) {
+    var token = req.body.token;
+    var password = req.body.password;
+    var re_password = req.body.re_password;
+    if (password.length < 6) {
+      req.flash('error', '密码长度不能小于6位');
+      return res.redirect('/reset_password?token=' + token);
+    }
+    if (password != re_password) {
+      req.flash('error', '两次密码不一致');
+      return res.redirect('/reset_password?token=' + token);
+    }
 
+    Account.findByToken(token, function (err, rows) {
+
+      if (err) {
+        console.log('重置密码,查询数据库失败', err);
+        req.flash('error', '重置密码链接错误,请重新发送邮件并进入邮箱查看!');
+        return res.redirect('/reset_password?token=' + token);
+      }
+
+      if (rows.length == 0) {
+        req.flash('error', '重置密码链接错误,请重新发送邮件并进入邮箱查看!');
+        return res.redirect('/reset_password?token=' + token);
+      }
+
+      // 判断时间是否过期
+      var current_time = parseInt(new Date().getTime() / 1000);
+      var difference = config.difference_time;
+      if (rows[0].time + difference < current_time) {
+        console.log('链接已过期');
+        req.flash('error', '链接已过期,请重新发送邮件!');
+        return res.redirect('/reset_password?token=' + token);
+      }
+
+      // 更新密码
+      var email = rows[0].email;
+      var md5 = crypto.createHash('md5');
+      password = md5.update(password).digest('hex');
+
+      User.updatePasswordByEmail(email, password, function (err, rows) {
+
+        if (err) {
+          console.error('error update password: ', err);
+          req.flash('error', '重置密码失败,请重试!');
+          return res.redirect('/reset_password?token=' + token);
+        }
+        // 重置密码成功
+        req.flash('success', '重置密码成功,你可以使用新密码登录!');
+        return res.redirect('/reset_password?token=' + token);
+      });
+    });
   });
 
 

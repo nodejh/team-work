@@ -6,21 +6,21 @@ var config = {
   },
 
 
-  // mysql: {
-  //    host: 'localhost',
-  //    user: 'root',
-  //    password: 'root',
-  //    port: 3306,
-  //    // database: 'team'
-  //  },
-
-  mysql: {
-   host: 'localhost',
-  user: 'root',
-  password: '123456',
-  port: 3306,
-  database: 'nucleus'
-  },
+   mysql: {
+      host: 'localhost',
+      user: 'root',
+      password: 'root',
+      port: 3306,
+      database: 'team'
+    },
+  //
+  //mysql: {
+  //  host: 'localhost',
+  //  user: 'root',
+  //  password: '123456',
+  //  port: 3306,
+  //  database: 'nucleus'
+  //},
   //
   // mysql: {
   //    host: 'localhost',
@@ -50,8 +50,8 @@ var config = {
 
   email: {
     service: 'QQ',
-    user:'1002901669@qq.com',
-    pass:'fxnzdmoooodebcgi'
+    user: '1002901669@qq.com',
+    pass: 'fxnzdmoooodebcgi'
   },
 
   oauth: {
