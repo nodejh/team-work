@@ -248,6 +248,28 @@ var routes = function (app) {
   //});
 
 
+
+  // 用户个人资料
+  app.get('/profile', checkLogin.checkLoginUserForm);
+  app.get('/profile', function (req, res, next) {
+
+    var user_id = req.session.user.id;
+    User.findUserById(user_id, function (err, rows) {
+
+      if (err) {
+        req.flash('error', '查找用户个人资料失败,请重试');
+        return res.redirect('/projectindex');
+      }
+
+      return res.render('profile', {
+        title: rows[0].name + '的个人资料',
+        user: req.session.user,
+        profile: rows[0],
+        error: req.flash('error').toString(),
+        success: req.flash('success').toString()
+      });
+    });
+  });
 };
 
 
