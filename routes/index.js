@@ -466,7 +466,6 @@ var routes = function (app) {
     var description = req.body.description;
     var checkbox = req.body.checkbox;
     var members = req.body.members;
-    var member = JSON.parse(members);
     var manager = req.session.user;
     var str = projectname + manager.id;
 
@@ -493,100 +492,103 @@ var routes = function (app) {
           req.flash('error', '新建项目失败!');
           return res.redirect('/newproject');
         }
-      });
-
-      Project.findByUserIdandname(manager.id, projectname, function (err2, result2) {
-        if (err2) {
-          console.log('新建项目失败：', err);
-          req.flash('error', '新建项目失败!');
-          return res.redirect('/newproject');
-        }
-        var data = {
-          project_id: result2[0].project_id,
-          project_name: result2[0].name,
-          ss: result2[0].ss,
-          member_type: '1',
-          user_id: manager.id,
-          user_name: manager.name,
-          accept: 1
-        };
-        console.log(123);
-        Project.insertmap(data, function (err2, rows) {
+        Project.findByUserIdandname(manager.id, projectname, function (err2, result2) {
           if (err2) {
-            console.log('新建项目失败：', err2);
+            console.log('新建项目失败：', err);
             req.flash('error', '新建项目失败!');
             return res.redirect('/newproject');
           }
-        });
-        var maillist = "";
-        
-        for (var i = 0; i < member.length; i++) {
-          console.log(member.length);
-          var role1 = member[i].role;
-          var email1 = member[i].email;
-          console.log(email1);
-          Project.findByEmail(email1, function (err3, result3) {
-            if (err3) {
-              console.log('新建项目失败：', err);
+          var data = {
+            project_id: result2[0].project_id,
+            project_name: result2[0].name,
+            ss: result2[0].ss,
+            member_type: '1',
+            user_id: manager.id,
+            user_name: manager.name,
+            accept: 1
+          };
+          console.log(123);
+          Project.insertmap(data, function (err2, rows) {
+            if (err2) {
+              console.log('新建项目失败：', err2);
               req.flash('error', '新建项目失败!');
               return res.redirect('/newproject');
             }
-            if (result3.length == 0) {
-              req.flash('error', '该邀请成员不存在！!');
-              return res.redirect('/newproject');
-            }
-
-            else {
-              var data2 = {
-                project_id: result2[0].project_id,
-                project_name: result2[0].name,
-                ss: result2[0].ss,
-                member_type: role1,
-                user_id: result3[0].id,
-                user_name: result3[0].name,
-                accept: 0
-              };
-              console.log(data2);
-              Project.insertmap(data2, function (err5, rows2) {
-                if (err5) {
-                  console.log('新建项目失败：', err2);
+          });
+          var maillist = "";
+          if(members!=undefined)
+          {
+            var member = JSON.parse(members);
+            for (var i = 0; i < member.length; i++) {
+              console.log(member.length);
+              var role1 = member[i].role;
+              var email1 = member[i].email;
+              console.log(email1);
+              Project.findByEmail(email1, function (err3, result3) {
+                if (err3) {
+                  console.log('新建项目失败：', err);
                   req.flash('error', '新建项目失败!');
                   return res.redirect('/newproject');
                 }
+                if (result3.length == 0) {
+                  req.flash('error', '该邀请成员不存在！!');
+                  return res.redirect('/newproject');
+                }
+
+                else {
+                  var data2 = {
+                    project_id: result2[0].project_id,
+                    project_name: result2[0].name,
+                    ss: result2[0].ss,
+                    member_type: role1,
+                    user_id: result3[0].id,
+                    user_name: result3[0].name,
+                    accept: 0
+                  };
+                  console.log(data2);
+                  Project.insertmap(data2, function (err5, rows2) {
+                    if (err5) {
+                      console.log('新建项目失败：', err2);
+                      req.flash('error', '新建项目失败!');
+                      return res.redirect('/newproject');
+                    }
+                  });
+                }
               });
+              maillist += email1 + ",";
+              console.log(maillist);
+
             }
-          });
-          maillist += email1 + ",";
-          console.log(maillist);
+            // maillist.substring(0,maillist.length-1);
+            maillist += member[member.length - 1].email;
+            console.log(maillist);
+            var subject = "成员邀请"; // 标题
 
-        }
-        // maillist.substring(0,maillist.length-1);
-        maillist += member[member.length - 1].email;
-        console.log(maillist);
-        var subject = "成员邀请"; // 标题
+            var url = "http://" + req.hostname + ":" + config.port + "/check?ssl=" + ssl;
+            var html = "<p>请点击<a href=\" " + url + " \">同意" + url + "</a>加入团队" + projectname + ",此链接24小时后失效</p>";// html 内容// 发送邮件
 
-        var url = "http://" + req.hostname + ":" + config.port + "/check?ssl=" + ssl;
-        var html = "<p>请点击<a href=\" " + url + " \">同意" + url + "</a>加入团队" + projectname + ",此链接24小时后失效</p>";// html 内容// 发送邮件
+            sendMail(maillist, subject, html, function (err, send_res) {
 
-        sendMail(maillist, subject, html, function (err, send_res) {
+              if (err) {
+                console.log('邀请成员时发送邮件失败:', err);
+                req.flash('error', ' 发送邮件失败,请重试!');
+                return res.redirect('newproject');
+              }
+              console.log('邀请成员时发送邮件成功', send_res);
+              req.flash('success', '我们已发送好友邀请,请及时查看!');
 
-          if (err) {
-            console.log('邀请成员时发送邮件失败:', err);
-            req.flash('error', ' 发送邮件失败,请重试!');
-            return res.redirect('newproject');
+            });
           }
-          console.log('邀请成员时发送邮件成功', send_res);
-          req.flash('success', '我们已发送好友邀请,请及时查看!');
 
         });
+        //upload success
+        req.flash('success', '新建项目成功!');
+        return res.json({
+          code: "success"
+        });
+      });
 
 
-      });
-      //upload success
-      req.flash('success', '新建项目成功!');
-      return res.json({
-        code: "success"
-      });
 
     });
 
