@@ -30,6 +30,10 @@ var File = require('../models/file.model');
 
 var routes = function (app) {
 
+  app.use(formidable.parse({
+    uploadDir: __dirname + '/public/folders/',
+    keepExtensions: true
+  }));
 
   // 查找当前已登录用户的所有文件夹
   app.post('/api/get_all_folder', checkLogin.checkLoginUserJson);
