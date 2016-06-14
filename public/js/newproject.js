@@ -23,18 +23,32 @@ $('#btn-create-project').click(function () {
    var email = document.getElementsByName("email");
     var role = document.getElementsByName("choose-role");
     var length=email.length;
-    if(email[0].value!="")
-    var members ="[" ;
-    for(var i=0;i<length-1;i++)
+    var count=0;
+    var roles= new Array();
+    var mail =new Array();
+    for(var i=0;i<length;i++)
     {
-      if(email[i].value!="") {
-          members += "{\"email\":\"" + email[i].value + "\",\"role\":" + role[i].value + "},";
-      }
-    }
-    if(email[i].value!="") {
-        members += "{\"email\":\"" + email[length - 1].value + "\",\"role\":" + role[length - 1].value + "}]";
-    }
+        if(email[i].value!="")
+        {
 
+            mail[count]=email[i].value;
+            roles[count]=role[i].value;
+            count++;
+        }
+    }
+    alert(mail[0]);
+    if(count>0)
+    {
+    var members ="[" ;
+    for(i=0;i<count-1;i++)
+    {
+          members += "{\"email\":\"" + mail[i].value + "\",\"role\":" + roles[i].value + "},";
+
+    }
+        members += "{\"email\":\"" + mail[i] + "\",\"role\":" + roles[i]+ "}]";
+
+    }
+     alert(members);
     var data = {
         project_name:projectname,
         description:description,
