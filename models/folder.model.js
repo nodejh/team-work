@@ -64,7 +64,11 @@ Folder.renameById = function (id, name, callback) {
 };
 
 
-
+/**
+ * 删除某个文件夹
+ * @param id
+ * @param callback
+ */
 Folder.deleteById = function (id, callback) {
 
   var sql = 'DELETE FROM folder WHERE id=?';
@@ -75,8 +79,24 @@ Folder.deleteById = function (id, callback) {
     }
     callback(null, rows);
   });
-
 };
+
+
+
+
+//Folder.findFoldersByIdAndUserId = function (id, user_id, callback) {
+//  var sql = 'SELECT * FROM folder WHERE id=? AND user_id=? ORDER BY id';
+//  connection.query(sql, [id, user_id], function (err, rows) {
+//    if (err) {
+//      console.error('error SELECT: ' + err);
+//      return callback(err);
+//    }
+//    callback(null, rows);
+//  });
+//};
+
+
+
 
 
 module.exports = Folder;

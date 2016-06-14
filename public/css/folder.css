@@ -20,3 +20,15 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.c_table thead tr {
+    font-size: .6em;
+}
+.c_table td {
+    width: 25%;
+}
+.c_folder_file_action {
+    font-size: .8em;
+}
+.c_folder_file_action a {
+    margin: 0 7px;
+}
