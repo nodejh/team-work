@@ -71,3 +71,7 @@ select {
     opacity: 1;
     margin-left: 195px;
 }
+.c_weekly_tips {
+    font-weight: 100;
+    font-size: .8em;
+}

@@ -8,19 +8,19 @@ var checkLogin = require('../passport/checkLogin');
 
 
 var myfun = require('../passport/myfun');
-var multer = require('multer');
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, __dirname + '/../public/uploads');
-  },
-  filename: function (req, file, cb) {
-    var extension = file.originalname.slice((file.originalname.lastIndexOf(".") - 1 >>> 0) + 2);
-    cb(null, file.fieldname + '-' + Date.now() + myfun.randomString(5) + '.' + extension);
-  }
-});
-var upload = multer({
-  storage: storage
-});
+//var multer = require('multer');
+//var storage = multer.diskStorage({
+//  destination: function (req, file, cb) {
+//    cb(null, __dirname + '/../public/uploads');
+//  },
+//  filename: function (req, file, cb) {
+//    var extension = file.originalname.slice((file.originalname.lastIndexOf(".") - 1 >>> 0) + 2);
+//    cb(null, file.fieldname + '-' + Date.now() + myfun.randomString(5) + '.' + extension);
+//  }
+//});
+//var upload = multer({
+//  storage: storage
+//});
 
 
 var User = require('../models/user.model');
@@ -31,7 +31,7 @@ var File = require('../models/file.model');
 var routes = function (app) {
 
   app.use(formidable.parse({
-    uploadDir: __dirname + '/public/folders/',
+    uploadDir: __dirname + '/../public/folders/',
     keepExtensions: true
   }));
 
