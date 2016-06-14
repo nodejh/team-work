@@ -1,0 +1,236 @@
+<% include _head.ejs %>
+<link href="/css/topics.css" rel="stylesheet">
+<link href="utils/flat-ui/css/vendor/simditor.css" rel="stylesheet">
+<% include _header.ejs %>
+<div class="navbar navbar-default navbar-static-top navber-transparent" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">菜单</span>
+            </button>
+            <a class="navbar-brand" href="/">nucleus</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="projectindex">项目</a></li>
+                <li><a href="/allweekly">周报</a></li>
+                <li><a href="/event">动态</a></li>
+                <li><a href="#contact">个人中心</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name %> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人资料</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="c-info">
+    <% if (error) { %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= error %>
+    </div>
+    <% } %>
+</div>
+
+
+<div class="c-info">
+    <% if (success) { %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <%= success %>
+    </div>
+    <% } %>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 page">
+            <div>
+                <h1 class="page-title">
+                    主题
+                </h1>
+            </div>
+            <div>
+                <div><input type="button" name="subject" id="txt_begin" class="btn" value="点击发起讨论" onclick="show()" /></div>
+
+                <div  data-remote="true" data-type="json" id="txt" style="display:none">
+                    <div class="form-item">
+                        <div class="span3">
+                            <input tabindex="1" type="text" name="subject" id="txt-title" style="width:100%" placeholder="    话题" />
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <textarea tabindex="1" name="content" id="txt-content" ></textarea>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <button tabindex="1" class="btn" id="btn-post" data-disable-with="正在提交...">发起讨论</button>
+                        <a tabindex="2" href="javascript:;" class="btn" id="link-cancel-post">取消</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <h4 class="title">正在进行的讨论</h4>
+            <div class="messages" id="messages">
+                <% if (topics.length > 0) { %>
+                <% topics.forEach(function (item) { %>
+
+                <div class="message " id="message" name="<%= item.id %>">
+                    <img class="avatar" src="/img/bj.jpg" />
+                    <div class="name">
+                        <%=item.user_name%>
+                    </div>
+                  <span class="message-title">
+                          <span class="todo-rest"><%= item.title%></span>
+                  </span>
+                    <p>
+                  <span class="message-content">
+                      <%- item.content%>
+                  </span>
+                    </p>
+                    <section id="parent">
+                        <input type="button" name="subject" id="begin" class="btn" value="点击发表评论" onclick="show1()" />
+                        <div  id="form1"  style="display:none">
+
+                            <div  class="form-item">
+                                <div>
+                                    <input type="hidden" value="<%= item.id%>" id="topic_id">
+                                    <input type="text"  class="form-control" tabindex="1" name="content" id="commit" />
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                <button tabindex="1" class="btn" id="submit" data-disable-with="正在提交...">发表评论</button>
+                                <a tabindex="2" href="javascript:;" class="btn" id="link-cancel-post">取消</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="comment-info">
+
+                        <a href="" class="comments-count" data-stack="true">2</a>
+                    </div>
+                </div>
+
+
+                <% }); %>
+                <% } else { %>
+                <div class="empty">
+                    暂时没有发起过讨论
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% include _footer.ejs %>
+<script src="/utils/flat-ui/js/vendor/module.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/uploader.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/hotkeys.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/simditor.min.js"></script>
+<script src="/utils/flat-ui/js/vendor/simditor-demo.js"></script>
+<script>
+    function show(){
+        document.getElementById("txt_begin").style.display="none";
+        document.getElementById("txt").style.display="block";
+    }
+
+    function show1(){
+        document.getElementById("begin").style.display="none";
+        document.getElementById("form1").style.display="block";
+    }
+    $('#btn-post').click(function () {
+        var title = document.getElementById("txt-title").value;
+        var content = document.getElementById("txt-content").value;
+        var ssl = '<%= ssl %>';
+        alert(title);
+        var data = {
+            title: title,
+            content: content,
+            ss:ssl
+        };
+        alert(ssl);
+        $.post('/publish', data, function (res) {
+            alert(1);
+            if (res.code=="success") {
+                alert('新建成功！');
+                // todo  跳转到个人中心
+                window.location.href='/topics?ssl='+ssl;
+
+            } else {
+                alert(res.code);
+                window.location.href='/projectindex';
+            }
+        });
+    });
+    $('#submit').click(function () {
+
+        var content = document.getElementById("commit").value;
+        var topic_id = document.getElementById("topic_id").value;
+        var ssl = '<%= ssl %>';
+        var data = {
+            content: content,
+            topic_id:topic_id
+        };
+        $.post('/commit', data, function (res) {
+            if (res.code=="success") {
+                alert('评论成功！');
+                // todo  跳转到个人中心
+                window.location.href='/topics?ssl='+ssl;
+
+            } else {
+                alert('评论失败');
+                window.location.href='/projectindex';
+            }
+        });
+    });
+   /* $('#message').click(function () {
+
+    var topic_id = document.getElementById("message").getAttribute('name');
+    alert(topic_id);
+    if(topic_id!="") {
+        var data = {
+            topic_id: topic_id
+        };
+        $.post('/comment', data, function (res) {
+            var comments = res.comments;
+            var parent = document.getElementById("parent");
+            for (var i = 0; i < comments.length; i++) {
+                var html = "";
+                html += "<input type=\"button\" name=\"subject\" id=\"begin\" class=\"btn\" value=\"点击发表评论\" onclick=\"show1()\" />";
+                html += " <div  id=\"form1\"  style=\"display:none\">";
+
+                html += "  <div  class=\"form-item\"> <div>";
+                html += "<input type=\"hidden\" value=\"<%= item.id %>\" id=\"topic_id\">";
+                html += "  <input type=\"text\"  class=\"form-control\" tabindex=\"1\" name=\"content\" id=\"commit\" /> </div> </div>"
+                html += "   <div class=\"form-item\">";
+                html += "   <button tabindex=\"1\" class=\"btn\" id=\"submit\" data-disable-with=\"正在提交...\">发表评论</button>";
+                html += " <a tabindex=\"2\" href=\"javascript:;\" class=\"btn\" id=\"link-cancel-post\">取消</a> </div> </div>";
+
+            }
+        });
+    }
+    });*/
+    document.getElementById('link-cancel-post').addEventListener('click', function(e) {
+        document.getElementById("txt_begin").style.display="block";
+        document.getElementById("txt").style.display="none";
+        // 当<a>触发click时，处理业务
+    }, false);
+</script>
+<% include _foot.ejs %>

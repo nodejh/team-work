@@ -3,10 +3,10 @@
     line-height: 46px;
     height: 46px;
     font-size: 18px;
-    color: #888888;
+    color: #16a085;
     background: #f9f9f9;
     position: relative;
-    /*left: 204px;*/
+    padding-left: 20px;
 }
 .project-type-section input[type=radio] {
     display: none;

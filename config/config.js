@@ -5,19 +5,19 @@ var config = {
     maxAge: 1000 * 60 * 60 * 24 * 30
   },
 
- // mysql: {
- //    host: 'localhost',
- //    user: 'root',
- //    password: 'root',
- //    port: 3306,
- //    database: 'team'
- //  },
+  // mysql: {
+  //    host: 'localhost',
+  //    user: 'root',
+  //    password: 'root',
+  //    port: 3306,
+  //    // database: 'team'
+  //  },
 
   mysql: {
    host: 'localhost',
-   user: 'root',
-   password: '123456',
-   port: 3306,
+  user: 'root',
+  password: '123456',
+  port: 3306,
   database: 'nucleus'
   },
 
@@ -41,7 +41,7 @@ var config = {
   email: {
     service: 'QQ',
     user:'1002901669@qq.com',
-    pass:'yhjqfymtbhudbfcb'
+    pass:'fxnzdmoooodebcgi'
   },
 
   oauth: {

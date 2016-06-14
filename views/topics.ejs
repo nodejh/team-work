@@ -121,8 +121,17 @@
                 </section>
 
               <div class="comment-info">
-          
-                      <a href="" class="comments-count" data-stack="true">2</a>
+                  <span><%
+                          var date = new Date(item.time * 1000);
+                          var year = date.getFullYear();
+                          var month = date.getMonth() + 1;
+                          var day = date.getDate();
+                          var hours = date.getHours();
+                          var minutes = '0' + date.getMinutes();
+                          minutes = minutes.substr(-2);
+                      %>
+                      <%= hours %>:<%= minutes %>, <%= year %>年<%= month %>月<%= day %></span>
+
               </div>
             </div>
 
@@ -200,7 +209,7 @@
             }
         });
     });
-    $('#message').click(function () {
+    //$('#message').click(function () {
 
         var topic_id = document.getElementById("message").getAttribute('name');
         alert(topic_id);

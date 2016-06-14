@@ -1,6 +1,7 @@
 .DS_Store
 .idea/
 public/uploads/
+public/folders/
 error.log
 access.log
 config/config.server.js

@@ -823,3 +823,43 @@ item is not defined
     at H:\master\team-work\routes\index.js:650:15
     at Query._callback (H:\master\team-work\models\topics.model.js:44:9)
     at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 16:56:08 GMT+0900 (韩国标准时间)]/topics?ssl=b42a86db0221aa3e38893aa52675407b
+ReferenceError: H:\master\team-work\views\topics.ejs:229
+    227| 
+    228|                     html += "  <div  class=\"form-item\"> <div>";
+ >> 229|                     html += "<input type=\"hidden\" value=\"<%= item.id %>\" id=\"topic_id\">";
+    230|                     html += "  <input type=\"text\"  class=\"form-control\" tabindex=\"1\" name=\"content\" id=\"commit\" /> </div> </div>"
+    231|                     html += "   <div class=\"form-item\">";
+    232|                     html += "   <button tabindex=\"1\" class=\"btn\" id=\"submit\" data-disable-with=\"正在提交...\">发表评论</button>";
+
+item is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:110:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:639:15
+    at Query._callback (H:\master\team-work\models\topics.model.js:44:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 17:33:59 GMT+0900 (韩国标准时间)]/topics?ssl=b42a86db0221aa3e38893aa52675407b
+ReferenceError: H:\master\team-work\views\topics.ejs:229
+    227| 
+    228|                     html += "  <div  class=\"form-item\"> <div>";
+ >> 229|                     html += "<input type=\"hidden\" value=\"<%= item.id %>\" id=\"topic_id\">";
+    230|                     html += "  <input type=\"text\"  class=\"form-control\" tabindex=\"1\" name=\"content\" id=\"commit\" /> </div> </div>"
+    231|                     html += "   <div class=\"form-item\">";
+    232|                     html += "   <button tabindex=\"1\" class=\"btn\" id=\"submit\" data-disable-with=\"正在提交...\">发表评论</button>";
+
+item is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:110:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:646:15
+    at Query._callback (H:\master\team-work\models\topics.model.js:44:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)

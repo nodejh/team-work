@@ -41,7 +41,17 @@ var checkLogin = {
     }
     next();
   },
-
+  checkLoginUserAccept: function (req, res, next) {
+    console.log(req.session);
+    var ssl=req.query.ssl;
+    if (!req.session.user) {
+      //req.flash('error', '未登陆');
+      return res.redirect('/login?ssl='+ssl);
+      
+      var url = req.query.url;  // ?url=xxx
+    }
+    next();
+  },
 
   // 判断管理员是否已经登陆
   checkLoginAdminForm: function (req, res, next) {
