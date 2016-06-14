@@ -171,14 +171,22 @@ var routes = function (app) {
   app.get('/folder', checkLogin.checkLoginUserForm);
   app.get('/folder', function (req, res, next) {
     console.log('user info in session:', req.session.user);
-    var user_id = req.session.user.id;
     var folder_id = req.query.folder_id;
-    res.render('folder', {
-      title: '上传文件',
-      folder_id: folder_id,
-      user: req.session.user,
-      success: req.flash('success').toString(),
-      error: req.flash('error').toString()
+    File.findFilesByFolderId(folder_id, function (err, rows) {
+      if (err) {
+        req.flash('error', '打开文件夹失败,请重试');
+        return res.redirect('/projectindex');
+      }
+
+      res.render('folder', {
+        title: '上传文件',
+        folder_id: folder_id,
+        user: req.session.user,
+        files: rows,
+        success: req.flash('success').toString(),
+        error: req.flash('error').toString()
+      });
+
     });
   });
 
