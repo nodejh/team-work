@@ -66,7 +66,6 @@ var routes = function (app) {
 
     });
 
-
   });
 
 
@@ -176,22 +175,34 @@ var routes = function (app) {
   app.get('/folder', function (req, res, next) {
     console.log('user info in session:', req.session.user);
     var folder_id = req.query.folder_id;
-    File.findFilesByFolderId(folder_id, function (err, rows) {
+
+    Folder.findById(folder_id, function (err, folder_info) {
+
       if (err) {
         req.flash('error', '打开文件夹失败,请重试');
         return res.redirect('/projectindex');
       }
 
-      res.render('folder', {
-        title: '上传文件',
-        folder_id: folder_id,
-        user: req.session.user,
-        files: rows,
-        success: req.flash('success').toString(),
-        error: req.flash('error').toString()
-      });
+      File.findFilesByFolderId(folder_id, function (err, rows) {
+        if (err) {
+          req.flash('error', '打开文件夹失败,请重试');
+          return res.redirect('/projectindex');
+        }
 
+        res.render('folder', {
+          title: '上传文件',
+          folder_id: folder_id,
+          folder_info: folder_info[0],
+          user: req.session.user,
+          files: rows,
+          success: req.flash('success').toString(),
+          error: req.flash('error').toString()
+        });
+
+      });
     });
+
+
   });
 
 

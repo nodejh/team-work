@@ -82,6 +82,16 @@ Folder.deleteById = function (id, callback) {
 };
 
 
+Folder.findById = function (id, callback) {
+  var sql = 'SELECT * FROM folder WHERE id=?';
+  connection.query(sql, [id], function (err, rows) {
+    if (err) {
+      console.error('error SELECT: ' + err);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+};
 
 
 //Folder.findFoldersByIdAndUserId = function (id, user_id, callback) {
