@@ -19,7 +19,6 @@ $('#btn-create-project').click(function () {
     var projectname = $('#projectname').val();
     var description = $('#description').val();
     var checkbox = $('#checkbox').val();
-    alert(projectname);
     var members ="[" ;
    var email = document.getElementsByName("email");
     var role = document.getElementsByName("choose-role");
@@ -32,7 +31,6 @@ $('#btn-create-project').click(function () {
 
     }
     members +="{\"email\":\""+ email[length-1].value+"\",\"role\":"+role[length-1].value+"}]";
-    alert(members);
     var data = {
         project_name:projectname,
         description:description,
