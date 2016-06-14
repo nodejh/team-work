@@ -863,3 +863,223 @@ item is not defined
     at H:\master\team-work\routes\index.js:646:15
     at Query._callback (H:\master\team-work\models\topics.model.js:44:9)
     at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 18:03:04 GMT+0900 (韩国标准时间)]/topics?ssl=b42a86db0221aa3e38893aa52675407b
+ReferenceError: H:\master\team-work\views\topics.ejs:229
+    227| 
+    228|                     html += "  <div  class=\"form-item\"> <div>";
+ >> 229|                     html += "<input type=\"hidden\" value=\"<%= item.id %>\" id=\"topic_id\">";
+    230|                     html += "  <input type=\"text\"  class=\"form-control\" tabindex=\"1\" name=\"content\" id=\"commit\" /> </div> </div>"
+    231|                     html += "   <div class=\"form-item\">";
+    232|                     html += "   <button tabindex=\"1\" class=\"btn\" id=\"submit\" data-disable-with=\"正在提交...\">发表评论</button>";
+
+item is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:110:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:646:15
+    at Query._callback (H:\master\team-work\models\topics.model.js:44:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 18:05:03 GMT+0900 (韩国标准时间)]/topics?ssl=b42a86db0221aa3e38893aa52675407b
+ReferenceError: H:\master\team-work\views\topics.ejs:229
+    227| 
+    228|                     html += "  <div  class=\"form-item\"> <div>";
+ >> 229|                     html += "<input type=\"hidden\" value=\"<%= item.id %>\" id=\"topic_id\">";
+    230|                     html += "  <input type=\"text\"  class=\"form-control\" tabindex=\"1\" name=\"content\" id=\"commit\" /> </div> </div>"
+    231|                     html += "   <div class=\"form-item\">";
+    232|                     html += "   <button tabindex=\"1\" class=\"btn\" id=\"submit\" data-disable-with=\"正在提交...\">发表评论</button>";
+
+item is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:110:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:646:15
+    at Query._callback (H:\master\team-work\models\topics.model.js:44:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 18:05:53 GMT+0900 (韩国标准时间)]/topics?ssl=b42a86db0221aa3e38893aa52675407b
+ReferenceError: H:\master\team-work\views\topics.ejs:229
+    227| 
+    228|                     html += "  <div  class=\"form-item\"> <div>";
+ >> 229|                     html += "<input type=\"hidden\" value=\"<%= item.id %>\" id=\"topic_id\">";
+    230|                     html += "  <input type=\"text\"  class=\"form-control\" tabindex=\"1\" name=\"content\" id=\"commit\" /> </div> </div>"
+    231|                     html += "   <div class=\"form-item\">";
+    232|                     html += "   <button tabindex=\"1\" class=\"btn\" id=\"submit\" data-disable-with=\"正在提交...\">发表评论</button>";
+
+item is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:110:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:646:15
+    at Query._callback (H:\master\team-work\models\topics.model.js:44:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 20:18:38 GMT+0900 (韩国标准时间)]/comment?id=26
+ReferenceError: H:\master\team-work\views\comment.ejs:71
+    69|             </div>
+    70|             <div class="messages" id="messages">
+ >> 71|                 <% if (coments.length > 0) { %>
+    72|                 <% coments.forEach(function (item) { %>
+    73| 
+    74|                 <div class="message " id="message" name="<%= item.id %>">
+
+coments is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:51:12)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:938:17
+    at Query._callback (H:\master\team-work\models\commit.model.js:42:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 20:19:33 GMT+0900 (韩国标准时间)]/comment?id=26
+ReferenceError: H:\master\team-work\views\comment.ejs:72
+    70|             <div class="messages" id="messages">
+    71|                 <% if (comments.length > 0) { %>
+ >> 72|                 <% coments.forEach(function (item) { %>
+    73| 
+    74|                 <div class="message " id="message" name="<%= item.id %>">
+    75|                     <img class="avatar" src="/img/bj.jpg" />
+
+coments is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:54:8)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:938:17
+    at Query._callback (H:\master\team-work\models\commit.model.js:42:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 20:19:34 GMT+0900 (韩国标准时间)]/comment?id=26
+ReferenceError: H:\master\team-work\views\comment.ejs:72
+    70|             <div class="messages" id="messages">
+    71|                 <% if (comments.length > 0) { %>
+ >> 72|                 <% coments.forEach(function (item) { %>
+    73| 
+    74|                 <div class="message " id="message" name="<%= item.id %>">
+    75|                     <img class="avatar" src="/img/bj.jpg" />
+
+coments is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:54:8)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:938:17
+    at Query._callback (H:\master\team-work\models\commit.model.js:42:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 20:20:11 GMT+0900 (韩国标准时间)]/comment?id=26
+ReferenceError: H:\master\team-work\views\comment.ejs:105
+    103|                 </div>
+    104|                 <% } %>
+ >> 105|                 <div class="message " id="message" name="<%= item.id %>">
+    106|                     <img class="avatar" src="/img/bj.jpg" />
+    107|                     <input type="text"  class="form-control" tabindex="1" name="content" id="commit1" onfocus="show1()"/>
+    108|                 </div>
+
+item is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:97:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:938:17
+    at Query._callback (H:\master\team-work\models\commit.model.js:42:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 20:22:20 GMT+0900 (韩国标准时间)]/comment?id=26
+ReferenceError: H:\master\team-work\views\comment.ejs:105
+    103|                 </div>
+    104|                 <% } %>
+ >> 105|                 <div class="message " id="message" name="<%= item.id %>">
+    106|                     <img class="avatar" src="/img/bj.jpg" />
+    107|                     <input type="text"  class="form-control" tabindex="1" name="content" id="commit1" onfocus="show1()"/>
+    108|                 </div>
+
+item is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:97:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:938:17
+    at Query._callback (H:\master\team-work\models\commit.model.js:42:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 20:22:51 GMT+0900 (韩国标准时间)]/comment?id=26
+ReferenceError: H:\master\team-work\views\comment.ejs:148
+    146|         var title = document.getElementById("txt-title").value;
+    147|         var content = document.getElementById("txt-content").value;
+ >> 148|         var ssl = '<%= ssl %>';
+    149|         alert(title);
+    150|         var data = {
+    151|             title: title,
+
+ssl is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:106:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:938:17
+    at Query._callback (H:\master\team-work\models\commit.model.js:42:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 20:24:15 GMT+0900 (韩国标准时间)]/comment?id=26
+ReferenceError: H:\master\team-work\views\comment.ejs:149
+    147|         var content = document.getElementById("commit").value;
+    148|         var topic_id = document.getElementById("topic_id").value;
+ >> 149|         var ssl = '<%= ssl %>';
+    150|         var data = {
+    151|             content: content,
+    152|             topic_id:topic_id
+
+ssl is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:106:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:938:17
+    at Query._callback (H:\master\team-work\models\commit.model.js:42:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)
+[Tue Jun 14 2016 20:25:45 GMT+0900 (韩国标准时间)]/comment?id=26
+ReferenceError: H:\master\team-work\views\comment.ejs:182
+    180| 
+    181|                 html += "  <div  class=\"form-item\"> <div>";
+ >> 182|                 html += "<input type=\"hidden\" value=\"<%= item.id %>\" id=\"topic_id\">";
+    183|                 html += "  <input type=\"text\"  class=\"form-control\" tabindex=\"1\" name=\"content\" id=\"commit\" /> </div> </div>"
+    184|                 html += "   <div class=\"form-item\">";
+    185|                 html += "   <button tabindex=\"1\" class=\"btn\" id=\"submit\" data-disable-with=\"正在提交...\">发表评论</button>";
+
+item is not defined
+    at eval (eval at <anonymous> (H:\master\team-work\node_modules\ejs\lib\ejs.js:464:12), <anonymous>:109:23)
+    at returnedFn (H:\master\team-work\node_modules\ejs\lib\ejs.js:493:17)
+    at View.exports.renderFile [as engine] (H:\master\team-work\node_modules\ejs\lib\ejs.js:350:31)
+    at View.render (H:\master\team-work\node_modules\express\lib\view.js:126:8)
+    at tryRender (H:\master\team-work\node_modules\express\lib\application.js:639:10)
+    at EventEmitter.render (H:\master\team-work\node_modules\express\lib\application.js:591:3)
+    at ServerResponse.render (H:\master\team-work\node_modules\express\lib\response.js:961:7)
+    at H:\master\team-work\routes\index.js:938:17
+    at Query._callback (H:\master\team-work\models\commit.model.js:42:9)
+    at Query.Sequence.end (H:\master\team-work\node_modules\mysql\lib\protocol\sequences\Sequence.js:96:24)

@@ -5,7 +5,7 @@ var config = {
     maxAge: 1000 * 60 * 60 * 24 * 30
   },
 
-<<<<<<< HEAD
+
   // mysql: {
   //    host: 'localhost',
   //    user: 'root',
@@ -21,23 +21,15 @@ var config = {
   port: 3306,
   database: 'nucleus'
   },
-=======
-  mysql: {
-     host: 'localhost',
-     user: 'root',
-     password: 'root',
-     port: 3306,
-     database: 'team'
-   },
+  //
+  // mysql: {
+  //    host: 'localhost',
+  //    user: 'root',
+  //    password: 'root',
+  //    port: 3306,
+  //    database: 'team'
+  //  },
 
-  //mysql: {
-  // host: 'localhost',
-  // user: 'root',
-  // password: '123456',
-  // port: 3306,
-  //database: 'nucleus'
-  //},
->>>>>>> 8f74372f17ed972356974ffcd53d89f9b5f60295
 
   mongodb: {
     db: 'team',

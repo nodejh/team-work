@@ -914,6 +914,48 @@ var routes = function (app) {
     });
   });
 
+  app.get('/comment', checkLogin.checkLoginUserForm);
+  app.get('/comment', function (req, res) {
+    var topic_id =req.query.id;
+    Topics.findById(topic_id,function (err,topic) {
+      if(err) {
+        req.flash('error', '查找出错!');
+        res.redirect('/projectindex');
+      }
+      console.log(topic);
+      if(topic.length>0)
+      {
+
+        Commit.findByTopicId(topic_id,function (err2,comments) {
+          if(err2) {
+            console.log(err2);
+            req.flash('error', '插入出错!');
+            return res.json({
+              code:"error"
+            });
+          }
+          else{
+            res.render('comment', {
+              title: '评论',
+              user: req.session.user,
+              topic:topic[0],
+              comments:comments,
+              success: req.flash('success').toString(),
+              error: req.flash('error').toString()
+            });
+          }
+
+        });
+      }
+      else
+      {
+        req.flash('error', '该讨论不存在或已删除!');
+        res.redirect('/projectindex');
+      }
+
+
+    });
+  });
 
 app.get('/event', checkLogin.checkLoginUserForm);
 app.get('/event', function (req, res) {

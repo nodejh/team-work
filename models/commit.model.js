@@ -32,7 +32,7 @@ Commit.prototype.insert = function (topic_id,user_id,user_name,callback) {
 
 
 // 根据 project_id 查找主题
-Commit.findByTopicIdId = function (topic_id, callback) {
+Commit.findByTopicId = function (topic_id, callback) {
     var sql = 'SELECT * FROM comment WHERE topic_id=?';
     connection.query(sql, [topic_id], function (err, rows) {
         if (err) {
