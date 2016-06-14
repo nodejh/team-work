@@ -92,14 +92,15 @@
             var current_month = current_date.getMonth() + 1;
             var current_day = current_date.getDate();
 
-            year = year == current_year ? '' : year + '.';
-            month = month == current_month ? '' : month + '.';
-            day = day == current_day ? '' : day + '.';
+//            year = year == current_year ? '' : year + '.';
+//            month = month == current_month ? '' : month + '.';
+//            day = day == current_day ? '' : day + ' ';
           %>
-          <th> <%= year %> <%= month %> <%= day %> <%= hours %>:<%= minutes %></th>
+          <th> <%= current_year %> <%= current_month %> <%= current_day %> <%= hours %>:<%= minutes %></th>
           <td>
             <div class="display_none id_action_file">
-              <span>下载</span><span>删除</span>
+              <a href="javascript:;" class="id_download">下载</a>
+              <a href="javascript:;" class="id_delete">删除</a>
             </div>
           </td>
         </tr>
