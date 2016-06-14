@@ -29,7 +29,7 @@ var routes = function (app) {
   // 首页
   app.get('/', function (req, res) {
     if (req.session.user) {
-      res.redirect('/home');
+      res.redirect('/projectindex');
     } else {
       res.redirect('/index');
     }
