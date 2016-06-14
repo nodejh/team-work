@@ -520,7 +520,6 @@ var routes = function (app) {
           {
             var member = JSON.parse(members);
             for (var i = 0; i < member.length; i++) {
-              console.log(member.length);
               var role1 = member[i].role;
               var email1 = member[i].email;
               console.log(email1);
@@ -575,17 +574,22 @@ var routes = function (app) {
                 return res.redirect('newproject');
               }
               console.log('邀请成员时发送邮件成功', send_res);
-              req.flash('success', '我们已发送好友邀请,请及时查看!');
+              //upload success
 
+              req.flash('success', '新建项目成功!');
+              return res.json({
+                code: "success"
+              });
             });
           }
+          else {
+            req.flash('success', '新建项目成功!');
+            return res.json({
+              code: "success"
+            });
+          }
+        });
 
-        });
-        //upload success
-        req.flash('success', '新建项目成功!');
-        return res.json({
-          code: "success"
-        });
       });
 
 
