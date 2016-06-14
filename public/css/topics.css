@@ -39,3 +39,9 @@
 .messages .archive-info a:hover{color:#887}
 .message-title{display: block}
 .message-content{margin-top: 3px}
+.topic {
+	border-bottom: 1px solid #ddd;
+	padding: 0 0 30px 0;
+	margin: 20px 0 30px;
+	width: 700px;
+}

@@ -90,7 +90,7 @@
       <% if (topics.length > 0) { %>
         <% topics.forEach(function (item) { %>
 
-            <div class="message " id="message" name="<%= item.id %>">
+            <div class="message"  href=comment?id=<%= item.id %>>
               <img class="avatar" src="/img/bj.jpg" />
               <div class="name">
                   <%=item.user_name%>
@@ -103,37 +103,30 @@
                       <%- item.content%>
                   </span>
                 </p>
-                <section id="parent">
-                    <input type="button" name="subject" id="begin" class="btn" value="点击发表评论" onclick="show1()" />
-                    <div  id="form1"  style="display:none">
-
-                        <div  class="form-item">
-                            <div>
-                                <input type="hidden" value="<%= item.id%>" id="topic_id">
-                                <input type="text"  class="form-control" tabindex="1" name="content" id="commit" />
-                            </div>
-                        </div>
-                        <div class="form-item">
-                            <button tabindex="1" class="btn" id="submit" data-disable-with="正在提交...">发表评论</button>
-                            <a tabindex="2" href="javascript:;" class="btn" id="link-cancel-post">取消</a>
-                        </div>
-                    </div>
-                </section>
-
               <div class="comment-info">
-          
-                      <a href="" class="comments-count" data-stack="true">2</a>
+                  <span><%
+                          var date = new Date(item.time * 1000);
+                          var year = date.getFullYear();
+                          var month = date.getMonth() + 1;
+                          var day = date.getDate();
+                          var hours = date.getHours();
+                          var minutes = '0' + date.getMinutes();
+                          minutes = minutes.substr(-2);
+                      %>
+                      <%= hours %>:<%= minutes %>, <%= year %>年<%= month %>月<%= day %></span>
+
               </div>
             </div>
 
 
         <% }); %>
+        </div>
       <% } else { %>
       <div class="empty">
         暂时没有发起过讨论
       </div>
       <% } %>
-        </div>
+
     </div>
   </div>
 </div>
@@ -200,37 +193,16 @@
             }
         });
     });
-    $('#message').click(function () {
-
-        var topic_id = document.getElementById("message").getAttribute('name');
-        alert(topic_id);
-        if(topic_id!="") {
-            var data = {
-                topic_id: topic_id
-            };
-            $.post('/comment', data, function (res) {
-                var comments = res.comments;
-                var parent = document.getElementById("parent");
-                for (var i = 0; i < comments.length; i++) {
-                    var html = "";
-                    html += "<input type=\"button\" name=\"subject\" id=\"begin\" class=\"btn\" value=\"点击发表评论\" onclick=\"show1()\" />";
-                    html += " <div  id=\"form1\"  style=\"display:none\">";
-
-                    html += "  <div  class=\"form-item\"> <div>";
-                    html += "<input type=\"hidden\" value=\"<%= item.id %>\" id=\"topic_id\">";
-                    html += "  <input type=\"text\"  class=\"form-control\" tabindex=\"1\" name=\"content\" id=\"commit\" /> </div> </div>"
-                    html += "   <div class=\"form-item\">";
-                    html += "   <button tabindex=\"1\" class=\"btn\" id=\"submit\" data-disable-with=\"正在提交...\">发表评论</button>";
-                    html += " <a tabindex=\"2\" href=\"javascript:;\" class=\"btn\" id=\"link-cancel-post\">取消</a> </div> </div>";
-
-                }
-            });
-        }
-        });
     document.getElementById('link-cancel-post').addEventListener('click', function(e) {
         document.getElementById("txt_begin").style.display="block";
         document.getElementById("txt").style.display="none";
         // 当<a>触发click时，处理业务
     }, false);
+
+
+    $('.message').click(function () {
+        window.location.href = $(this).attr('href');
+    });
+
     </script>
 <% include _foot.ejs %>
