@@ -153,15 +153,19 @@ console.log(email);
 Project.findBySSL= function (ssl, callback) {
   var sql = 'SELECT * FROM project WHERE ss=?';
   connection.query(sql,[ssl], function (err, rows) {
+    console.log(sql);
     if (err) {
       console.error('error SELECT: ' + err.stack);
       return callback(err);
     }
     callback(null, rows);
   });
-}
+};
+
+
+
 Project.findBySSL2=function (ssl, callback) {
-  var sql = 'SELECT * FROM project_member WHERE ss=?';
+  var sql = 'SELECT * FROM project_member WHERE ss=? AND accept=1';
   connection.query(sql,[ssl], function (err, rows) {
     if (err) {
       console.error('error SELECT: ' + err.stack);

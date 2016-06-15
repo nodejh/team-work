@@ -19,20 +19,36 @@ $('#btn-create-project').click(function () {
     var projectname = $('#projectname').val();
     var description = $('#description').val();
     var checkbox = $('#checkbox').val();
-    alert(projectname);
-    var members ="[" ;
+
    var email = document.getElementsByName("email");
     var role = document.getElementsByName("choose-role");
     var length=email.length;
-  //  alert();
-    for(var i=0;i<length-1;i++)
+    var count=0;
+    var roles= new Array();
+    var mail =new Array();
+    for(var i=0;i<length;i++)
     {
+        if(email[i].value!="")
+        {
 
-       members +="{\"email\":\""+ email[i].value+"\",\"role\":"+role[i].value+"},";
+            mail[count]=email[i].value;
+            roles[count]=role[i].value;
+            count++;
+        }
+    }
+    alert(mail[0]);
+    if(count>0)
+    {
+    var members ="[" ;
+    for(i=0;i<count-1;i++)
+    {
+          members += "{\"email\":\"" + mail[i].value + "\",\"role\":" + roles[i].value + "},";
 
     }
-    members +="{\"email\":\""+ email[length-1].value+"\",\"role\":"+role[length-1].value+"}]";
-    alert(members);
+        members += "{\"email\":\"" + mail[i] + "\",\"role\":" + roles[i]+ "}]";
+
+    }
+     alert(members);
     var data = {
         project_name:projectname,
         description:description,

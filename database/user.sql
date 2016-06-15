@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50151
 File Encoding         : 65001
 
-Date: 2016-06-05 17:29:06
+Date: 2016-06-14 21:40:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,14 +26,13 @@ CREATE TABLE `user` (
   `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '用户类型,0为禁用，1为普通用户，2为管理员',
   `time` int(11) NOT NULL,
   PRIMARY KEY (`id`,`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('13', '12', 'e10adc3949ba59abbe56e057f20f883e', '10002901669@qq.com', '1', '1463823238');
-INSERT INTO `user` VALUES ('14', '123', 'e10adc3949ba59abbe56e057f20f883e', '1808146357@qq.com', '1', '1464266110');
-INSERT INTO `user` VALUES ('15', 'wangting', 'e807f1fcf82d132f9bb018ca6738a19f', '1002901669@qq.com', '1', '1464529870');
-INSERT INTO `user` VALUES ('16', 'wt', 'e10adc3949ba59abbe56e057f20f883e', '378456486@qq.com', '1', '1464703803');
-INSERT INTO `user` VALUES ('17', '12332131', 'e10adc3949ba59abbe56e057f20f883e', '123@qq.com', '1', '1464707860');
-INSERT INTO `user` VALUES ('18', '123444', 'e10adc3949ba59abbe56e057f20f883e', '1920366085@qq.com', '1', '1464746835');
+INSERT INTO `user` VALUES ('19', '王婷', 'e10adc3949ba59abbe56e057f20f883e', '10002901669@qq.com', '1', '1465743548');
+INSERT INTO `user` VALUES ('20', 'test1', 'e10adc3949ba59abbe56e057f20f883e', '1920366085@qq.com', '1', '1465743722');
+INSERT INTO `user` VALUES ('21', 'test2', 'e10adc3949ba59abbe56e057f20f883e', '123@qq.com', '1', '1465743740');
+INSERT INTO `user` VALUES ('22', 'test3', 'e10adc3949ba59abbe56e057f20f883e', '1808146357@qq.com', '1', '1465743767');
+INSERT INTO `user` VALUES ('23', 'test3', 'e10adc3949ba59abbe56e057f20f883e', '571963318@qq.coom', '1', '1465829957');

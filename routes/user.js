@@ -8,19 +8,19 @@ var checkLogin = require('../passport/checkLogin');
 
 
 var myfun = require('../passport/myfun');
-var multer = require('multer');
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, __dirname + '/../public/uploads');
-  },
-  filename: function (req, file, cb) {
-    var extension = file.originalname.slice((file.originalname.lastIndexOf(".") - 1 >>> 0) + 2);
-    cb(null, file.fieldname + '-' + Date.now() + myfun.randomString(5) + '.' + extension);
-  }
-});
-var upload = multer({
-  storage: storage
-});
+//var multer = require('multer');
+//var storage = multer.diskStorage({
+//  destination: function (req, file, cb) {
+//    cb(null, __dirname + '/../public/uploads');
+//  },
+//  filename: function (req, file, cb) {
+//    var extension = file.originalname.slice((file.originalname.lastIndexOf(".") - 1 >>> 0) + 2);
+//    cb(null, file.fieldname + '-' + Date.now() + myfun.randomString(5) + '.' + extension);
+//  }
+//});
+//var upload = multer({
+//  storage: storage
+//});
 
 
 var User = require('../models/user.model');
@@ -30,6 +30,10 @@ var File = require('../models/file.model');
 
 var routes = function (app) {
 
+  app.use(formidable.parse({
+    uploadDir: __dirname + '/../public/folders/',
+    keepExtensions: true
+  }));
 
   // 查找当前已登录用户的所有文件夹
   app.post('/api/get_all_folder', checkLogin.checkLoginUserJson);
@@ -61,7 +65,6 @@ var routes = function (app) {
       });
 
     });
-
 
   });
 
@@ -172,22 +175,34 @@ var routes = function (app) {
   app.get('/folder', function (req, res, next) {
     console.log('user info in session:', req.session.user);
     var folder_id = req.query.folder_id;
-    File.findFilesByFolderId(folder_id, function (err, rows) {
+
+    Folder.findById(folder_id, function (err, folder_info) {
+
       if (err) {
         req.flash('error', '打开文件夹失败,请重试');
         return res.redirect('/projectindex');
       }
 
-      res.render('folder', {
-        title: '上传文件',
-        folder_id: folder_id,
-        user: req.session.user,
-        files: rows,
-        success: req.flash('success').toString(),
-        error: req.flash('error').toString()
-      });
+      File.findFilesByFolderId(folder_id, function (err, rows) {
+        if (err) {
+          req.flash('error', '打开文件夹失败,请重试');
+          return res.redirect('/projectindex');
+        }
 
+        res.render('folder', {
+          title: '上传文件',
+          folder_id: folder_id,
+          folder_info: folder_info[0],
+          user: req.session.user,
+          files: rows,
+          success: req.flash('success').toString(),
+          error: req.flash('error').toString()
+        });
+
+      });
     });
+
+
   });
 
 
@@ -248,6 +263,28 @@ var routes = function (app) {
   //});
 
 
+
+  // 用户个人资料
+  app.get('/profile', checkLogin.checkLoginUserForm);
+  app.get('/profile', function (req, res, next) {
+
+    var user_id = req.session.user.id;
+    User.findUserById(user_id, function (err, rows) {
+
+      if (err) {
+        req.flash('error', '查找用户个人资料失败,请重试');
+        return res.redirect('/projectindex');
+      }
+
+      return res.render('profile', {
+        title: rows[0].name + '的个人资料',
+        user: req.session.user,
+        profile: rows[0],
+        error: req.flash('error').toString(),
+        success: req.flash('success').toString()
+      });
+    });
+  });
 };
 
 

@@ -42,10 +42,6 @@ app.use(session({
 }));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(formidable.parse({
-  uploadDir: __dirname + '/public/folders/',
-  keepExtensions: true
-}));
 
 // 用户相关
 index(app);
