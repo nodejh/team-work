@@ -25,6 +25,7 @@ body.background {
     .login-icon {
         top: 60px;
         margin: 0 auto;
+        left: 10%;
     }
     .login-icon h4 {
         position: absolute;
