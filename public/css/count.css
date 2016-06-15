@@ -1,0 +1,78 @@
+.summary {
+    margin: auto;
+    *zoom: 1;
+}
+.summary li {
+    display: block;
+    width: 260px;
+    float: left;
+    border-right: 1px solid #dfdfdf;
+    text-align: center;
+}
+.delay {
+    display: block;
+    padding: 0 20px;
+    height: 90px;
+    font: normal normal normal 60px/90px 'arial';;
+    color: #ec9287;
+}
+.member  {
+    display: inline-block;
+    margin: 0 0 0 10px;
+    width:250px;
+    vertical-align: middle;
+}
+.name {
+    display: block;
+    margin: 10px 0 0 0;
+    font-size: 20px;
+    color: #887;
+}
+.name2 {
+    margin: 10px 0 0 10%;
+    font-size: 15px;
+    color: #887;
+}
+.summary li .count {
+    display: block;
+    padding: 0 20px;
+    height: 90px;
+    font: normal normal normal 60px/90px 'arial';
+    color: #999;
+}
+.desc {
+    margin-bottom: 15px;
+    color: #887;
+    font-size: 14px;
+}
+.contribution-table td {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #555;
+    vertical-align: middle;
+}
+.section {
+   clear: both;
+    margin-bottom: 30%;
+}
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+.contribution .bar {
+    width: 500px;
+    height: 24px;
+    overflow: hidden;
+    position: relative;
+}
+.inner-bar {
+    height: 24px;
+    background: #d3e8db;
+    width: 1%;
+    min-width: 1%;
+}
+tr {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}

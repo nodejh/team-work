@@ -119,9 +119,32 @@ Project.updateAccept = function (project, callback) {
   });
 }
 
+
+Project.Modify = function (description,checkbox,ssl, callback) {
+  var sql = 'UPDATE project SET  description=?,checkbox=? WHERE ss=? ';
+  connection.query(sql, [description,checkbox,ssl], function (err, rows) {
+    if (err) {
+      console.error('error UPDATE: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+}
+
 // 根据 user_id 查找项目
 Project.findByUserId = function (user_id, callback) {
   var sql = 'SELECT * FROM project_member WHERE user_id=?';
+  connection.query(sql, [user_id], function (err, rows) {
+    if (err) {
+      console.error('error SELECT: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+}
+// 根据 user_id 查找项目
+Project.findByUserId2 = function (user_id, callback) {
+  var sql = 'SELECT * FROM project WHERE  manager_id=?';
   connection.query(sql, [user_id], function (err, rows) {
     if (err) {
       console.error('error SELECT: ' + err.stack);

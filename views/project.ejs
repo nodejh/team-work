@@ -53,19 +53,19 @@
 
             <div class="project-links">
 
-              <a href="/projects/a422d56cdb3548bea24e3edb01a8c594/stats" class="link-stats" title="待处理任务" data-stack=""
+              <a href="count?ssl=<%=project.ss%>"class="link-stats" title="待处理任务" data-stack=""
                  data-nocache="">
-                <span class="main">0</span>
+                <span class="main"><span class="fui-mail"></span></span>
                 <span>待处理任务</span>
               </a>
 
-              <a href="/projects/a422d56cdb3548bea24e3edb01a8c594/members" class="link-admin-members" title="邀请新成员加入项目"
+              <a  class="link-admin-members" href="#" title="成员人数<%=projectinf.length%>"
                  data-stack="" data-nocache="">
                 <span class="main"><%= projectinf.length %></span>
                 <span>成员</span>
               </a>
 
-              <a href="/projects/a422d56cdb3548bea24e3edb01a8c594/settings" class="link-admin-settings" title="项目设置"
+              <a href="/setting?ssl=<%=project.ss%>" class="link-admin-settings" title="项目设置"
                  data-visible-to="admin" data-stack="" data-nocache="">
                 <span class="fui-gear"></span>
                 <span class="setting">设置</span>

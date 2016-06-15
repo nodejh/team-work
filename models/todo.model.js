@@ -47,6 +47,17 @@ Todo.findByProjectId = function (project_id, callback) {
     });
 };
 
+// 根据 project_id 查找主题
+Todo.findByProjectId2 = function (project_id, callback) {
+    var sql = 'SELECT * FROM todo WHERE project_id=? AND finished=1';
+    connection.query(sql, [project_id], function (err, rows) {
+        if (err) {
+            console.error('error SELECT: ' + err.stack);
+            return callback(err);
+        }
+        callback(null, rows);
+    });
+};
 
 // 根据 project_id 查找主题
 Todo.findById = function (todo_id, callback) {
@@ -60,7 +71,16 @@ Todo.findById = function (todo_id, callback) {
     });
 };
 
-
+Todo.findByadminId = function (admin_id, callback) {
+    var sql = 'SELECT * FROM todo WHERE admin_id=?';
+    connection.query(sql, [admin_id], function (err, rows) {
+        if (err) {
+            console.error('error SELECT: ' + err.stack);
+            return callback(err);
+        }
+        callback(null, rows);
+    });
+};
 // 根据 user_id 查找项目
 Todo.finish = function (todo_id, callback) {
     var sql = 'UPDATE todo SET  finished=? WHERE todo_id=?';

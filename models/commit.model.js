@@ -42,7 +42,17 @@ Commit.findByTopicId = function (topic_id, callback) {
         callback(null, rows);
     });
 };
-
+// 根据 project_id 查找主题
+Commit.findByuserId = function (user_id, callback) {
+    var sql = 'SELECT * FROM comment WHERE user_id=?';
+    connection.query(sql, [topic_id], function (err, rows) {
+        if (err) {
+            console.error('error SELECT: ' + err.stack);
+            return callback(err);
+        }
+        callback(null, rows);
+    });
+};
 
 
 module.exports = Commit;

@@ -42,7 +42,7 @@ $('#btn-create-project').click(function () {
     var members ="[" ;
     for(i=0;i<count-1;i++)
     {
-          members += "{\"email\":\"" + mail[i].value + "\",\"role\":" + roles[i].value + "},";
+          members += "{\"email\":\"" + mail[i] + "\",\"role\":" + roles[i] + "},";
 
     }
         members += "{\"email\":\"" + mail[i] + "\",\"role\":" + roles[i]+ "}]";
@@ -66,8 +66,8 @@ $('#btn-create-project').click(function () {
             alert('新建失败！');
             window.location.href='/newproject';
         }
-        else {
-            alert('新建失败！');
+        else if(res.code=="error"){
+            alert('新建成功！');
             window.location.href='/newproject';
         }
     });

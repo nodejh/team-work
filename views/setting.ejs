@@ -1,0 +1,181 @@
+<% include _head.ejs %>
+<link href="/css/home.css" rel="stylesheet">
+<link href="/css/new-project.css" rel="stylesheet">
+<% include _header.ejs %>
+<% include _nav.ejs %>
+
+
+<div class="c-info">
+  <% if (error) { %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <%= error %>
+  </div>
+  <% } %>
+</div>
+
+<div class="c-info">
+  <% if (success) { %>
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <%= success %>
+  </div>
+  <% } %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 page">
+      <div class=" ">
+        <div class="panel-body">
+          <div>
+            <P>管理项目</P>
+            <div class="col-lg-10">
+              
+              <div class="form-group">
+                <input class="form-control" id="projectname" disabled type="text" value="<%=project.name%>">
+              </div>
+
+              <div class="form-group">
+                  <textarea class="form-control" id="description" name="description"
+                           value="简单描述项目，便于其他人理解（选填）"></textarea>
+              </div>
+              <label class="checkbox" for="checkbox2">
+                <input checked="checked" value="1" id="checkbox" name="checkbox" data-toggle="checkbox"
+                       type="checkbox">
+                对访客隐藏敏感内容
+              </label>
+               <button type="button" class="btn btn-primary" id="btn-set-project" data-disable-with="正在修改..."
+                        data-success-text="修改成功">保存修改
+                </button>
+                <hr>
+              <div>
+                <p>管理项目成员</p>
+                <p>
+                  管理员可以邀请和移除项目成员，只有被邀请的团队成员才能访问该项目的信息。点击这里查看<a href="https://tower.im/help/faq/8/65/" target="_blank"
+                                                               rel="nofollow">如何设置成员权限</a>。
+                </p>
+                <div class="tab active" data-tab="email">
+                  <div class="form-group">
+                    <div id="parent">
+                      <div>
+                        <div class="invite-item invite-field">
+                          
+
+                          <div class="invite-role-field">
+                          <span>王 &nbsp&nbsp&nbsp 婷</span>
+                            <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
+                              <option value="0" selected="">成员</option>
+                              <option value="1">主管</option>
+                              <option value="2">管理员</option>
+                            </select>
+                            <a href="javascript:" class="btn">修改成员</a>
+                          </div>
+                          <hr>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="invite-item invite-field">
+                          
+
+                          <div class="invite-role-field">
+                          <span>毛浩宇</span>
+                            <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
+                              <option value="0" selected="">成员</option>
+                              <option value="1">管理员</option>
+                              <option value="2">主管</option>
+                            </select>
+                            <a href="javascript:" class="btn">修改成员</a>
+                          </div>
+                          <hr>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="invite-item invite-field">
+                          
+
+                          <div class="invite-role-field">
+                            <span>蒋 &nbsp&nbsp&nbsp 航</span>
+                            <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
+                              <option value="0" selected="">成员</option>
+                              <option value="1">管理员</option>
+                              <option value="2">主管</option>
+                            </select>
+                            <a href="javascript:" class="btn">修改成员</a>
+                          </div>
+                          <hr>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <input class="btn btn-primary" id="add" value="填加成员">
+                    
+                  </div>
+                </div>
+
+              </div>
+              <p>选项</p>
+              <hr>
+
+              <div style="margin: 30px 0 20px 0;">
+                <button type="button" class="btn btn-primary" id="btn-set-people" data-disable-with="正在修改..."
+                        data-success-text="修改成功">保存修改
+                </button>
+                <a href="/teams/33e50bf86957490a9e6f0581cb1d7f74/projects" class="btn">取消</a>
+              </div>
+              <hr>
+              <div style="margin: 30px 0 20px 0;">
+                <button type="button" class="btn btn-danger" id="btn-dele" data-disable-with="正在删除..."
+                        data-success-text="删除成功">删除项目
+                </button>
+              </div>
+              <hr>
+              <div style="margin: 30px 0 20px 0;">
+                <button type="button" class="btn btn-default" id="btn-out" data-disable-with="正在导出..."
+                        data-success-text="导出成功">导出项目
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<% include _footer.ejs %>
+<script src="/js/newproject.js"></script>
+<script>
+  $('#btn-set-project').click(function () {
+
+    var projectname = $('#projectname').val();
+    var description = $('#description').val();
+    var checkbox = $('#checkbox').val();
+    var data={
+      description:description,
+      checkbox:checkbox,
+      ssl:'<%=project.ss%>'
+    };
+    alert(checkbox);
+    $.post('/modify', data, function(res) {
+      if (res.code=="success") {
+        alert('修改成功！');
+        // todo  跳转到个人中心
+        window.location.href = '/project?ssl=<%=project.ss%>';
+
+      }
+      else {
+        alert('修改失败！');
+
+        window.location.reload();
+      }
+    });
+  });
+</script>
+<% include _foot.ejs %>
+
