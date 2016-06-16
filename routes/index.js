@@ -529,7 +529,8 @@ var routes = function (app) {
                   req.flash('error', '新建项目失败!');
                   return res.redirect('/newproject');
                 }
-                if (result3.length == 0) {
+
+                else  if (result3.length == 0) {
                   req.flash('error', '该邀请成员不存在！!');
                   return res.json({
                     code: "error"
