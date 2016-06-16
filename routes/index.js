@@ -516,7 +516,7 @@ var routes = function (app) {
             }
           });
           var maillist = "";
-          if(members!=undefined) {
+          if (members != undefined) {
             var member = JSON.parse(members);
             var i;
             for (i = 0; i < member.length; i++) {
@@ -530,11 +530,8 @@ var routes = function (app) {
                   return res.redirect('/newproject');
                 }
 
-                else  if (result3.length == 0) {
+                else if (result3.length == 0) {
                   req.flash('error', '该邀请成员不存在！!');
-                  return res.json({
-                    code: "error"
-                  });
                 }
 
                 else {
@@ -597,7 +594,6 @@ var routes = function (app) {
         });
 
       });
-
 
 
     });
@@ -1033,34 +1029,33 @@ var routes = function (app) {
   app.get('/event', checkLogin.checkLoginUserForm);
   app.get('/event', function (req, res) {
     var user = req.session.user;
-   Project.findByUserId2(user.id,function(err1,projects) {
-     if (err1) {
-       req.flash('error', "查找出错");
-       return redirect('/projectindex');
-     }
-     Todo.findByadminId(user.id, function (err2, todos) {
-       if (err2) {
-         req.flash('error', "查找出错");
-         return redirect('/projectindex');
-       }
-       Weekly.findByUserId(user.id, function (err3, weeklys)
-       {
-         if (err3) {
-           req.flash('error', "查找出错");
-           return redirect('/projectindex');
-         }
-         res.render('event', {
-           title: '动态',
-           user: req.session.user,
-           projects:projects,
-           Todos:todos,
-           weeklys:weeklys,
-           success: req.flash('success').toString(),
-           error: req.flash('error').toString()
-         });
-       });
-     });
-   });
+    Project.findByUserId2(user.id, function (err1, projects) {
+      if (err1) {
+        req.flash('error', "查找出错");
+        return redirect('/projectindex');
+      }
+      Todo.findByadminId(user.id, function (err2, todos) {
+        if (err2) {
+          req.flash('error', "查找出错");
+          return redirect('/projectindex');
+        }
+        Weekly.findByUserId(user.id, function (err3, weeklys) {
+          if (err3) {
+            req.flash('error', "查找出错");
+            return redirect('/projectindex');
+          }
+          res.render('event', {
+            title: '动态',
+            user: req.session.user,
+            projects: projects,
+            Todos: todos,
+            weeklys: weeklys,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+          });
+        });
+      });
+    });
   });
 
   app.get('/count', checkLogin.checkLoginUserForm);
@@ -1097,7 +1092,7 @@ var routes = function (app) {
                 title: '待处理任务',
                 user: req.session.user,
                 todos: todos,
-                todosf:todosf,
+                todosf: todosf,
                 projects: projects,
                 topics: topics,
                 weekly: weeklys,
@@ -1147,7 +1142,7 @@ var routes = function (app) {
     var user = req.session.user;
     var description = req.body.description;
     var checkbox = req.body.checkbox;
-    var ssl=req.body.ssl;
+    var ssl = req.body.ssl;
     Project.findBySSL(ssl, function (err, projects) {
       if (err) {
         return redirect('/projectindex');
@@ -1157,16 +1152,16 @@ var routes = function (app) {
         return redirect('/projectindex');
 
       }
-     Project.Modify(description,checkbox,ssl,function (err1,result) {
-       if (err1) {
-         return res.json({
-          code:'fail' 
-         });
-       }
-       return res.json({
-         code:'success'
-       });
-     });
+      Project.Modify(description, checkbox, ssl, function (err1, result) {
+        if (err1) {
+          return res.json({
+            code: 'fail'
+          });
+        }
+        return res.json({
+          code: 'success'
+        });
+      });
     });
   });
 };
