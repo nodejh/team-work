@@ -531,9 +531,6 @@ var routes = function (app) {
                 }
                 if (result3.length == 0) {
                   req.flash('error', '该邀请成员不存在！!');
-                  return res.json({
-                    code: "error"
-                  });
                 }
 
                 else {
