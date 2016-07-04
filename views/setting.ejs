@@ -62,54 +62,28 @@
                 <div class="tab active" data-tab="email">
                   <div class="form-group">
                     <div id="parent">
+                      <% members.forEach(function (item) {
+                        %>
+
                       <div>
                         <div class="invite-item invite-field">
                           
 
                           <div class="invite-role-field">
-                          <span>王 &nbsp&nbsp&nbsp 婷</span>
+                          <span><%=item.user_name%></span>
                             <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
                               <option value="0" selected="">成员</option>
                               <option value="1">主管</option>
                               <option value="2">管理员</option>
                             </select>
-                            <a href="javascript:" class="btn">修改成员</a>
+                            <a href="" id="deleteMember" class="">删除成员</a>
                           </div>
                           <hr>
                         </div>
                       </div>
-                      <div>
-                        <div class="invite-item invite-field">
-                          
+                      <%
+                      });%>
 
-                          <div class="invite-role-field">
-                          <span>毛浩宇</span>
-                            <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
-                              <option value="0" selected="">成员</option>
-                              <option value="1">管理员</option>
-                              <option value="2">主管</option>
-                            </select>
-                            <a href="javascript:" class="btn">修改成员</a>
-                          </div>
-                          <hr>
-                        </div>
-                      </div>
-                      <div>
-                        <div class="invite-item invite-field">
-                          
-
-                          <div class="invite-role-field">
-                            <span>蒋 &nbsp&nbsp&nbsp 航</span>
-                            <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
-                              <option value="0" selected="">成员</option>
-                              <option value="1">管理员</option>
-                              <option value="2">主管</option>
-                            </select>
-                            <a href="javascript:" class="btn">修改成员</a>
-                          </div>
-                          <hr>
-                        </div>
-                      </div>
                     </div>
                     
                     <input class="btn btn-primary" id="add" value="填加成员">
@@ -176,6 +150,53 @@
       }
     });
   });
+  $('#btn-set-people').click(function () {
+    var email = document.getElementsByName("email");
+    var role = document.getElementsByName("choose-role");
+    var roles = new Array();
+    var mail = new Array();
+    for (var i = 0; i < length; i++) {
+      if (email[i].value != "") {
+
+        mail[count] = email[i].value;
+        roles[count] = role[i].value;
+        count++;
+      }
+    }
+    alert(mail[0]);
+    if (count > 0) {
+      var members = "[";
+      for (i = 0; i < count - 1; i++) {
+        members += "{\"email\":\"" + mail[i] + "\",\"role\":" + roles[i] + "},";
+
+      }
+      members += "{\"email\":\"" + mail[i] + "\",\"role\":" + roles[i] + "}]";
+
+    }
+    alert(members);
+    var data = {
+      project_name: projectname,
+      description: description,
+      checkbox: checkbox,
+      members: members
+    };
+    $.post('/newproject', data, function (res) {
+      if (res.code == "success") {
+        alert('新建成功！');
+        // todo  跳转到个人中心
+        window.location.href = '/projectindex';
+
+      }
+      else if (res.code == "double") {
+        alert('新建失败！');
+        window.location.href = '/newproject';
+      }
+      else if (res.code == "error") {
+        alert('新建成功！');
+        window.location.href = '/newproject';
+      }
+    });
+  }
 </script>
 <% include _foot.ejs %>
 

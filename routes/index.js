@@ -531,6 +531,9 @@ var routes = function (app) {
                 }
                 if (result3.length == 0) {
                   req.flash('error', '该邀请成员不存在！!');
+                  return res.json({
+                    code: "error"
+                  });
                 }
 
                 else {
@@ -1126,15 +1129,18 @@ var routes = function (app) {
         return redirect('/projectindex');
 
       }
+      Project.findBySSL2(ssl,function (err2,member ) {
+
       console.log(projects);
       res.render('setting', {
         title: '项目设置',
         user: req.session.user,
         project: projects[0],
+        members:member,
         success: req.flash('success').toString(),
         error: req.flash('error').toString()
       });
-
+    });
     });
   });
 
