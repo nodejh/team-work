@@ -1,5 +1,5 @@
 var config = {
-  port: 4001,
+  port: 4000,
   cookie: {
     cookieSecret: 'team-work',
     maxAge: 1000 * 60 * 60 * 24 * 30

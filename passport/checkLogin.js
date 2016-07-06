@@ -42,7 +42,7 @@ var checkLogin = {
     next();
   },
   checkLoginUserAccept: function (req, res, next) {
-    console.log(req.session);
+
     var ssl=req.query.ssl;
     if (!req.session.user) {
       //req.flash('error', '未登陆');
