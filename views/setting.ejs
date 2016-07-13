@@ -62,54 +62,30 @@
                 <div class="tab active" data-tab="email">
                   <div class="form-group">
                     <div id="parent">
+                      <% members.forEach(function (item) {
+                        %>
+
                       <div>
                         <div class="invite-item invite-field">
                           
 
                           <div class="invite-role-field">
-                          <span>王 &nbsp&nbsp&nbsp 婷</span>
-                            <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
+                          <span><%=item.user_name%></span>
+                            <select class="invite-role" id="choose" name="choose-role" tabindex="-1">
                               <option value="0" selected="">成员</option>
                               <option value="1">主管</option>
                               <option value="2">管理员</option>
                             </select>
-                            <a href="javascript:" class="btn">修改成员</a>
+                            <%if(item.user_id !=user.id){%>
+                            <a  id="deleteMember" class="btn" href="deleteMember?user_id=<%=item.user_id%>&ssl=<%=item.ss%>">删除成员</a>
+                            <%}%>
                           </div>
                           <hr>
                         </div>
                       </div>
-                      <div>
-                        <div class="invite-item invite-field">
-                          
+                      <%
+                      });%>
 
-                          <div class="invite-role-field">
-                          <span>毛浩宇</span>
-                            <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
-                              <option value="0" selected="">成员</option>
-                              <option value="1">管理员</option>
-                              <option value="2">主管</option>
-                            </select>
-                            <a href="javascript:" class="btn">修改成员</a>
-                          </div>
-                          <hr>
-                        </div>
-                      </div>
-                      <div>
-                        <div class="invite-item invite-field">
-                          
-
-                          <div class="invite-role-field">
-                            <span>蒋 &nbsp&nbsp&nbsp 航</span>
-                            <select class="invite-role" id="choose-role" name="choose-role" tabindex="-1">
-                              <option value="0" selected="">成员</option>
-                              <option value="1">管理员</option>
-                              <option value="2">主管</option>
-                            </select>
-                            <a href="javascript:" class="btn">修改成员</a>
-                          </div>
-                          <hr>
-                        </div>
-                      </div>
                     </div>
                     
                     <input class="btn btn-primary" id="add" value="填加成员">
@@ -175,6 +151,64 @@
         window.location.reload();
       }
     });
+  });
+  $('#btn-set-people').click(function () {
+    var email = document.getElementsByName("email");
+    var role = document.getElementsByName("choose-role");
+    var roles = new Array();
+    var mail = new Array();
+    var count=0;
+    var length=email.length;
+    for (var i = 0; i < length; i++) {
+      if (email[i].value != "") {
+
+        mail[count] = email[i].value;
+        roles[count] = role[i].value;
+        count++;
+      }
+    }
+    alert(mail[0]);
+    if (count > 0) {
+      var members = "[";
+      for (i = 0; i < count - 1; i++) {
+        members += "{\"email\":\"" + mail[i] + "\",\"role\":" + roles[i] + "},";
+
+      }
+      members += "{\"email\":\"" + mail[i] + "\",\"role\":" + roles[i] + "}]";
+
+    }
+    alert(members);
+    var ssl='<%=project.ss%>';
+    var data = {
+      ssl:ssl,
+      members: members
+    };
+    $.post('/addMember', data, function (res) {
+      if (res.code == "success") {
+        alert('添加成员成功！');
+        // todo  跳转到个人中心
+        window.location.reload();
+
+      }
+      else if (res.code == "double") {
+        alert('添加成员失败！');
+        window.location.reload();
+      }
+      else if (res.code == "error") {
+        alert('添加成员失败！');
+        window.location.reload();
+      }
+    });
+  });
+  $('#btn-dele').click(function () {
+
+        window.location.href="deleteProject?ssl=<%=project.ss%>";
+
+  });
+  $('#btn-out').click(function () {
+
+    window.location.href="output?ssl=<%=project.ss%>";
+
   });
 </script>
 <% include _foot.ejs %>

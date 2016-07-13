@@ -152,7 +152,7 @@ Project.findByUserId2 = function (user_id, callback) {
     }
     callback(null, rows);
   });
-}
+};
 
 // 根据邮箱邀请成员
 Project.prototype.inviteMember = function (email, ssl,callback) {
@@ -185,7 +185,16 @@ Project.findBySSL= function (ssl, callback) {
   });
 };
 
-
+Project.deleteMember=function (user_id,ssl,callback) {
+  var sql = 'DELETE FROM project_member WHERE user_id=? AND ss=?';
+  connection.query(sql, [user_id, ssl], function (err, rows) {
+    if (err) {
+      console.error('error DELETE: ' + err.stack);
+      return callback(err);
+    }
+    callback(null, rows);
+  });
+};
 
 Project.findBySSL2=function (ssl, callback) {
   var sql = 'SELECT * FROM project_member WHERE ss=? AND accept=1';
@@ -197,4 +206,26 @@ Project.findBySSL2=function (ssl, callback) {
     callback(null, rows);
   });
 }
+
+
+Project.deleteProject=function (ssl,callback) {
+    var sql = 'DELETE FROM project WHERE ss=?';
+    connection.query(sql, [ssl], function (err, rows) {
+        if (err) {
+            console.error('error DELETE: ' + err.stack);
+            return callback(err);
+        }
+        callback(null, rows);
+    });
+};
+Project.deleteProjectMember=function (ssl,callback) {
+    var sql = 'DELETE FROM project_member WHERE ss=?';
+    connection.query(sql, [ssl], function (err, rows) {
+        if (err) {
+            console.error('error DELETE: ' + err.stack);
+            return callback(err);
+        }
+        callback(null, rows);
+    });
+};
 module.exports = Project;
