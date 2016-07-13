@@ -1,0 +1,86 @@
+.member-nav {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0 20px;
+    height: 38px;
+}
+ol, ul {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+.member-nav ul .active {
+    font-weight: bold;
+}
+.member-nav ul li {
+    float: left;
+}
+.member-nav ul a:hover, .member-nav ul .active a {
+    color: #84a099;
+}
+.member-nav ul a {
+    float: left;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    color: #999;
+    font-family: arial, sans-serif;
+}
+.member-info {
+    padding: 20px 40px 40px;
+    border-bottom: 1px solid #e6e6e6;
+}
+.member-info .avatar {
+    float: left;
+    width: 76px;
+    height: 76px;
+    margin-top: 2px;
+    border-radius: 50%;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.15);
+}
+.avatar {
+    height: 50px;
+    width: 50px;
+    display: block;
+    border-radius: 50%;
+}
+
+.member-info .info {
+    margin-left: 100px;
+}
+.member-info .info .link:hover {
+    color: #0066aa;
+}
+.member-info .info h2 {
+    font-size: 28px;
+    font-weight: normal;
+    color: #333;
+    text-align: left;
+    margin: 0;
+    line-height: 36px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.member-info .info .link {
+    margin: 2px 0;
+    display: inline-block;
+    font-size: 14px;
+    color: #999;
+}
+.profile_form {
+    max-width: 400px;
+    margin: 50px 0;
+}
+.form-control[disabled].email {
+    color: #000;
+}
+.update_password_div {
+    padding: 4px 10px;
+}
+.update_password {
+    font-size: 13px;
+    color: #4ea5ad;
+    text-decoration: none;
+}

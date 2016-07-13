@@ -1,3 +1,4 @@
+var crypto = require('crypto');
 var path = require('path');
 //var formidable = require('formidable');
 var fs = require('fs');
@@ -275,7 +276,8 @@ var routes = function (app) {
         req.flash('error', '查找用户个人资料失败,请重试');
         return res.redirect('/projectindex');
       }
-
+      
+      console.log('个人资料:' + JSON.stringify(rows[0]));
       return res.render('profile', {
         title: rows[0].name + '的个人资料',
         user: req.session.user,
@@ -285,6 +287,126 @@ var routes = function (app) {
       });
     });
   });
+
+
+  // 修改资料
+  app.post('/profile', checkLogin.checkLoginUserJson);
+  app.post('/profile', function (req, res, next) {
+    var name = req.body.name;
+    if (name == undefined || name == '') {
+      req.flash('error', '姓名不能为空');
+      return res.redirect('/profile');
+    }
+    var user_id = req.session.user.id;
+    User.updateName(user_id, name, function (err, rows) {
+      if (err) {
+        req.flash('error', '修改姓名失败,请重试');
+        return res.redirect('/profile');
+      }
+      req.session.user.name = name;
+      req.flash('success', '修改成功!');
+      return res.redirect('/profile');
+
+    });
+
+  });
+
+
+  // 修改头像
+  app.post('/api/avatar_upload', checkLogin.checkLoginUserJson);
+  app.post('/api/avatar_upload', function (req, res, next) {
+    var file = req.body.avatar;
+    var name = file.name;
+    var path = file.path.substr(file.path.lastIndexOf('/') + 1);
+    console.log(name);
+    console.log(path);
+
+    var user_id = req.session.user.id;
+    User.updateAvatar(user_id, path, function (err, rows) {
+
+      if (err) {
+        return res.json({
+          code: 1,
+          msg: 'upload avatar error'
+        });
+      }
+
+      res.json({
+        code: 0,
+        msg: 'upload success'
+      });
+
+    });
+  });
+  
+  
+  // 修改密码
+  app.get('/update_password', checkLogin.checkLoginUserForm);
+  app.get('/update_password', function (req, res, next) {
+    res.render('update_password', {
+      title: '修改密码',
+      user: req.session.user,
+      error: req.flash('error').toString(),
+      success: req.flash('success').toString()
+    });
+  });
+
+
+  // 修改密码操作
+  app.post('/update_password', checkLogin.checkLoginUserJson);
+  app.post('/update_password', function (req, res, next) {
+    var password_old = req.body.password_old;
+    var password_new = req.body.password_new;
+
+    var user_id = req.session.user.id;
+    var md5 = crypto.createHash('md5');
+
+    // 判断旧密码是否正确
+    User.findPasswordByUserId(user_id, function (err, rows) {
+
+      if (err || !rows[0]) {
+        req.flash('error', '修改密码失败,请重试!');
+        return res.redirect('/update_password');
+      }
+
+      console.log('原密码:' + rows[0].password);
+      if (rows[0].password != md5.update(password_old).digest('hex')) {
+        req.flash('error', '原密码错误,请重试!');
+        return res.redirect('/update_password');
+      }
+
+
+      var password = crypto.createHash('md5').update(password_new).digest('hex');
+      console.log(password);
+      User.updatePasswordByUserId(user_id, password, function (err, rows) {
+
+        if (err) {
+          req.flash('error', '修改密码失败,请重试!');
+          return res.redirect('/update_password');
+        }
+
+        req.flash('success', '修改密码成功!');
+        res.redirect('/update_password');
+
+      });
+
+    });
+
+  });
+
+
+  app.get('/profile_task', checkLogin.checkLoginUserForm);
+  app.get('/profile_task', function (req, res, next) {
+    res.render('/profile_task', {
+      
+    });
+  });
+
+
+
+
+
+
 };
 
 

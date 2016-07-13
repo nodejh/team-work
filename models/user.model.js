@@ -69,9 +69,72 @@ User.updatePasswordByEmail = function (email, password, callback) {
     callback(null, rows);
   });
 
-
 };
 
+
+/**
+ * 修改头像
+ * @param user_id
+ * @param avatar
+ * @param callback
+ */
+User.updateAvatar = function (user_id, avatar, callback) {
+  var sql = 'UPDATE user SET avatar=? WHERE id=?';
+  connection.query(sql, [avatar, user_id], function (err, rows) {
+
+    if (err) {
+      console.error('error update avatar by user_id: ' + err.stack);
+      return callback(err);
+    }
+
+    callback(null, rows);
+  });
+};
+
+
+// 修改姓名
+User.updateName = function (user_id, name, callback) {
+  var sql = 'UPDATE user SET name=? WHERE id=?';
+  connection.query(sql, [name, user_id], function (err, rows) {
+    if (err) {
+      console.error('error update name by user_id: ' + err.stack);
+      return callback(err);
+    }
+
+    callback(null, rows);
+  });
+};
+
+
+// 查询用户密码
+User.findPasswordByUserId = function (user_id, callback) {
+  var sql = 'SELECT password FROM user WHERE id=?';
+  connection.query(sql, [user_id], function (err, rows) {
+
+    if (err) {
+      console.error('error select password by user_id: ' + err.stack);
+      return callback(err);
+    }
+
+    return callback(null, rows);
+
+  });
+};
+
+
+
+// 更新用户密码
+User.updatePasswordByUserId = function (user_id, password, callback) {
+  var sql = 'UPDATE user SET password=? WHERE id=?';
+  connection.query(sql, [password, user_id], function (err, rows) {
+    if (err) {
+      console.error('error update password by id: ' + err.stack);
+      return callback(err);
+    }
+
+    callback(null, rows);
+  });
+};
 
 
 module.exports = User;
