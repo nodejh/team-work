@@ -1413,6 +1413,58 @@ var routes = function (app) {
           });
 
 
+  app.get('/deleteTopic', checkLogin.checkLoginUserForm);
+  app.get('/deleteTopic', function (req, res) {
+    var user = req.session.user;
+    var id = req.query.id;
+    console.log(id);
+    Topics.deleteById(id,function(err,result)
+    {
+      if(err)
+      {
+        req.flash('error', '删除主题出错!');
+        return res.redirect('/comment/id='+id);
+      }
+      req.flash('success', '删除主题成功!');
+      return res.redirect('/projectindex');
+    });
+  });
+
+  app.get('/deleteComment', checkLogin.checkLoginUserForm);
+  app.get('/deleteComment', function (req, res) {
+    var user = req.session.user;
+    var id = req.query.id;
+    console.log(id);
+    Commit.deleteById(id,function(err,result)
+    {
+      if(err)
+      {
+        req.flash('error', '删除评论出错!');
+        return res.redirect('/comment/id='+id);
+      }
+      req.flash('success', '删除评论成功!');
+      return res.redirect('/projectindex');
+    });
+  });
+
+  app.get('/deleteTodo', checkLogin.checkLoginUserForm);
+  app.get('/deleteTodo', function (req, res) {
+    var user = req.session.user;
+    var id = req.query.id;
+    console.log(id);
+
+    Todo.deletebyId(id,function(err,result)
+    {
+      if(err)
+      {
+        req.flash('error', '删除任务出错!');
+        return res.redirect('/comment/id='+id);
+      }
+      req.flash('success', '删除任务成功!');
+      return res.redirect('/projectindex');
+    });
+  });
+
 };
 
 

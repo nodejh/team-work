@@ -1,5 +1,5 @@
 var Weekly = require('../models/weekly.model');
-
+var Admin = require('../models/admin.model');
 var routes = function (app) {
 
 
@@ -10,6 +10,31 @@ var routes = function (app) {
     });
   });
 
+
+  app.get('/admin_login', function (req, res) {
+    res.render('admin_login', {
+      title: '管理员登录'
+    });
+  });
+
+
+  app.post('/admin_login', function (req, res) {
+   var user =req.body.user;
+    var password =req.body.password;
+    console.log(password);
+   Admin.findUserByName(user,function (err,result) {
+     if(err){
+       console.log(err);
+       return res.redirect=('/admin_login');
+
+     }
+     console.log(result);
+     if(password==result[0].password){
+       return res.redirect('/admin');
+     }
+     return res.redirect('/admin_login');
+   }) ;
+  });
 
   // 查看所有周报
   app.get('/admin/weekly', function (req, res) {

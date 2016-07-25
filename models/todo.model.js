@@ -104,4 +104,14 @@ Todo.deletebyProject = function (project_id, callback) {
         callback(null, rows);
     });
 };
+Todo.deletebyId = function (id, callback) {
+    var sql = 'DELETE  FROM todo WHERE todo_id=?';
+    connection.query(sql, [id], function (err, rows) {
+        if (err) {
+            console.error('error DELETE: ' + err.stack);
+            return callback(err);
+        }
+        callback(null, rows);
+    });
+};
 module.exports = Todo;
