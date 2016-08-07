@@ -66,4 +66,14 @@ Topics.deleteByProjectId = function (project_id, callback) {
         callback(null, rows);
     });
 };
+Topics.deleteById=function (id, callback) {
+    var sql = 'DELETE  FROM topics WHERE id=?';
+    connection.query(sql, [id], function (err, rows) {
+        if (err) {
+            console.error('error DELETE: ' + err.stack);
+            return callback(err);
+        }
+        callback(null, rows);
+    });
+};
 module.exports = Topics;

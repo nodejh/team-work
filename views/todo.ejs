@@ -103,8 +103,7 @@
             <% todos.forEach(function (item) { if(item.finished==0){%>
                 <div class="message">
                     <img class="avatar" src="/img/bj.jpg" />  <div class="name"><%=item.user_name%></div>   <span class="message-title">截至日期</span><span class="message-content"><% var date=new Date(item.finish_time)%><%= date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()%></span>
-                    <div class="comment-info"><input class="custom-checkbox" value="<%= item.todo_id%>" id="checkbox1" name="checkbox" data-toggle="checkbox" type="checkbox"<% if(user.id!=item.admin_id){%> disabled=""<% }%> ></div>
-                </div>
+                    <div class="comment-info"><%if(user.id==item.admin_id){%><a href="/deleteTodo?id=<%=item.todo_id%>">删除</a><%}%><input class="custom-checkbox" value="<%= item.todo_id%>" id="checkbox1" name="checkbox" data-toggle="checkbox" type="checkbox"<% if(user.id!=item.admin_id){%> disabled=""<% }%> ></div></div>
                 <% }}); %>
             </div>
             <h4 class="title">已经完成的任务</h4>

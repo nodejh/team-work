@@ -45,3 +45,12 @@
 	margin: 20px 0 30px;
 	width: 700px;
 }
+.detail-actions {
+	position: absolute;
+	top: 20px;
+	right: -1px;
+	right: 0px;
+	padding: 10px 0 10px 10px;
+	margin-top: 42px;
+	font-size: 14px;
+}
