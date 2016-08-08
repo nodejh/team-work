@@ -398,7 +398,7 @@ var routes = function (app) {
   app.get('/profile_task', checkLogin.checkLoginUserForm);
   app.get('/profile_task', function (req, res, next) {
     res.render('/profile_task', {
-      
+
     });
   });
 
