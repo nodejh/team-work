@@ -1,0 +1,47 @@
+<% include admin_head.ejs%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">用户</a></li>
+                <li><a href="#">文件夹</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="">项目</a></li>
+                <li><a href="">讨论</a></li>
+                <li><a href="">评论</a></li>
+                <li><a href="">任务</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li><a href="">周报</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            请选择组合统计的条件
+            <form action="/statistic" method="post">
+                <input type="checkbox" value="id" id="id_check" name="query_check" checked="true">ID
+                从
+                <input type="text" id="from_id" name="from_id" value="1"/>
+                到
+                <input type="text" id="to_id" name="to_id" value="100"/>
+                <p></p>
+                <input type="checkbox" value="device_name" id="device_name_check" name="query_check" checked="false">项目创始人id
+                <input type="text" id="device_name" name="id" value="24"/>
+                <p></p>
+                <input type="checkbox" value="gps_time" id="gps_time" name="query_check">创建时间
+                从
+                <input type="text" id="gps_time_from" name="time_from" value="2016-04-01"/>
+                到
+                <input type="text" id="gps_time_to" name="time_to" value="2016-08-04"/>
+                <p></p>
+                <hr/>
+                <input type="submit" value="提交统计"/>
+            </form>
+        </div>
+    </div>
+</div>
+<%include admin_foot.ejs%>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
