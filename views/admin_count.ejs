@@ -1,0 +1,150 @@
+<% include admin_head.ejs%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">用户</a></li>
+                <li><a href="#">文件夹</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="">项目</a></li>
+                <li><a href="">讨论</a></li>
+                <li><a href="">评论</a></li>
+                <li><a href="">任务</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li><a href="">周报</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        结果列表
+        <br>
+            <div id="first" onclick="show1()">
+                <div id="head">
+            <input type="button" value="统计" onclick="statistic();"/>
+        <input type="button" value="打印" onclick="javascript:window.print();"/>
+                    <a class="button" href="/export?ssl=<%=result[0].ss%>">导出</a>
+        <input type="button" value="组合查询" onclick="query();"/>
+</div>
+            <table class="table">
+            <thead>
+            <th>项目名</th>
+            <th>项目简述</th>
+            <th>创建时间</th>
+            <th>创建人id</th>
+            </thead>
+            <% result.forEach(function(item)
+            {
+                %>
+            <tr>
+                <td><%=item.name%></td>
+                <td><%=item.description%></td>
+                <td><%=item.time%></td>
+                <td><%=item.manager_id%></td>
+              <td>  <a href="/view?ssl=<%=item.ss%>">查看</a></td>
+                <td>  <a href="/delete?ssl=<%=item.ss%>">删除</a></td>
+            </tr>
+            <%
+            });%>
+        </table>
+                </div><hr>
+            <div id="second" onclick="show2()">
+                结果列表
+                <div id="record_list_div">
+                    <% var i=0;
+
+                    %>
+                    <ul id="list">
+                        <li><%= result[i].name%></li>
+                        <li><%= result[i].description%></li>
+                        <li><%= result[i].time%></li>
+                        <li><%= result[i].manager_id%></li>
+                    </ul>
+                </div>
+                <hr/>
+                <div>
+                    <input type="button" id="top" value="到首个" onclick="goTop();"/>
+                    <input type="button" id="prev" value="到前一个" onclick="goPrev();"/>
+                    <input type="button" id="next" value="到下一个" onclick="goNext();"/>
+                    <input type="button" id="bottom" value="到最后" onclick="goBottom();"/>
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+    </div>
+</div>
+<%include admin_foot.ejs%>
+<script>
+    function show2(){
+        document.getElementById("first").style.display="none";
+        document.getElementById("second").style.display="block";
+
+    }
+
+    function show1(){
+        document.getElementById("second").style.display="none";
+        document.getElementById("first").style.display="block";
+    }
+    function query(){
+        window.location.href="/admin";
+    }
+    function statistic(){
+        window.location.href="/statistic";
+    }
+    function exportRecord(){
+        var url="../../"+module+"_"+sub+"_data_action?action=export_record";
+        $.post(url,function(data){
+            var json=eval("("+data+")");
+            if(json.result_code==0){
+                var list=json.aaData;
+                window.location.href="export_result.jsp";
+            }
+        });
+    }
+    function goTop(){
+        <% i =0; %>
+        var html="";
+        html=  "<li><%= result[i].name%></li> <li><%= result[i].description%></li> <li><%= result[i].time%></li> <li><%= result[i].manager_id%></li>";
+     var list =document.getElementById("list");
+        list.innerHTML=html;
+    }
+    function goBottom(){
+        <% i=result.length-1; %>
+        var html="";
+        html=  "<li><%= result[i].name%></li> <li><%= result[i].description%></li> <li><%= result[i].time%></li> <li><%= result[i].manager_id%></li>";
+        var list =document.getElementById("list");
+        list.innerHTML=html;
+    }
+    function goNext(){
+        <%
+        if(i==result.length-1){
+         %>
+            alert("已经到最后面了！");
+        <%}else{
+            i=i+1;
+        }%>
+        var html="";
+        html=  "<li><%= result[i].name%></li> <li><%= result[i].description%></li> <li><%= result[i].time%></li> <li><%= result[i].manager_id%></li>";
+        var list =document.getElementById("list");
+        list.innerHTML=html;
+    }
+    function goPrev(){
+        <%
+        if(i==0){%>
+            alert("已经到最前面了！");
+        <%}else{
+            i=i-1;
+        }%>
+        var html="";
+        html=  "<li><%= result[i].name%></li> <li><%= result[i].description%></li> <li><%= result[i].time%></li> <li><%= result[i].manager_id%></li>";
+        var list =document.getElementById("list");
+        list.innerHTML=html;
+    }
+</script>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->

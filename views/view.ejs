@@ -1,0 +1,47 @@
+<% include admin_head.ejs%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">用户</a></li>
+                <li><a href="#">文件夹</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="">项目</a></li>
+                <li><a href="">讨论</a></li>
+                <li><a href="">评论</a></li>
+                <li><a href="">任务</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li><a href="">周报</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            结果列表
+            <div id="record_list_div">
+                <ul>
+                    <li><%= project.name%></li>
+                    <li><%= project.description%></li>
+                    <li><%= project.time%></li>
+                    <li><%= project.manager_id%></li>
+                </ul>
+            </div>
+            <hr/>
+            <div id="record_view_div">
+                <div id="rownum"></div>
+                <div id="id"></div>
+                <div id="device_id"></div>
+                <div id="gps_time"></div>
+                <div id="longitude"></div>
+                <div id="latitude"></div>
+            </div>
+
+
+    </div>
+</div>
+</div>
+<%include admin_foot.ejs%>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
