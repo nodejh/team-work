@@ -7,7 +7,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="/img/favicon.ico">
 
     <title>管理员后台</title>
 
@@ -15,10 +15,9 @@
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -57,22 +56,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">用户</a></li>
-                <li><a href="#">文件夹</a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="">项目</a></li>
-                <li><a href="">讨论</a></li>
-                <li><a href="">评论</a></li>
-                <li><a href="">任务</a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="">周报</a></li>
-            </ul>
-        </div>
+        <% include _admin_siderbar.ejs %>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         </div>
     </div>
