@@ -117,3 +117,21 @@ body {
 .file_time {
     float: right;
 }
+.panel-heading {
+    cursor: pointer;
+}
+.hide_panel_body {
+    display: none;
+}
+.small_name_tips {
+    font-size: 20px;
+    color: #777;
+}
+.file_item {
+    width: 100%;
+    display: inline-block;
+}
+.file_item span {
+    display: inline-block;
+    width: 33%;
+}
