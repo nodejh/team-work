@@ -1,12 +1,12 @@
 .project-head{
-    position: absolute;
+
     top: 27px;
-    float: right;
+
     right: 40px;
     font-size: 1em;
 }
 .project-body{
-    margin: 0 30px 80px;
+    margin: 50px 30px 80px;
 
 }
 .new-project{
@@ -14,6 +14,7 @@
 }
 .view{
     float: right;
+    margin-right: 60px;
 
 }
 .projects-footer {
